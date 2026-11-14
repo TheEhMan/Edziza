@@ -39,7 +39,9 @@ assert.deepEqual(atlasZoom({zoom:1,x:0,y:0},2,100,-20),{zoom:2,x:-100,y:20});
 assert.equal(atlasZoom({zoom:12,x:100,y:40},3).zoom,12);
 assert.equal(atlasZoom({zoom:1,x:3,y:4},0.1).zoom,1);
 const scene = await readFile(new URL('../src/MoonScene.jsx', import.meta.url), 'utf8');
-for (const behavior of ['onPointerMove','touch-action','enableZoom','zoomGlobe','addEventListener(\'wheel\'','ZoomButtons']) {
+for (const behavior of ['onPointerMove','touch-action','enableZoom','zoomGlobe','addEventListener(\'wheel\'','ZoomButtons','Detailed map','projectToReferenceDisk']) {
   assert.ok(scene.includes(behavior) || (behavior === 'touch-action' && (await readFile(new URL('../src/moon.css', import.meta.url), 'utf8')).includes(behavior)), `Missing Moon zoom behavior: ${behavior}`);
 }
 console.log('NASA data test passed: 3 MOLA DEM site heights verified against raster, 3 lunar sites, 12 parameters, Moon zoom math and controls.');
+
+assert.match(await readFile(new URL('../src/MoonScene.jsx', import.meta.url), 'utf8'), /moon-topography-reference\.jpg/);

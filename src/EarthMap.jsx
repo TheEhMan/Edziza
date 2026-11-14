@@ -6,8 +6,13 @@ import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 maplibregl.setWorkerUrl(workerUrl);
 
 import { WORLD_SITES } from './siteData.js';
+import { EARTH_ANALOGS } from './analogData.js';
 
-export const EDZIZA_SITES = WORLD_SITES.earth;
+// Every ranked Earth candidate must fly to its REAL representative coordinate.
+// Previously non-Edziza winners incorrectly defaulted to Snowshoe Lava Field.
+export const EDZIZA_SITES = { ...WORLD_SITES.earth,
+  ...Object.fromEntries(EARTH_ANALOGS.map(site => [site.id, { ...site, label: site.name }]))
+};
 
 const DEM = 'https://tiles.mapterhorn.com/tilejson.json';
 const STYLE = {
@@ -57,7 +62,7 @@ export default function EarthMap({ site = 'snowshoe', basemap = 'satellite', exa
       pitch: initial.pitch,
       bearing: initial.bearing,
       antialias: true,
-      maxZoom: 13.5,     // avoid zooming beyond useful DEM/imagery detail
+      maxZoom: 14.5,     // avoid zooming beyond useful DEM/imagery detail
       maxPitch: 70,      // extremely low camera angles reveal terrain artifacts
       attributionControl: { compact: true }
     });
@@ -177,9 +182,9 @@ export default function EarthMap({ site = 'snowshoe', basemap = 'satellite', exa
 
   return (
     <div className="earth-map-container">
-      <div ref={ref} className="earth-map" aria-label="3D terrain map of Mount Edziza" />
-      <div className="earth-map-hud">Zoom {zoom.toFixed(1)} / 13.5 | 3D elevation from Mapterhorn</div>
-      {zoom > 12.7 && <div className="zoom-caution">Close-up terrain detail is limited by elevation resolution. Zoom out for reliable landforms.</div>}
+      <div ref={ref} className="earth-map" aria-label={`3D terrain map of ${EDZIZA_SITES[site]?.label || "selected Earth analog"}`} />
+      <div className="earth-map-hud">Zoom {zoom.toFixed(1)} / 14.5 | 3D elevation from Mapterhorn</div>
+      {zoom > 13.8 && <div className="zoom-caution">Close-up terrain detail is limited by elevation resolution. Zoom out for reliable landforms.</div>}
     </div>
   );
 }

@@ -1,29 +1,13 @@
+import { EARTH_ANALOGS } from './analogData.js';
 // Shared location catalogue. Coordinates are planetocentric latitude and east-positive longitude
 // for Mars/Moon; Earth uses WGS84. Sites are study locations, not certified landing sites.
 export const WORLD_SITES = {
-  earth: {
-    snowshoe: {
-      id: 'snowshoe', label: 'Snowshoe Lava Field', lat: 57.65, lon: -130.667,
-      coords: [-130.667, 57.65], zoom: 11.1, pitch: 62, bearing: 18,
-      description: 'Basaltic flows within the Edziza volcanic complex; a proposed lava/ice field analog.',
-      terrain: 'Basaltic lava field', ice: 'Regional lava–ice interaction evidence; no quantified ice at this map pin.',
-      evidence: 'https://bcparks.ca/mount-edziza-park/'
-    },
-    summit: {
-      id: 'summit', label: 'Mount Edziza summit', lat: 57.72, lon: -130.63,
-      coords: [-130.63, 57.72], zoom: 10.4, pitch: 62, bearing: -24,
-      description: 'High volcanic summit with glaciers, lava flows and nearby volcanic cones.',
-      terrain: 'Glaciated volcanic summit', ice: 'Glaciers are documented in the volcanic complex; local ice thickness not assessed.',
-      evidence: 'https://bcparks.ca/mount-edziza-park/'
-    },
-    desolation: {
-      id: 'desolation', label: 'Desolation Lava Field', lat: 57.816667, lon: -130.616667,
-      coords: [-130.616667, 57.816667], zoom: 11.1, pitch: 58, bearing: 18,
-      description: 'Northern lava field with basaltic flows and pyroclastic cones.',
-      terrain: 'Lava flows + volcanic cones', ice: 'No site-specific water/ice measurement in this prototype.',
-      evidence: 'https://volcano.si.edu/volcano.cfm?vn=320060'
-    }
-  },
+  earth: Object.fromEntries(EARTH_ANALOGS.map(site => [site.id, {
+    id: site.id, label: site.name, lat: site.lat, lon: site.lon,
+    coords: [site.lon, site.lat], zoom: site.zoom, pitch: site.pitch, bearing: site.bearing,
+    description: site.reason, terrain: site.domains.terrain.summary,
+    ice: site.domains.resources.summary, evidence: site.source
+  }])),
   mars: {
     hecates: {
       id: 'hecates', label: 'Hecates Tholus', lat: 32.09, lon: 150.2,
@@ -73,7 +57,7 @@ export const WORLD_SITES = {
 };
 
 export const WORLD_LABELS = {
-  earth: 'EARTH / BRITISH COLUMBIA',
+  earth: 'EARTH / GLOBAL ANALOG SITES',
   mars: 'MARS / ELYSIUM VOLCANIC REGION',
   moon: 'MOON / LUNAR SURFACE'
 };

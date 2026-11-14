@@ -8,9 +8,10 @@
     "build": "vite build",
     "preview": "vite preview",
     "fetch:mars": "node scripts/download-mola.mjs",
-    "verify": "node scripts/verify-project.mjs && node scripts/test-space-data.mjs",
+    "verify": "node scripts/verify-project.mjs && node scripts/test-space-data.mjs && node scripts/test-analog-ranking.mjs && node scripts/test-3d-picker.mjs",
     "fetch:nasa": "node scripts/sync-nasa-data.mjs",
-    "refresh:mars-sites": "node scripts/build-mars-site-data.mjs"
+    "refresh:mars-sites": "node scripts/build-mars-site-data.mjs",
+    "export:catalog": "node scripts/export-analog-catalog.mjs"
   },
   "overrides": {
     "rollup": "npm:@rollup/wasm-node@^4"

@@ -67,7 +67,24 @@ function renderedElevation(metres, minMetres, multiplier) {
   return ((metres - minMetres) / 1000) * unitsPerKm * BASE_VERTICAL_EXAGGERATION * multiplier - 0.9;
 }
 
-function MarsTerrain({ data, texture, exaggeration }) {
+function MarsTerrain({ data, texture, exaggeration, onPick }) {
+  const startPoint = useRef(null);
+  const onDown = event => {
+    if (event.button !== 0) return;
+    startPoint.current = { x: event.nativeEvent.clientX, y: event.nativeEvent.clientY };
+  };
+  const onUp = event => {
+    if (!startPoint.current || event.button !== 0) return;
+    const dx = event.nativeEvent.clientX - startPoint.current.x;
+    const dy = event.nativeEvent.clientY - startPoint.current.y;
+    startPoint.current = null;
+    if (dx * dx + dy * dy > 49) return; // Drags orbit; short clicks select.
+    const { x, z } = event.point; // actual 3D raycast, not flat-screen coordinates
+    const lat = REGION.north - (z / SCENE_HEIGHT + 0.5) * (REGION.north - REGION.south);
+    const lon = REGION.west + (x / SCENE_WIDTH + 0.5) * (REGION.east - REGION.west);
+    if (lat < REGION.south - 0.01 || lat > REGION.north + 0.01 || lon < REGION.west - 0.01 || lon > REGION.east + 0.01) return;
+    onPick?.(lat, lon, Math.round(getElevationAt(data, lat, lon)));
+  };
   const heights = data?.heights ?? [[0, 0], [0, 0]]; // Flat fallback, not fabricated terrain.
   const bounds = data?.bounds ?? REGION;
   const { min, max } = useMemo(() => elevationRange(heights), [heights]);
@@ -100,7 +117,7 @@ function MarsTerrain({ data, texture, exaggeration }) {
 
   useEffect(() => () => geometry.dispose(), [geometry]);
   return (
-    <mesh geometry={geometry} position={[0, -0.9, 0]}>
+    <mesh geometry={geometry} position={[0, -0.9, 0]} onPointerDown={onDown} onPointerUp={onUp}>
       <meshStandardMaterial
         map={texture ?? null}
         vertexColors={!texture}
@@ -112,9 +129,9 @@ function MarsTerrain({ data, texture, exaggeration }) {
   );
 }
 
-function MapLandmarks({ data, exaggeration }) {
+function MapLandmarks({ data, exaggeration, picked }) {
   const minimum = useMemo(() => elevationRange(data?.heights ?? [[0]]).min, [data]);
-  return LANDMARKS.map(point => {
+  return <> {LANDMARKS.map(point => {
     const where = projectedPoint(point.lat, point.lon);
     const height = renderedElevation(getElevationAt(data, point.lat, point.lon), minimum, exaggeration);
     return (
@@ -125,7 +142,15 @@ function MapLandmarks({ data, exaggeration }) {
         </div>
       </Html>
     );
-  });
+  })}
+  {picked && (() => {
+    const position = projectedPoint(picked.lat, picked.lon);
+    const y = renderedElevation(getElevationAt(data, picked.lat, picked.lon), minimum, exaggeration);
+    return <Html key="user-picked" position={[position.x, y + 0.28, position.z]} center style={{ pointerEvents: 'none' }}>
+      <div className="mars-landmark mars-picked-landmark"><span className="mars-landmark-dot"/>SELECTED POINT · NASA MOLA {Math.round(getElevationAt(data, picked.lat, picked.lon)).toLocaleString()} m</div>
+    </Html>;
+  })()}
+  </>;
 }
 
 function MoveCamera({ selected, controlsRef }) {
@@ -207,14 +232,14 @@ async function makeNASAImageryTexture(manifest) {
   return { texture, count: loaded, total: manifest.tiles.length };
 }
 
-export default function MarsScene({ exaggeration = 1.15, site = 'hecates', onSiteChange }) {
+export default function MarsScene({ exaggeration = 1.15, site = 'hecates', onSiteChange, onPick, picked }) {
   const [data, setData] = useState(null);
   const [textureInfo, setTextureInfo] = useState(null);
   const [view, setView] = useState(site);
   const [error, setError] = useState('');
   const controlsRef = useRef(null);
 
-  useEffect(() => { setView(site); }, [site]);
+  useEffect(() => { if (!picked) setView(site); }, [site, picked]);
 
   useEffect(() => {
     let cancelled = false;
@@ -260,8 +285,8 @@ export default function MarsScene({ exaggeration = 1.15, site = 'hecates', onSit
         <color attach="background" args={['#120f14']} />
         <ambientLight intensity={1.8} />
         <directionalLight position={[-9, 15, 12]} intensity={1.6} color="#fff0d9" />
-        <MarsTerrain data={data} texture={textureInfo?.texture} exaggeration={exaggeration} />
-        <MapLandmarks data={data} exaggeration={exaggeration} />
+        <MarsTerrain data={data} texture={textureInfo?.texture} exaggeration={exaggeration} onPick={data ? onPick : undefined} />
+        <MapLandmarks data={data} exaggeration={exaggeration} picked={picked} />
         <OrbitControls
           ref={controlsRef}
           makeDefault
@@ -280,7 +305,7 @@ export default function MarsScene({ exaggeration = 1.15, site = 'hecates', onSit
         <span className="status-dot" />
         {satelliteLoaded ? 'NASA VIKING ORBITAL IMAGERY' : 'SATELLITE TILES NOT LOADED'}
       </div>
-      <div className="mars-help">Drag: orbit | Scroll: zoom | Right-drag: pan</div>
+      <div className="mars-help">Click terrain: select a location | Drag: orbit | Scroll: zoom | Right-drag: pan</div>
       <div className="mars-region-toolbar" aria-label="Mars map locations">
         {Object.entries(PRESETS).map(([id, preset]) => (
           <button key={id} type="button" className={view === id ? 'selected' : ''} onClick={() => { setView(id); if (id !== 'overview') onSiteChange?.(id); }}>
@@ -293,7 +318,7 @@ export default function MarsScene({ exaggeration = 1.15, site = 'hecates', onSit
         <span>
           {satelliteLoaded ? `Viking mosaic (${textureInfo.count}/${textureInfo.total} image tiles)` : 'NASA satellite texture not installed'}
           {' · '}
-          {data ? 'MOLA 16-ppd terrain' : 'flat terrain preview'}
+          {data ? 'MOLA DEM terrain · click anywhere in the displayed region' : '3D topography unavailable — selection disabled'}
           {' · '}
           {`relief exaggerated ${(BASE_VERTICAL_EXAGGERATION * exaggeration).toFixed(1)}×`}
         </span>

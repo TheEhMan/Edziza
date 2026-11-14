@@ -1,0 +1,2531 @@
+{
+  "title": "EDZIZA eight-domain research screening catalogue",
+  "challenge": "2026 Space Apps - Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars",
+  "scientificStatus": "Expert-curated qualitative research experiment suitability profiles. Not universally measured NASA physical readings, not a validated lander safety model, not a global exhaustive search.",
+  "domainCount": 8,
+  "earthCount": 11,
+  "planetaryTargets": 6,
+  "featureTags": "Controlled project tags describing possible Earth field-test utility, not field-measured abundances.",
+  "scoring": "For each domain: 100 × matched planetary research-goal tags / number of goals. Weighted mean over enabled domain priorities.",
+  "defaultWeights": {
+    "geology": 4,
+    "terrain": 4,
+    "thermal": 2,
+    "resources": 3,
+    "dust": 2,
+    "biology": 2,
+    "subsurface": 2,
+    "operations": 3
+  },
+  "domains": [
+    {
+      "id": "geology",
+      "label": "Geology & materials",
+      "short": "Geology",
+      "question": "Which rocks, minerals and deposits can we practice sampling?",
+      "defaultWeight": 4,
+      "data": "NASA/USGS planetary geologic maps; LROC, THEMIS; geological site descriptions."
+    },
+    {
+      "id": "terrain",
+      "label": "Terrain & topography",
+      "short": "Terrain",
+      "question": "What landforms and traversal problems are comparable?",
+      "defaultWeight": 4,
+      "data": "NASA MOLA Mars DEM; LRO/LOLA Moon DEM; Copernicus and Earth terrain models."
+    },
+    {
+      "id": "thermal",
+      "label": "Temperature & illumination",
+      "short": "Thermal",
+      "question": "Can we practice in relevant heat, cold or lighting conditions?",
+      "defaultWeight": 2,
+      "data": "NASA POWER Earth climate; LRO Diviner temperatures; Moon illumination mapping; Mars THEMIS."
+    },
+    {
+      "id": "resources",
+      "label": "Water, ice & resources",
+      "short": "Ice & resources",
+      "question": "Can resource prospecting, drilling or sampling be exercised?",
+      "defaultWeight": 3,
+      "data": "NASA/agency cryosphere products; LRO polar maps; Mars MOLA/SHARAD and SWIM reports."
+    },
+    {
+      "id": "dust",
+      "label": "Dust, wind & surface processes",
+      "short": "Dust & erosion",
+      "question": "What surface processing can we imitate without confusing air and vacuum?",
+      "defaultWeight": 2,
+      "data": "NASA POWER wind and Earth aerosols; Martian THEMIS imagery; lunar surface/regolith observations."
+    },
+    {
+      "id": "biology",
+      "label": "Biology & biosignatures",
+      "short": "Life & biosignatures",
+      "question": "How can sampling, preservation and contamination control be tested?",
+      "defaultWeight": 2,
+      "data": "NASA astrobiology analog field descriptions; laboratory and field biosignature research."
+    },
+    {
+      "id": "subsurface",
+      "label": "Caves & underground",
+      "short": "Subsurface",
+      "question": "Could subsurface scouting, imaging or drilling be tested?",
+      "defaultWeight": 2,
+      "data": "NASA/JPL candidate pit imagery; Earth field geology, documented lava tubes and ice-cemented ground."
+    },
+    {
+      "id": "operations",
+      "label": "Exploration & operations",
+      "short": "Operations",
+      "question": "Does this field site support meaningful hardware and mission trials?",
+      "defaultWeight": 3,
+      "data": "NASA analog mission and fieldwork reports; terrain and logistical context (not an accessibility clearance)."
+    }
+  ],
+  "earth": [
+    {
+      "id": "snowshoe",
+      "name": "Snowshoe Lava Field",
+      "region": "Mount Edziza, British Columbia, Canada",
+      "lat": 57.65,
+      "lon": -130.667,
+      "source": "https://bcparks.ca/mount-edziza-park/",
+      "reason": "Basaltic lava and ice-contact process research, but not a direct Moon or Mars climate analog.",
+      "coords": [
+        -130.667,
+        57.65
+      ],
+      "zoom": 11.1,
+      "pitch": 52,
+      "bearing": 0,
+      "domains": {
+        "geology": {
+          "summary": "Exposed basaltic lava-field analog; local mineral abundances are not included.",
+          "features": [
+            "basalt",
+            "volcanic"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "terrain": {
+          "summary": "Rocky lava flow surfaces and volcanic relief allow traverse hypotheses.",
+          "features": [
+            "lava-flow",
+            "rough",
+            "rocky"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "thermal": {
+          "summary": "High-latitude alpine conditions; Earth air and seasonality remain unlike lunar or Martian cycles.",
+          "features": [
+            "cold",
+            "dry-swings"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "resources": {
+          "summary": "Glaciers and volcanic/ice interaction provide ice-field research opportunities.",
+          "features": [
+            "ice",
+            "volcanic-rock"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "dust": {
+          "summary": "Loose volcanic fragment and erosion study; not a Martian global dust storm.",
+          "features": [
+            "grit",
+            "volcanic-fragments"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "biology": {
+          "summary": "Living Earth environment; sampling contamination and rock/ice microbial tests are possible research goals.",
+          "features": [
+            "sampling-control",
+            "extremophile-tests"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "subsurface": {
+          "summary": "Ice/rock contacts offer subsurface-sampling concepts; lava-tube presence at this pin is not established.",
+          "features": [
+            "subsurface-sampling"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "operations": {
+          "summary": "Remote rugged site useful for planning traverses, communications and field logistics, subject to permission.",
+          "features": [
+            "remote",
+            "rough-route",
+            "sampling"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        }
+      }
+    },
+    {
+      "id": "summit",
+      "name": "Mount Edziza Summit",
+      "region": "Mount Edziza, British Columbia, Canada",
+      "lat": 57.72,
+      "lon": -130.63,
+      "source": "https://bcparks.ca/mount-edziza-park/",
+      "reason": "Steep glaciated volcano terrain; strong for cold mobility tests, weaker for flat landing plains.",
+      "coords": [
+        -130.63,
+        57.72
+      ],
+      "zoom": 10.4,
+      "pitch": 52,
+      "bearing": 0,
+      "domains": {
+        "geology": {
+          "summary": "Volcanic edifice and exposed rock; specific rock chemistry must be verified in the field.",
+          "features": [
+            "volcanic",
+            "basalt"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "terrain": {
+          "summary": "Steep glaciated volcanic slopes; strong traverse hazard analog.",
+          "features": [
+            "steep",
+            "rough",
+            "rocky"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "thermal": {
+          "summary": "Cold alpine setting with seasons and long summer daylight.",
+          "features": [
+            "cold",
+            "polar-light"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "resources": {
+          "summary": "Glaciers and exposed volcanic rock for ice and material-handling concepts.",
+          "features": [
+            "ice",
+            "volcanic-rock"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "dust": {
+          "summary": "Rock fragments and glacial erosion; no equivalence to airless lunar dust.",
+          "features": [
+            "grit",
+            "volcanic-fragments"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "biology": {
+          "summary": "Earth biology present; useful for contamination protocols, not sterile-site simulation.",
+          "features": [
+            "sampling-control",
+            "extremophile-tests"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "subsurface": {
+          "summary": "Glacier/rock interfaces suit shallow sampling scenarios; cave opening not documented by this source.",
+          "features": [
+            "subsurface-sampling",
+            "ice-cemented"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "operations": {
+          "summary": "Challenging remote steep-terrain field exercise; access constraints require separate review.",
+          "features": [
+            "remote",
+            "rough-route",
+            "hazard-assessment"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        }
+      }
+    },
+    {
+      "id": "desolation",
+      "name": "Desolation Lava Field",
+      "region": "Mount Edziza, British Columbia, Canada",
+      "lat": 57.816667,
+      "lon": -130.616667,
+      "source": "https://bcparks.ca/mount-edziza-park/",
+      "reason": "Lava flows and cinder cones support testing volcanic geologic interpretation and rover traction.",
+      "coords": [
+        -130.616667,
+        57.816667
+      ],
+      "zoom": 11.1,
+      "pitch": 52,
+      "bearing": 0,
+      "domains": {
+        "geology": {
+          "summary": "Basaltic lava-flow and volcanic-cone landscape.",
+          "features": [
+            "volcanic",
+            "basalt",
+            "pyroclastic"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "terrain": {
+          "summary": "Variable rough lava and cinder cones for path planning.",
+          "features": [
+            "lava-flow",
+            "rough",
+            "steep",
+            "rocky"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "thermal": {
+          "summary": "Cool northern plateau conditions; does not reproduce planetary vacuum or low pressure.",
+          "features": [
+            "cold",
+            "dry-swings"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "resources": {
+          "summary": "Volcanic rock provides an engineering materials analog; site ice is not quantified.",
+          "features": [
+            "volcanic-rock",
+            "regolith"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "dust": {
+          "summary": "Cinders and granular volcanic material offer loose-particle mobility testing.",
+          "features": [
+            "grit",
+            "volcanic-fragments",
+            "loose-grains"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "biology": {
+          "summary": "Field sampling can exercise biological contamination controls in an Earth ecosystem.",
+          "features": [
+            "sampling-control",
+            "extremophile-tests"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "subsurface": {
+          "summary": "Lava-flow geology supports subsurface mapping exercises; no confirmed cave is asserted at the pin.",
+          "features": [
+            "subsurface-sampling"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        },
+        "operations": {
+          "summary": "Remote rough-terrain rover and sampling exercise candidate, pending local access rules.",
+          "features": [
+            "remote",
+            "rough-route",
+            "rover",
+            "sampling"
+          ],
+          "source": "https://bcparks.ca/mount-edziza-park/"
+        }
+      }
+    },
+    {
+      "id": "atacama",
+      "name": "Yungay / Atacama Desert",
+      "region": "Antofagasta Region, Chile",
+      "lat": -24.1,
+      "lon": -69.93,
+      "source": "https://astrobiology.nasa.gov/research-locations/",
+      "reason": "Extreme dry-soil and biosignature testing analog. Famous site, included as a benchmark.",
+      "coords": [
+        -69.93,
+        -24.1
+      ],
+      "zoom": 9,
+      "pitch": 52,
+      "bearing": 0,
+      "domains": {
+        "geology": {
+          "summary": "Arid desert soils and mineral alteration context; not a generic basaltic shield volcano.",
+          "features": [
+            "sedimentary",
+            "salt",
+            "regolith"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "terrain": {
+          "summary": "Dry, rocky or sediment-covered plains support sampling and route-planning trials.",
+          "features": [
+            "flat",
+            "rocky",
+            "dusty-plain"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "thermal": {
+          "summary": "Very arid conditions, strong daytime solar exposure and diurnal thermal cycles.",
+          "features": [
+            "hot",
+            "dry",
+            "dry-swings",
+            "high-sun"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "resources": {
+          "summary": "Scarce accessible surface water supports dry-resource prospecting experiments.",
+          "features": [
+            "dry",
+            "regolith"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "dust": {
+          "summary": "Windblown desert particles support aeolian transport and instrument-dust screening.",
+          "features": [
+            "aeolian",
+            "dust",
+            "grit",
+            "loose-grains"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "biology": {
+          "summary": "Extremely low-biomass soil investigations are useful for biosignature detection and contamination controls.",
+          "features": [
+            "low-biomass",
+            "biosignature-tests",
+            "sampling-control"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "subsurface": {
+          "summary": "Subsurface soil sampling and layer-preservation tests; no lava tube claimed at the map point.",
+          "features": [
+            "subsurface-sampling"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "operations": {
+          "summary": "Accessible in some areas for specialist campaigns; permits and safety must be separately assessed.",
+          "features": [
+            "rover",
+            "sampling",
+            "field-campaign"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        }
+      }
+    },
+    {
+      "id": "haughton",
+      "name": "Haughton Impact Crater",
+      "region": "Devon Island, Nunavut, Canada",
+      "lat": 75.377,
+      "lon": -89.667,
+      "source": "https://science.nasa.gov/solar-system/planetary-analogs/10-things-to-know-about-planetary-analogs/",
+      "reason": "NASA-proven Arctic impact structure and remote expedition operations benchmark.",
+      "coords": [
+        -89.667,
+        75.377
+      ],
+      "zoom": 9,
+      "pitch": 52,
+      "bearing": 0,
+      "domains": {
+        "geology": {
+          "summary": "Meteorite-impact crater and shocked rock geology; not a volcanic shield.",
+          "features": [
+            "impact",
+            "rocky",
+            "regolith"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/10-things-to-know-about-planetary-analogs/"
+        },
+        "terrain": {
+          "summary": "Impact crater, rocky rough terrain and exposed slopes for rover hazard comparison.",
+          "features": [
+            "crater",
+            "steep",
+            "rough",
+            "rocky"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/10-things-to-know-about-planetary-analogs/"
+        },
+        "thermal": {
+          "summary": "Freezing Arctic temperatures and strong polar seasonal light cycles.",
+          "features": [
+            "cold",
+            "polar-light",
+            "dry-swings"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/10-things-to-know-about-planetary-analogs/"
+        },
+        "resources": {
+          "summary": "Polar ground and seasonally frozen terrain offer ice-handling scenario research.",
+          "features": [
+            "ice",
+            "permafrost"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/10-things-to-know-about-planetary-analogs/"
+        },
+        "dust": {
+          "summary": "Loose polar sediment and granular abrasion can be studied; no direct lunar vacuum match.",
+          "features": [
+            "grit",
+            "loose-grains"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/10-things-to-know-about-planetary-analogs/"
+        },
+        "biology": {
+          "summary": "Cold-desert contamination-control research, despite Earth microbiology.",
+          "features": [
+            "low-biomass",
+            "sampling-control",
+            "extremophile-tests"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/10-things-to-know-about-planetary-analogs/"
+        },
+        "subsurface": {
+          "summary": "Crater sediments and frozen-ground coring are relevant; crater is not a verified cave.",
+          "features": [
+            "subsurface-sampling",
+            "ice-cemented"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/10-things-to-know-about-planetary-analogs/"
+        },
+        "operations": {
+          "summary": "Documented NASA rover/exploration-operations analog in isolated extreme terrain.",
+          "features": [
+            "remote",
+            "rover",
+            "sampling",
+            "polar-ops",
+            "rough-route",
+            "hazard-assessment"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/10-things-to-know-about-planetary-analogs/"
+        }
+      }
+    },
+    {
+      "id": "dryvalleys",
+      "name": "McMurdo Dry Valleys",
+      "region": "Victoria Land, Antarctica",
+      "lat": -77.5,
+      "lon": 162.5,
+      "source": "https://astrobiology.nasa.gov/research-locations/",
+      "reason": "Polar, hyper-arid, microbe-bearing landscape especially useful for cold subsurface exploration.",
+      "coords": [
+        162.5,
+        -77.5
+      ],
+      "zoom": 8.2,
+      "pitch": 52,
+      "bearing": 0,
+      "domains": {
+        "geology": {
+          "summary": "Exposed polar desert sediments, rock and weathering products.",
+          "features": [
+            "sedimentary",
+            "rocky",
+            "regolith"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "terrain": {
+          "summary": "Polar valleys, rocky ground and ice-cemented surfaces.",
+          "features": [
+            "polar",
+            "rough",
+            "rocky",
+            "flat"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "thermal": {
+          "summary": "Extreme cold, dryness and polar illumination regime.",
+          "features": [
+            "cold",
+            "dry",
+            "polar-light",
+            "dark"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "resources": {
+          "summary": "Ice-cemented ground and nearby ice provide drill-sampling analog contexts.",
+          "features": [
+            "ice",
+            "permafrost",
+            "ice-cemented"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "dust": {
+          "summary": "Dry sediment, erosion and particle transport under Earth winds.",
+          "features": [
+            "aeolian",
+            "grit",
+            "loose-grains"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "biology": {
+          "summary": "NASA describes cryptoendolithic microbes and preserved biosignatures in this harsh setting.",
+          "features": [
+            "low-biomass",
+            "biosignature-tests",
+            "extremophile-tests",
+            "sampling-control"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "subsurface": {
+          "summary": "Ice-cemented subsurface soil and rock are relevant drilling subjects.",
+          "features": [
+            "ice-cemented",
+            "subsurface-sampling",
+            "drilling"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "operations": {
+          "summary": "Remote polar field operations, traverse planning and restricted environmental access.",
+          "features": [
+            "remote",
+            "polar-ops",
+            "drilling",
+            "sampling",
+            "hazard-assessment"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        }
+      }
+    },
+    {
+      "id": "fagradalsfjall",
+      "name": "Fagradalsfjall Lava Field",
+      "region": "Reykjanes Peninsula, Iceland",
+      "lat": 63.895,
+      "lon": -22.27,
+      "source": "https://science.nasa.gov/solar-system/planetary-analogs/nasas-goddard-instrument-field-team-iceland-2025/team-lava/",
+      "reason": "Recent lava flow and volcanic vent processes investigated by NASA field teams.",
+      "coords": [
+        -22.27,
+        63.895
+      ],
+      "zoom": 10,
+      "pitch": 52,
+      "bearing": 0,
+      "domains": {
+        "geology": {
+          "summary": "Recent basaltic volcanic lava and vents for field spectroscopy and morphology.",
+          "features": [
+            "basalt",
+            "volcanic",
+            "pyroclastic"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/nasas-goddard-instrument-field-team-iceland-2025/team-lava/"
+        },
+        "terrain": {
+          "summary": "Lava flows, cones and broken rock; active-hazard zones require monitoring.",
+          "features": [
+            "lava-flow",
+            "rough",
+            "rocky",
+            "steep"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/nasas-goddard-instrument-field-team-iceland-2025/team-lava/"
+        },
+        "thermal": {
+          "summary": "Cold North Atlantic conditions with volcanic thermal anomalies; not a permanent thermal proxy.",
+          "features": [
+            "cold",
+            "dry-swings"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/nasas-goddard-instrument-field-team-iceland-2025/team-lava/"
+        },
+        "resources": {
+          "summary": "Fresh volcanic rock enables sample and material-processing trials.",
+          "features": [
+            "volcanic-rock",
+            "regolith"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/nasas-goddard-instrument-field-team-iceland-2025/team-lava/"
+        },
+        "dust": {
+          "summary": "Fresh fragmental rock can simulate gritty surface handling.",
+          "features": [
+            "grit",
+            "volcanic-fragments",
+            "loose-grains"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/nasas-goddard-instrument-field-team-iceland-2025/team-lava/"
+        },
+        "biology": {
+          "summary": "NASA field studies investigate sampling protocols and life-detection methods on Icelandic volcanics.",
+          "features": [
+            "biosignature-tests",
+            "sampling-control",
+            "extremophile-tests"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/nasas-goddard-instrument-field-team-iceland-2025/team-lava/"
+        },
+        "subsurface": {
+          "summary": "Volcanic flow structure offers subsurface-geology questions; no mapped tube is asserted here.",
+          "features": [
+            "subsurface-sampling"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/nasas-goddard-instrument-field-team-iceland-2025/team-lava/"
+        },
+        "operations": {
+          "summary": "NASA has used Iceland volcanic fieldwork for science-instrument and traverse exercises.",
+          "features": [
+            "rough-route",
+            "sampling",
+            "field-campaign",
+            "rover"
+          ],
+          "source": "https://science.nasa.gov/solar-system/planetary-analogs/nasas-goddard-instrument-field-team-iceland-2025/team-lava/"
+        }
+      }
+    },
+    {
+      "id": "lavabeds",
+      "name": "Lava Beds National Monument",
+      "region": "Northern California, United States",
+      "lat": 41.741,
+      "lon": -121.519,
+      "source": "https://www.nps.gov/articles/nps-geodiversity-atlas-lava-beds-national-monument-california.htm",
+      "reason": "Documented basaltic flows and lava tubes support lunar subsurface reconnaissance.",
+      "coords": [
+        -121.519,
+        41.741
+      ],
+      "zoom": 10.4,
+      "pitch": 52,
+      "bearing": 0,
+      "domains": {
+        "geology": {
+          "summary": "NPS describes basalt-to-rhyolite volcanic flows with cinder cones and other features.",
+          "features": [
+            "basalt",
+            "volcanic",
+            "pyroclastic"
+          ],
+          "source": "https://www.nps.gov/articles/nps-geodiversity-atlas-lava-beds-national-monument-california.htm"
+        },
+        "terrain": {
+          "summary": "Rough lava flows, vents and varied volcanic relief.",
+          "features": [
+            "lava-flow",
+            "rough",
+            "rocky",
+            "steep"
+          ],
+          "source": "https://www.nps.gov/articles/nps-geodiversity-atlas-lava-beds-national-monument-california.htm"
+        },
+        "thermal": {
+          "summary": "Seasonally variable terrestrial conditions; light/dark caves support instrument practice.",
+          "features": [
+            "dry-swings",
+            "dark"
+          ],
+          "source": "https://www.nps.gov/articles/nps-geodiversity-atlas-lava-beds-national-monument-california.htm"
+        },
+        "resources": {
+          "summary": "Volcanic rock and subsurface material research opportunities; not a verified ice resource analog.",
+          "features": [
+            "volcanic-rock",
+            "regolith"
+          ],
+          "source": "https://www.nps.gov/articles/nps-geodiversity-atlas-lava-beds-national-monument-california.htm"
+        },
+        "dust": {
+          "summary": "Broken lava fragments and unconsolidated volcanic surfaces.",
+          "features": [
+            "grit",
+            "loose-grains",
+            "volcanic-fragments"
+          ],
+          "source": "https://www.nps.gov/articles/nps-geodiversity-atlas-lava-beds-national-monument-california.htm"
+        },
+        "biology": {
+          "summary": "Earth cave biology requires strict biosafety; useful for contamination-avoidance trials.",
+          "features": [
+            "sampling-control",
+            "extremophile-tests"
+          ],
+          "source": "https://www.nps.gov/articles/nps-geodiversity-atlas-lava-beds-national-monument-california.htm"
+        },
+        "subsurface": {
+          "summary": "Documented lava tubes make this a strong field analog for cave entry and mapping.",
+          "features": [
+            "lava-tube",
+            "cave",
+            "subsurface-sampling"
+          ],
+          "source": "https://www.nps.gov/articles/nps-geodiversity-atlas-lava-beds-national-monument-california.htm"
+        },
+        "operations": {
+          "summary": "Cave navigation, surface rover traverses and equipment trials could be designed where permitted.",
+          "features": [
+            "rough-route",
+            "sampling",
+            "field-campaign",
+            "rover",
+            "hazard-assessment"
+          ],
+          "source": "https://www.nps.gov/articles/nps-geodiversity-atlas-lava-beds-national-monument-california.htm"
+        }
+      }
+    },
+    {
+      "id": "deathvalley",
+      "name": "Badwater / Death Valley",
+      "region": "California, United States",
+      "lat": 36.23,
+      "lon": -116.767,
+      "source": "https://www.nps.gov/deva/learn/nature/salt-flats.htm",
+      "reason": "Hot dry basin and exposed salts; vehicles are not allowed off established roads at Badwater.",
+      "coords": [
+        -116.767,
+        36.23
+      ],
+      "zoom": 10.8,
+      "pitch": 52,
+      "bearing": 0,
+      "domains": {
+        "geology": {
+          "summary": "Salt and sedimentary basin deposits, not a basaltic mare or impact crater.",
+          "features": [
+            "salt",
+            "sedimentary",
+            "regolith"
+          ],
+          "source": "https://www.nps.gov/deva/learn/nature/salt-flats.htm"
+        },
+        "terrain": {
+          "summary": "Relatively level basin floors and rugged neighboring badlands.",
+          "features": [
+            "flat",
+            "dusty-plain",
+            "rocky"
+          ],
+          "source": "https://www.nps.gov/deva/learn/nature/salt-flats.htm"
+        },
+        "thermal": {
+          "summary": "High heat, intense sunlight and dry conditions.",
+          "features": [
+            "hot",
+            "dry",
+            "high-sun",
+            "dry-swings"
+          ],
+          "source": "https://www.nps.gov/deva/learn/nature/salt-flats.htm"
+        },
+        "resources": {
+          "summary": "Evaporite salts offer resource-detection analog questions, but not frozen water.",
+          "features": [
+            "salt",
+            "dry",
+            "regolith"
+          ],
+          "source": "https://www.nps.gov/deva/learn/nature/salt-flats.htm"
+        },
+        "dust": {
+          "summary": "Wind-driven dust, sand and erosion provide dust-interface tests.",
+          "features": [
+            "aeolian",
+            "dust",
+            "grit",
+            "loose-grains"
+          ],
+          "source": "https://www.nps.gov/deva/learn/nature/salt-flats.htm"
+        },
+        "biology": {
+          "summary": "Dryland biosignature and contamination exercises; not a sterile planet stand-in.",
+          "features": [
+            "sampling-control",
+            "biosignature-tests"
+          ],
+          "source": "https://www.nps.gov/deva/learn/nature/salt-flats.htm"
+        },
+        "subsurface": {
+          "summary": "Desert sediment coring scenarios; no cave is assumed at Badwater.",
+          "features": [
+            "subsurface-sampling"
+          ],
+          "source": "https://www.nps.gov/deva/learn/nature/salt-flats.htm"
+        },
+        "operations": {
+          "summary": "Badwater salt-flat surfaces are protected: no off-road vehicle testing; permitted observation and sampling proposals would require park approval.",
+          "features": [
+            "sampling",
+            "field-campaign"
+          ],
+          "source": "https://www.nps.gov/deva/learn/nature/salt-flats.htm"
+        }
+      }
+    },
+    {
+      "id": "kilauea",
+      "name": "Kīlauea Volcanic Field",
+      "region": "Hawaiʻi, United States",
+      "lat": 19.421,
+      "lon": -155.287,
+      "source": "https://astrobiology.nasa.gov/research-locations/",
+      "reason": "Basalt landscapes and volcanic tubes provide geology and subsurface analogs.",
+      "coords": [
+        -155.287,
+        19.421
+      ],
+      "zoom": 10,
+      "pitch": 52,
+      "bearing": 0,
+      "domains": {
+        "geology": {
+          "summary": "Basaltic eruptions, lava sheets and volcanic vents.",
+          "features": [
+            "basalt",
+            "volcanic",
+            "pyroclastic"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "terrain": {
+          "summary": "Broken and smooth lava surfaces with rough volcanic relief.",
+          "features": [
+            "lava-flow",
+            "rough",
+            "rocky",
+            "steep"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "thermal": {
+          "summary": "Warm and humid Earth setting; very different from lunar vacuum or Martian cold.",
+          "features": [
+            "hot",
+            "high-sun"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "resources": {
+          "summary": "Basalt and volcanic material support construction-feedstock concepts.",
+          "features": [
+            "volcanic-rock",
+            "regolith"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "dust": {
+          "summary": "Volcanic ash and rock grains support materials characterization.",
+          "features": [
+            "volcanic-fragments",
+            "grit",
+            "loose-grains"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "biology": {
+          "summary": "Life-colonization gradients across young lava support contamination and biosignature tests.",
+          "features": [
+            "biosignature-tests",
+            "sampling-control",
+            "extremophile-tests"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "subsurface": {
+          "summary": "NASA astrobiology lists lava tubes for studying possible ancient-Mars subsurface habitats.",
+          "features": [
+            "lava-tube",
+            "cave",
+            "subsurface-sampling"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        },
+        "operations": {
+          "summary": "Geological traverse and instruments testing potential where safe and authorized.",
+          "features": [
+            "rover",
+            "sampling",
+            "field-campaign",
+            "hazard-assessment"
+          ],
+          "source": "https://astrobiology.nasa.gov/research-locations/"
+        }
+      }
+    },
+    {
+      "id": "cratersmoon",
+      "name": "Craters of the Moon",
+      "region": "Idaho, United States",
+      "lat": 43.444,
+      "lon": -113.516,
+      "source": "https://www.nps.gov/crmo/learn/education/geology-for-students.htm",
+      "reason": "Rocky basaltic flow fields and lava tubes for lunar volcanic-route simulations.",
+      "coords": [
+        -113.516,
+        43.444
+      ],
+      "zoom": 10,
+      "pitch": 52,
+      "bearing": 0,
+      "domains": {
+        "geology": {
+          "summary": "Basaltic fissure eruptions, cinder cones and lava fields.",
+          "features": [
+            "basalt",
+            "volcanic",
+            "pyroclastic"
+          ],
+          "source": "https://www.nps.gov/crmo/learn/education/geology-for-students.htm"
+        },
+        "terrain": {
+          "summary": "Rough lava, fissures, cones and relatively open lava plains.",
+          "features": [
+            "lava-flow",
+            "rough",
+            "rocky",
+            "flat"
+          ],
+          "source": "https://www.nps.gov/crmo/learn/education/geology-for-students.htm"
+        },
+        "thermal": {
+          "summary": "Dry continental conditions with pronounced daily and seasonal temperature variation.",
+          "features": [
+            "dry-swings",
+            "dry"
+          ],
+          "source": "https://www.nps.gov/crmo/learn/education/geology-for-students.htm"
+        },
+        "resources": {
+          "summary": "Exposed basalt and volcanic rubble for engineering-material handling.",
+          "features": [
+            "volcanic-rock",
+            "regolith"
+          ],
+          "source": "https://www.nps.gov/crmo/learn/education/geology-for-students.htm"
+        },
+        "dust": {
+          "summary": "Fine volcanic particles and broken lava rubble for regolith-handling exercises.",
+          "features": [
+            "volcanic-fragments",
+            "grit",
+            "loose-grains"
+          ],
+          "source": "https://www.nps.gov/crmo/learn/education/geology-for-students.htm"
+        },
+        "biology": {
+          "summary": "Sample cleanliness and pioneering vegetation studies, not sterile planetary conditions.",
+          "features": [
+            "sampling-control",
+            "biosignature-tests"
+          ],
+          "source": "https://www.nps.gov/crmo/learn/education/geology-for-students.htm"
+        },
+        "subsurface": {
+          "summary": "Documented lava tubes and fissures for cave-navigation research.",
+          "features": [
+            "lava-tube",
+            "cave",
+            "subsurface-sampling"
+          ],
+          "source": "https://www.nps.gov/crmo/learn/education/geology-for-students.htm"
+        },
+        "operations": {
+          "summary": "Rugged but comparatively accessible volcanic field for traverse demonstrations, subject to park rules.",
+          "features": [
+            "rover",
+            "sampling",
+            "field-campaign",
+            "rough-route"
+          ],
+          "source": "https://www.nps.gov/crmo/learn/education/geology-for-students.htm"
+        }
+      }
+    }
+  ],
+  "targets": [
+    {
+      "world": "mars",
+      "id": "hecates",
+      "name": "Hecates Tholus",
+      "source": "https://science.nasa.gov/resource/elysium/",
+      "mission": "Test lava-and-ice geological interpretation and rough volcanic rover operations.",
+      "limitations": "Low pressure, Mars gravity, radiation, and global dust cannot be reproduced outdoors on Earth.",
+      "domains": {
+        "geology": {
+          "observation": "Volcanic edifice in NASA-mapped Elysium volcanic province; site mineral fractions not sampled here.",
+          "goals": [
+            "volcanic",
+            "basalt"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        },
+        "terrain": {
+          "observation": "Volcano flanks and relief in MOLA terrain; patch-scale rover hazards need finer maps.",
+          "goals": [
+            "steep",
+            "rough",
+            "rocky"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        },
+        "thermal": {
+          "observation": "Martian cold and strong diurnal contrasts; no verified local weather series included.",
+          "goals": [
+            "cold",
+            "dry-swings"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        },
+        "resources": {
+          "observation": "Ancient glacier-related landforms have been discussed; present ice abundance at this pin is unverified.",
+          "goals": [
+            "ice",
+            "permafrost"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        },
+        "dust": {
+          "observation": "Martian surface particles and atmospheric dust processes require windblown-grit tests.",
+          "goals": [
+            "grit",
+            "dust",
+            "aeolian"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        },
+        "biology": {
+          "observation": "No confirmed Martian life; contamination-aware biosignature sampling is a test objective.",
+          "goals": [
+            "sampling-control",
+            "biosignature-tests"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        },
+        "subsurface": {
+          "observation": "Volcanic/ice contact motivates drilling and soil-core tests; no confirmed local tube is claimed.",
+          "goals": [
+            "subsurface-sampling",
+            "ice-cemented"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        },
+        "operations": {
+          "observation": "Volcanic traverse and remote sensing are appropriate research concepts, not approved landing plans.",
+          "goals": [
+            "rover",
+            "rough-route",
+            "remote",
+            "sampling"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        }
+      }
+    },
+    {
+      "world": "mars",
+      "id": "elysium",
+      "name": "Elysium Mons",
+      "source": "https://science.nasa.gov/resource/elysium/",
+      "mission": "Choose an Earth volcanic field for basalt mineral analysis, lava-flow mapping and rover testing.",
+      "limitations": "Earth basalt is weathered and biologically active; Mars has different gravity, atmosphere and radiation.",
+      "domains": {
+        "geology": {
+          "observation": "Large Martian shield volcano mapped in the NASA MOLA Elysium region.",
+          "goals": [
+            "volcanic",
+            "basalt"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        },
+        "terrain": {
+          "observation": "Broad shield volcano and flank lava-flow morphology; DEM cells are regional.",
+          "goals": [
+            "lava-flow",
+            "rocky",
+            "rough"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        },
+        "thermal": {
+          "observation": "Cold, thin-atmosphere Mars conditions; aim for dry field operations.",
+          "goals": [
+            "cold",
+            "dry"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        },
+        "resources": {
+          "observation": "Volcanic rock/regolith resources are a sampling objective; site ice quantity not measured here.",
+          "goals": [
+            "volcanic-rock",
+            "regolith"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        },
+        "dust": {
+          "observation": "Surface soil and aeolian grit can affect rover instruments.",
+          "goals": [
+            "grit",
+            "aeolian",
+            "loose-grains"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        },
+        "biology": {
+          "observation": "No confirmed Martian life; use contamination-aware sampling and instruments testing.",
+          "goals": [
+            "sampling-control",
+            "biosignature-tests"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        },
+        "subsurface": {
+          "observation": "Volcanic units motivate shallow coring; no cave has been confirmed at this chosen point.",
+          "goals": [
+            "subsurface-sampling",
+            "lava-tube"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        },
+        "operations": {
+          "observation": "Rover traction, mineral mapping and rough-track sampling are useful field-test objectives.",
+          "goals": [
+            "rover",
+            "rough-route",
+            "sampling"
+          ],
+          "source": "https://science.nasa.gov/resource/elysium/"
+        }
+      }
+    },
+    {
+      "world": "mars",
+      "id": "albor",
+      "name": "Albor Tholus",
+      "source": "https://science.nasa.gov/photojournal/albor-tholus/",
+      "mission": "Investigate cratered volcanic relief and steep-slope mobility on Earth.",
+      "limitations": "Earth crater/volcano operations cannot reproduce Martian low-pressure atmosphere and gravity.",
+      "domains": {
+        "geology": {
+          "observation": "NASA THEMIS shows a volcano with a pronounced caldera in the Elysium province.",
+          "goals": [
+            "volcanic",
+            "basalt"
+          ],
+          "source": "https://science.nasa.gov/photojournal/albor-tholus/"
+        },
+        "terrain": {
+          "observation": "Steep caldera relief and volcanic flank terrain; precise safe routes need site DEM.",
+          "goals": [
+            "steep",
+            "crater",
+            "rough"
+          ],
+          "source": "https://science.nasa.gov/photojournal/albor-tholus/"
+        },
+        "thermal": {
+          "observation": "Cold, dusty Martian environment; no measured site-specific thermal series used.",
+          "goals": [
+            "cold",
+            "dry-swings"
+          ],
+          "source": "https://science.nasa.gov/photojournal/albor-tholus/"
+        },
+        "resources": {
+          "observation": "Basaltic volcanic materials are a collection target; no measured local ice inventory.",
+          "goals": [
+            "volcanic-rock",
+            "regolith"
+          ],
+          "source": "https://science.nasa.gov/photojournal/albor-tholus/"
+        },
+        "dust": {
+          "observation": "Grit and rockfall accumulation can be an operational process analog.",
+          "goals": [
+            "grit",
+            "volcanic-fragments"
+          ],
+          "source": "https://science.nasa.gov/photojournal/albor-tholus/"
+        },
+        "biology": {
+          "observation": "No confirmed indigenous life; clean sampling remains mission-relevant.",
+          "goals": [
+            "sampling-control",
+            "biosignature-tests"
+          ],
+          "source": "https://science.nasa.gov/photojournal/albor-tholus/"
+        },
+        "subsurface": {
+          "observation": "Crater/flank drilling and layer examination are analog objectives, not evidence of a known cave.",
+          "goals": [
+            "subsurface-sampling"
+          ],
+          "source": "https://science.nasa.gov/photojournal/albor-tholus/"
+        },
+        "operations": {
+          "observation": "Steep terrain requires cautious routing and hazard scouting.",
+          "goals": [
+            "rover",
+            "rough-route",
+            "hazard-assessment"
+          ],
+          "source": "https://science.nasa.gov/photojournal/albor-tholus/"
+        }
+      }
+    },
+    {
+      "world": "moon",
+      "id": "apollo11",
+      "name": "Apollo 11 / Tranquility Base",
+      "source": "https://science.nasa.gov/image-detail/20100528/",
+      "mission": "Find basaltic Earth terrain suited to regolith handling, flat-ground rover trials and sample geology.",
+      "limitations": "No Earth field site reproduces lunar vacuum, one-sixth gravity, radiation or real lunar dust properties.",
+      "domains": {
+        "geology": {
+          "observation": "NASA describes the Mare Tranquillitatis basin as relatively smooth basaltic lava plains.",
+          "goals": [
+            "basalt",
+            "volcanic"
+          ],
+          "source": "https://science.nasa.gov/image-detail/20100528/"
+        },
+        "terrain": {
+          "observation": "Relatively smooth mare with impact overprints; rover-scale roughness not computed here.",
+          "goals": [
+            "flat",
+            "rocky"
+          ],
+          "source": "https://science.nasa.gov/image-detail/20100528/"
+        },
+        "thermal": {
+          "observation": "Vacuum exposure causes extreme day/night heating and cooling; outdoors only partially analog.",
+          "goals": [
+            "hot",
+            "dry-swings"
+          ],
+          "source": "https://science.nasa.gov/image-detail/20100528/"
+        },
+        "resources": {
+          "observation": "Regolith and local basalt materials are relevant; no local exposed ice is established.",
+          "goals": [
+            "regolith",
+            "volcanic-rock"
+          ],
+          "source": "https://science.nasa.gov/image-detail/20100528/"
+        },
+        "dust": {
+          "observation": "Lunar abrasive regolith has no wind transport; test loose-grain handling, not aeolian physics.",
+          "goals": [
+            "grit",
+            "loose-grains"
+          ],
+          "source": "https://science.nasa.gov/image-detail/20100528/"
+        },
+        "biology": {
+          "observation": "No confirmed indigenous lunar life; contamination control is the Earth-test objective.",
+          "goals": [
+            "sampling-control"
+          ],
+          "source": "https://science.nasa.gov/image-detail/20100528/"
+        },
+        "subsurface": {
+          "observation": "Lunar mare volcanic structures motivate optional lava-tube methods; no tube is claimed at Apollo 11.",
+          "goals": [
+            "subsurface-sampling",
+            "lava-tube"
+          ],
+          "source": "https://science.nasa.gov/image-detail/20100528/"
+        },
+        "operations": {
+          "observation": "Sample collection, rover handling and navigation across rocky plains.",
+          "goals": [
+            "rover",
+            "sampling",
+            "field-campaign"
+          ],
+          "source": "https://science.nasa.gov/image-detail/20100528/"
+        }
+      }
+    },
+    {
+      "world": "moon",
+      "id": "shackleton",
+      "name": "Shackleton crater / South Pole",
+      "source": "https://science.nasa.gov/resource/shackleton-craters-illuminated-rim-shadowed-interior/",
+      "mission": "Find a cold crater or polar Earth site for ice prospecting, difficult lighting and remote traverse tests.",
+      "limitations": "Permanent shadows, lunar gravity and cryogenic-vacuum chemistry require separate laboratory testing.",
+      "domains": {
+        "geology": {
+          "observation": "NASA maps an impact crater in ancient polar highlands; precise mineralogy varies.",
+          "goals": [
+            "impact",
+            "rocky"
+          ],
+          "source": "https://science.nasa.gov/resource/shackleton-craters-illuminated-rim-shadowed-interior/"
+        },
+        "terrain": {
+          "observation": "Steep crater rim and permanently shadowed interior require hazard-aware planning.",
+          "goals": [
+            "crater",
+            "steep",
+            "polar",
+            "rough"
+          ],
+          "source": "https://science.nasa.gov/resource/shackleton-craters-illuminated-rim-shadowed-interior/"
+        },
+        "thermal": {
+          "observation": "Rim sunlight and permanently shadowed cold floors; Earth seasonal polar darkness is only partial analog.",
+          "goals": [
+            "cold",
+            "polar-light",
+            "dark"
+          ],
+          "source": "https://science.nasa.gov/resource/shackleton-craters-illuminated-rim-shadowed-interior/"
+        },
+        "resources": {
+          "observation": "Polar cold traps may host water ice; this prototype makes no local ice-grade estimate.",
+          "goals": [
+            "ice",
+            "permafrost"
+          ],
+          "source": "https://science.nasa.gov/resource/shackleton-craters-illuminated-rim-shadowed-interior/"
+        },
+        "dust": {
+          "observation": "Airless lunar regolith and dust adhesion are important; terrestrial gritty soil is a handling analog only.",
+          "goals": [
+            "grit",
+            "loose-grains"
+          ],
+          "source": "https://science.nasa.gov/resource/shackleton-craters-illuminated-rim-shadowed-interior/"
+        },
+        "biology": {
+          "observation": "No confirmed lunar life; clean ice coring and contamination control are useful test scenarios.",
+          "goals": [
+            "sampling-control",
+            "extremophile-tests"
+          ],
+          "source": "https://science.nasa.gov/resource/shackleton-craters-illuminated-rim-shadowed-interior/"
+        },
+        "subsurface": {
+          "observation": "Cold subsurface and shadowed material motivate ice coring, not a confirmed cave.",
+          "goals": [
+            "ice-cemented",
+            "subsurface-sampling",
+            "drilling"
+          ],
+          "source": "https://science.nasa.gov/resource/shackleton-craters-illuminated-rim-shadowed-interior/"
+        },
+        "operations": {
+          "observation": "Remote polar route planning, prospecting, robotic hazard mapping and sampling.",
+          "goals": [
+            "remote",
+            "polar-ops",
+            "drilling",
+            "hazard-assessment"
+          ],
+          "source": "https://science.nasa.gov/resource/shackleton-craters-illuminated-rim-shadowed-interior/"
+        }
+      }
+    },
+    {
+      "world": "moon",
+      "id": "aristarchus",
+      "name": "Aristarchus Plateau",
+      "source": "https://science.nasa.gov/3d-resources/moon-aristarchus-region/",
+      "mission": "Discover lava-field and subsurface analogs for pyroclastic deposits, sinuous rilles and traverse science.",
+      "limitations": "The actual lunar pyroclastic chemistry, vacuum, reduced gravity and dust charging are different from Earth.",
+      "domains": {
+        "geology": {
+          "observation": "NASA maps volcanic pyroclastic mantling and basaltic flows in the Aristarchus region.",
+          "goals": [
+            "pyroclastic",
+            "basalt",
+            "volcanic"
+          ],
+          "source": "https://science.nasa.gov/3d-resources/moon-aristarchus-region/"
+        },
+        "terrain": {
+          "observation": "Sinuous rilles, crater margins and volcanic relief create complex routing challenges.",
+          "goals": [
+            "lava-flow",
+            "steep",
+            "rough"
+          ],
+          "source": "https://science.nasa.gov/3d-resources/moon-aristarchus-region/"
+        },
+        "thermal": {
+          "observation": "Airless day/night heat extremes demand instrument thermal testing beyond any Earth field match.",
+          "goals": [
+            "hot",
+            "dry-swings"
+          ],
+          "source": "https://science.nasa.gov/3d-resources/moon-aristarchus-region/"
+        },
+        "resources": {
+          "observation": "Pyroclastic material and possible volcanic volatiles motivate resource characterization, not proven ore.",
+          "goals": [
+            "volcanic-rock",
+            "regolith"
+          ],
+          "source": "https://science.nasa.gov/3d-resources/moon-aristarchus-region/"
+        },
+        "dust": {
+          "observation": "Loose pyroclastic material and abrasive grains motivate handling tests, not lunar wind analogs.",
+          "goals": [
+            "volcanic-fragments",
+            "grit",
+            "loose-grains"
+          ],
+          "source": "https://science.nasa.gov/3d-resources/moon-aristarchus-region/"
+        },
+        "biology": {
+          "observation": "No confirmed indigenous life; field tests can validate sample cleanliness.",
+          "goals": [
+            "sampling-control",
+            "biosignature-tests"
+          ],
+          "source": "https://science.nasa.gov/3d-resources/moon-aristarchus-region/"
+        },
+        "subsurface": {
+          "observation": "Sinuous rilles suggest volcanic channels/collapse; their cavities are not verified at this map point.",
+          "goals": [
+            "lava-tube",
+            "cave",
+            "subsurface-sampling"
+          ],
+          "source": "https://science.nasa.gov/3d-resources/moon-aristarchus-region/"
+        },
+        "operations": {
+          "observation": "Rover imaging, vent stratigraphy, sample handling and rough route planning.",
+          "goals": [
+            "rover",
+            "sampling",
+            "rough-route"
+          ],
+          "source": "https://science.nasa.gov/3d-resources/moon-aristarchus-region/"
+        }
+      }
+    }
+  ],
+  "rankings": {
+    "mars:hecates": [
+      {
+        "earthId": "fagradalsfjall",
+        "earthName": "Fagradalsfjall Lava Field",
+        "projectScreeningScore": 72.3,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 100,
+          "resources": 0,
+          "dust": 33,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 75
+        }
+      },
+      {
+        "earthId": "desolation",
+        "earthName": "Desolation Lava Field",
+        "projectScreeningScore": 71.2,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 100,
+          "resources": 0,
+          "dust": 33,
+          "biology": 50,
+          "subsurface": 50,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "haughton",
+        "earthName": "Haughton Impact Crater",
+        "projectScreeningScore": 71.2,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 100,
+          "thermal": 100,
+          "resources": 100,
+          "dust": 33,
+          "biology": 50,
+          "subsurface": 100,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "summit",
+        "earthName": "Mount Edziza Summit",
+        "projectScreeningScore": 71.2,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 50,
+          "resources": 50,
+          "dust": 33,
+          "biology": 50,
+          "subsurface": 100,
+          "operations": 50
+        }
+      },
+      {
+        "earthId": "snowshoe",
+        "earthName": "Snowshoe Lava Field",
+        "projectScreeningScore": 68.6,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 67,
+          "thermal": 100,
+          "resources": 50,
+          "dust": 33,
+          "biology": 50,
+          "subsurface": 50,
+          "operations": 75
+        }
+      },
+      {
+        "earthId": "lavabeds",
+        "earthName": "Lava Beds National Monument",
+        "projectScreeningScore": 63.2,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 50,
+          "resources": 0,
+          "dust": 33,
+          "biology": 50,
+          "subsurface": 50,
+          "operations": 75
+        }
+      },
+      {
+        "earthId": "cratersmoon",
+        "earthName": "Craters of the Moon",
+        "projectScreeningScore": 61.8,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 67,
+          "thermal": 50,
+          "resources": 0,
+          "dust": 33,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 75
+        }
+      },
+      {
+        "earthId": "dryvalleys",
+        "earthName": "McMurdo Dry Valleys",
+        "projectScreeningScore": 61.5,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 67,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 67,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 50
+        }
+      },
+      {
+        "earthId": "kilauea",
+        "earthName": "Kīlauea Volcanic Field",
+        "projectScreeningScore": 59.8,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 0,
+          "resources": 0,
+          "dust": 33,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 50
+        }
+      },
+      {
+        "earthId": "atacama",
+        "earthName": "Yungay / Atacama Desert",
+        "projectScreeningScore": 40.1,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 33,
+          "thermal": 50,
+          "resources": 0,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 50
+        }
+      },
+      {
+        "earthId": "deathvalley",
+        "earthName": "Badwater / Death Valley",
+        "projectScreeningScore": 36.7,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 33,
+          "thermal": 50,
+          "resources": 0,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 25
+        }
+      }
+    ],
+    "mars:elysium": [
+      {
+        "earthId": "cratersmoon",
+        "earthName": "Craters of the Moon",
+        "projectScreeningScore": 92.5,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 67,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "fagradalsfjall",
+        "earthName": "Fagradalsfjall Lava Field",
+        "projectScreeningScore": 87.9,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 67,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "desolation",
+        "earthName": "Desolation Lava Field",
+        "projectScreeningScore": 83.4,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 67,
+          "biology": 50,
+          "subsurface": 50,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "kilauea",
+        "earthName": "Kīlauea Volcanic Field",
+        "projectScreeningScore": 83.4,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 0,
+          "resources": 100,
+          "dust": 67,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 67
+        }
+      },
+      {
+        "earthId": "lavabeds",
+        "earthName": "Lava Beds National Monument",
+        "projectScreeningScore": 83.4,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 0,
+          "resources": 100,
+          "dust": 67,
+          "biology": 50,
+          "subsurface": 100,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "snowshoe",
+        "earthName": "Snowshoe Lava Field",
+        "projectScreeningScore": 69,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 50,
+          "resources": 50,
+          "dust": 33,
+          "biology": 50,
+          "subsurface": 50,
+          "operations": 67
+        }
+      },
+      {
+        "earthId": "summit",
+        "earthName": "Mount Edziza Summit",
+        "projectScreeningScore": 58.3,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 67,
+          "thermal": 50,
+          "resources": 50,
+          "dust": 33,
+          "biology": 50,
+          "subsurface": 50,
+          "operations": 33
+        }
+      },
+      {
+        "earthId": "atacama",
+        "earthName": "Yungay / Atacama Desert",
+        "projectScreeningScore": 49.2,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 33,
+          "thermal": 50,
+          "resources": 50,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 67
+        }
+      },
+      {
+        "earthId": "dryvalleys",
+        "earthName": "McMurdo Dry Valleys",
+        "projectScreeningScore": 48.5,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 67,
+          "thermal": 100,
+          "resources": 0,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 33
+        }
+      },
+      {
+        "earthId": "haughton",
+        "earthName": "Haughton Impact Crater",
+        "projectScreeningScore": 45.5,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 67,
+          "thermal": 50,
+          "resources": 0,
+          "dust": 67,
+          "biology": 50,
+          "subsurface": 50,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "deathvalley",
+        "earthName": "Badwater / Death Valley",
+        "projectScreeningScore": 44.6,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 33,
+          "thermal": 50,
+          "resources": 50,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 33
+        }
+      }
+    ],
+    "mars:albor": [
+      {
+        "earthId": "fagradalsfjall",
+        "earthName": "Fagradalsfjall Lava Field",
+        "projectScreeningScore": 89.5,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 67,
+          "thermal": 100,
+          "resources": 100,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 67
+        }
+      },
+      {
+        "earthId": "desolation",
+        "earthName": "Desolation Lava Field",
+        "projectScreeningScore": 85,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 67,
+          "thermal": 100,
+          "resources": 100,
+          "dust": 100,
+          "biology": 50,
+          "subsurface": 100,
+          "operations": 67
+        }
+      },
+      {
+        "earthId": "lavabeds",
+        "earthName": "Lava Beds National Monument",
+        "projectScreeningScore": 84.9,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 67,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 100,
+          "biology": 50,
+          "subsurface": 100,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "kilauea",
+        "earthName": "Kīlauea Volcanic Field",
+        "projectScreeningScore": 80.4,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 67,
+          "thermal": 0,
+          "resources": 100,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 67
+        }
+      },
+      {
+        "earthId": "cratersmoon",
+        "earthName": "Craters of the Moon",
+        "projectScreeningScore": 78.8,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 33,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 67
+        }
+      },
+      {
+        "earthId": "summit",
+        "earthName": "Mount Edziza Summit",
+        "projectScreeningScore": 73.6,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 67,
+          "thermal": 50,
+          "resources": 50,
+          "dust": 100,
+          "biology": 50,
+          "subsurface": 100,
+          "operations": 67
+        }
+      },
+      {
+        "earthId": "snowshoe",
+        "earthName": "Snowshoe Lava Field",
+        "projectScreeningScore": 67.3,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 33,
+          "thermal": 100,
+          "resources": 50,
+          "dust": 100,
+          "biology": 50,
+          "subsurface": 100,
+          "operations": 33
+        }
+      },
+      {
+        "earthId": "haughton",
+        "earthName": "Haughton Impact Crater",
+        "projectScreeningScore": 59.1,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 100,
+          "thermal": 100,
+          "resources": 0,
+          "dust": 50,
+          "biology": 50,
+          "subsurface": 100,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "atacama",
+        "earthName": "Yungay / Atacama Desert",
+        "projectScreeningScore": 38.6,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 0,
+          "thermal": 50,
+          "resources": 50,
+          "dust": 50,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 33
+        }
+      },
+      {
+        "earthId": "dryvalleys",
+        "earthName": "McMurdo Dry Valleys",
+        "projectScreeningScore": 37.8,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 33,
+          "thermal": 50,
+          "resources": 0,
+          "dust": 50,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 33
+        }
+      },
+      {
+        "earthId": "deathvalley",
+        "earthName": "Badwater / Death Valley",
+        "projectScreeningScore": 34.1,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 0,
+          "thermal": 50,
+          "resources": 50,
+          "dust": 50,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 0
+        }
+      }
+    ],
+    "moon:apollo11": [
+      {
+        "earthId": "cratersmoon",
+        "earthName": "Craters of the Moon",
+        "projectScreeningScore": 95.5,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "kilauea",
+        "earthName": "Kīlauea Volcanic Field",
+        "projectScreeningScore": 86.4,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 50,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "lavabeds",
+        "earthName": "Lava Beds National Monument",
+        "projectScreeningScore": 86.4,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 50,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "fagradalsfjall",
+        "earthName": "Fagradalsfjall Lava Field",
+        "projectScreeningScore": 81.8,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 50,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "desolation",
+        "earthName": "Desolation Lava Field",
+        "projectScreeningScore": 77.3,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 50,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 67
+        }
+      },
+      {
+        "earthId": "atacama",
+        "earthName": "Yungay / Atacama Desert",
+        "projectScreeningScore": 70.5,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 100,
+          "thermal": 100,
+          "resources": 50,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "deathvalley",
+        "earthName": "Badwater / Death Valley",
+        "projectScreeningScore": 66,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 100,
+          "thermal": 100,
+          "resources": 50,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 67
+        }
+      },
+      {
+        "earthId": "snowshoe",
+        "earthName": "Snowshoe Lava Field",
+        "projectScreeningScore": 61.3,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 50,
+          "thermal": 50,
+          "resources": 50,
+          "dust": 50,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 33
+        }
+      },
+      {
+        "earthId": "summit",
+        "earthName": "Mount Edziza Summit",
+        "projectScreeningScore": 52.3,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 50,
+          "thermal": 0,
+          "resources": 50,
+          "dust": 50,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 0
+        }
+      },
+      {
+        "earthId": "haughton",
+        "earthName": "Haughton Impact Crater",
+        "projectScreeningScore": 45.5,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 50,
+          "thermal": 50,
+          "resources": 0,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 67
+        }
+      },
+      {
+        "earthId": "dryvalleys",
+        "earthName": "McMurdo Dry Valleys",
+        "projectScreeningScore": 45.4,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 100,
+          "thermal": 0,
+          "resources": 0,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 50,
+          "operations": 33
+        }
+      }
+    ],
+    "moon:shackleton": [
+      {
+        "earthId": "haughton",
+        "earthName": "Haughton Impact Crater",
+        "projectScreeningScore": 86,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 75,
+          "thermal": 67,
+          "resources": 100,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 67,
+          "operations": 75
+        }
+      },
+      {
+        "earthId": "dryvalleys",
+        "earthName": "McMurdo Dry Valleys",
+        "projectScreeningScore": 81.8,
+        "categoryFeatureCoverageScores": {
+          "geology": 50,
+          "terrain": 50,
+          "thermal": 100,
+          "resources": 100,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "summit",
+        "earthName": "Mount Edziza Summit",
+        "projectScreeningScore": 48.5,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 50,
+          "thermal": 67,
+          "resources": 50,
+          "dust": 50,
+          "biology": 100,
+          "subsurface": 67,
+          "operations": 50
+        }
+      },
+      {
+        "earthId": "desolation",
+        "earthName": "Desolation Lava Field",
+        "projectScreeningScore": 36.7,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 50,
+          "thermal": 33,
+          "resources": 0,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 33,
+          "operations": 25
+        }
+      },
+      {
+        "earthId": "lavabeds",
+        "earthName": "Lava Beds National Monument",
+        "projectScreeningScore": 36.7,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 50,
+          "thermal": 33,
+          "resources": 0,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 33,
+          "operations": 25
+        }
+      },
+      {
+        "earthId": "snowshoe",
+        "earthName": "Snowshoe Lava Field",
+        "projectScreeningScore": 34.4,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 25,
+          "thermal": 33,
+          "resources": 50,
+          "dust": 50,
+          "biology": 100,
+          "subsurface": 33,
+          "operations": 25
+        }
+      },
+      {
+        "earthId": "kilauea",
+        "earthName": "Kīlauea Volcanic Field",
+        "projectScreeningScore": 33.7,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 50,
+          "thermal": 0,
+          "resources": 0,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 33,
+          "operations": 25
+        }
+      },
+      {
+        "earthId": "fagradalsfjall",
+        "earthName": "Fagradalsfjall Lava Field",
+        "projectScreeningScore": 33.3,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 50,
+          "thermal": 33,
+          "resources": 0,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 33,
+          "operations": 0
+        }
+      },
+      {
+        "earthId": "cratersmoon",
+        "earthName": "Craters of the Moon",
+        "projectScreeningScore": 21.2,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 25,
+          "thermal": 0,
+          "resources": 0,
+          "dust": 100,
+          "biology": 50,
+          "subsurface": 33,
+          "operations": 0
+        }
+      },
+      {
+        "earthId": "deathvalley",
+        "earthName": "Badwater / Death Valley",
+        "projectScreeningScore": 16.6,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 0,
+          "thermal": 0,
+          "resources": 0,
+          "dust": 100,
+          "biology": 50,
+          "subsurface": 33,
+          "operations": 0
+        }
+      },
+      {
+        "earthId": "atacama",
+        "earthName": "Yungay / Atacama Desert",
+        "projectScreeningScore": 16.6,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 0,
+          "thermal": 0,
+          "resources": 0,
+          "dust": 100,
+          "biology": 50,
+          "subsurface": 33,
+          "operations": 0
+        }
+      }
+    ],
+    "moon:aristarchus": [
+      {
+        "earthId": "kilauea",
+        "earthName": "Kīlauea Volcanic Field",
+        "projectScreeningScore": 91,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 67
+        }
+      },
+      {
+        "earthId": "lavabeds",
+        "earthName": "Lava Beds National Monument",
+        "projectScreeningScore": 90.9,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 100,
+          "biology": 50,
+          "subsurface": 100,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "cratersmoon",
+        "earthName": "Craters of the Moon",
+        "projectScreeningScore": 89.5,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 67,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 100,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "fagradalsfjall",
+        "earthName": "Fagradalsfjall Lava Field",
+        "projectScreeningScore": 89.4,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 100,
+          "biology": 100,
+          "subsurface": 33,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "desolation",
+        "earthName": "Desolation Lava Field",
+        "projectScreeningScore": 84.8,
+        "categoryFeatureCoverageScores": {
+          "geology": 100,
+          "terrain": 100,
+          "thermal": 50,
+          "resources": 100,
+          "dust": 100,
+          "biology": 50,
+          "subsurface": 33,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "snowshoe",
+        "earthName": "Snowshoe Lava Field",
+        "projectScreeningScore": 58.5,
+        "categoryFeatureCoverageScores": {
+          "geology": 67,
+          "terrain": 67,
+          "thermal": 50,
+          "resources": 50,
+          "dust": 67,
+          "biology": 50,
+          "subsurface": 33,
+          "operations": 67
+        }
+      },
+      {
+        "earthId": "summit",
+        "earthName": "Mount Edziza Summit",
+        "projectScreeningScore": 49.3,
+        "categoryFeatureCoverageScores": {
+          "geology": 67,
+          "terrain": 67,
+          "thermal": 0,
+          "resources": 50,
+          "dust": 67,
+          "biology": 50,
+          "subsurface": 33,
+          "operations": 33
+        }
+      },
+      {
+        "earthId": "haughton",
+        "earthName": "Haughton Impact Crater",
+        "projectScreeningScore": 44,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 67,
+          "thermal": 50,
+          "resources": 0,
+          "dust": 67,
+          "biology": 50,
+          "subsurface": 33,
+          "operations": 100
+        }
+      },
+      {
+        "earthId": "atacama",
+        "earthName": "Yungay / Atacama Desert",
+        "projectScreeningScore": 43.2,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 0,
+          "thermal": 100,
+          "resources": 50,
+          "dust": 67,
+          "biology": 100,
+          "subsurface": 33,
+          "operations": 67
+        }
+      },
+      {
+        "earthId": "deathvalley",
+        "earthName": "Badwater / Death Valley",
+        "projectScreeningScore": 38.6,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 0,
+          "thermal": 100,
+          "resources": 50,
+          "dust": 67,
+          "biology": 100,
+          "subsurface": 33,
+          "operations": 33
+        }
+      },
+      {
+        "earthId": "dryvalleys",
+        "earthName": "McMurdo Dry Valleys",
+        "projectScreeningScore": 28.7,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 33,
+          "thermal": 0,
+          "resources": 0,
+          "dust": 67,
+          "biology": 100,
+          "subsurface": 33,
+          "operations": 33
+        }
+      }
+    ]
+  }
+}
