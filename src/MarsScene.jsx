@@ -3,6 +3,7 @@ import { Canvas, useThree } from '@react-three/fiber';
 import { Html, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import './mars-satellite.css';
+import { WORLD_SITES } from './siteData.js';
 
 // Geographically defined regional extent: all three volcanoes fit inside it.
 // This same extent is used by scripts/fetch-mars-wide.mjs.
@@ -16,11 +17,7 @@ const regionWidthKm = MARS_RADIUS_KM * Math.PI / 180 * (REGION.east - REGION.wes
 const SCENE_WIDTH = SCENE_HEIGHT * regionWidthKm / regionHeightKm;
 const unitsPerKm = SCENE_HEIGHT / regionHeightKm;
 
-const LANDMARKS = [
-  { id: 'hecates', name: 'Hecates Tholus', lat: 32.09, lon: 150.20 },
-  { id: 'elysium', name: 'Elysium Mons', lat: 24.74, lon: 146.90 },
-  { id: 'albor', name: 'Albor Tholus', lat: 18.79, lon: 150.40 }
-];
+const LANDMARKS = Object.values(WORLD_SITES.mars).map(site => ({ id: site.id, name: site.label, lat: site.lat, lon: site.lon }));
 const PRESETS = {
   overview: { label: 'Whole region', target: null, cameraOffset: [7, 27, 27] },
   hecates: { label: 'Hecates Tholus', target: LANDMARKS[0], cameraOffset: [3, 6.5, 8] },
@@ -210,12 +207,14 @@ async function makeNASAImageryTexture(manifest) {
   return { texture, count: loaded, total: manifest.tiles.length };
 }
 
-export default function MarsScene({ exaggeration = 1.15 }) {
+export default function MarsScene({ exaggeration = 1.15, site = 'hecates', onSiteChange }) {
   const [data, setData] = useState(null);
   const [textureInfo, setTextureInfo] = useState(null);
-  const [view, setView] = useState('overview');
+  const [view, setView] = useState(site);
   const [error, setError] = useState('');
   const controlsRef = useRef(null);
+
+  useEffect(() => { setView(site); }, [site]);
 
   useEffect(() => {
     let cancelled = false;
@@ -284,7 +283,7 @@ export default function MarsScene({ exaggeration = 1.15 }) {
       <div className="mars-help">Drag: orbit | Scroll: zoom | Right-drag: pan</div>
       <div className="mars-region-toolbar" aria-label="Mars map locations">
         {Object.entries(PRESETS).map(([id, preset]) => (
-          <button key={id} type="button" className={view === id ? 'selected' : ''} onClick={() => setView(id)}>
+          <button key={id} type="button" className={view === id ? 'selected' : ''} onClick={() => { setView(id); if (id !== 'overview') onSiteChange?.(id); }}>
             {preset.label}
           </button>
         ))}

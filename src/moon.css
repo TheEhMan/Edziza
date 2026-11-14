@@ -1,0 +1,41 @@
+.moon-scene { width: 100%; height: 100%; min-height: 0; position: relative; overflow: hidden; background: radial-gradient(ellipse at 50% 50%, #1b2a3a, #080e17 70%); }
+.moon-scene > div:first-child { width: 100%; height: 100%; }
+.moon-scene canvas { touch-action: none; }
+.moon-hud { position: absolute; z-index: 2; top: 12px; left: 12px; background: #1b2733ed; border: 1px solid #667f93; color: #dbf2fb; font: 9px 'DM Mono',monospace; padding: 8px; border-radius: 4px; pointer-events: none; }
+.moon-hint { position: absolute; z-index: 2; top: 12px; right: 12px; background: #1a2730e8; padding: 7px; color: #cad7e2; font-size: 10px; border-radius: 4px; pointer-events: none; }
+.moon-view-switch { position: absolute; z-index: 4; top: 46px; left: 12px; display: flex; gap: 4px; background: #182633e8; padding: 3px; border: 1px solid #506979; border-radius: 6px; }
+.moon-view-switch button { border: none; color: #e6eef3; background: transparent; border-radius: 4px; padding: 7px 9px; font: 600 10px system-ui,sans-serif; }
+.moon-view-switch button.selected { background: #b1ffe0; color: #153126; }
+.moon-view-switch button:disabled { opacity: 0.4; cursor: not-allowed; }
+.moon-zoom-controls { position: absolute; z-index: 5; right: 12px; top: 48px; display: flex; align-items: center; gap: 4px; border: 1px solid #547181; background: #182532e8; border-radius: 7px; padding: 4px; }
+.moon-zoom-controls button { color: #e6f5ff; border: 1px solid #567080; background: #263f4c; border-radius: 5px; min-width: 30px; min-height: 30px; padding: 3px 6px; font: 700 17px system-ui,sans-serif; }
+.moon-zoom-controls button:hover, .moon-zoom-controls button:focus-visible { background: #a3f1d8; color: #132a23; }
+.moon-zoom-controls button.moon-zoom-reset { font: 600 10px system-ui,sans-serif; padding: 4px 7px; }
+.moon-zoom-controls span { color: #b9eadb; min-width: 35px; text-align: center; font: 10px 'DM Mono',monospace; }
+.moon-location-toolbar { position: absolute; z-index: 3; right: 12px; bottom: 75px; display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; max-width: calc(100% - 24px); }
+.moon-location-toolbar button { border: 1px solid #546d80; background: #18232ef2; color: #e1ebf1; border-radius: 5px; padding: 8px 10px; font-weight: 600; font-size: 11px; }
+.moon-location-toolbar button.selected, .moon-location-toolbar button:hover { background: #a8e9d7; color: #132525; border-color: #b8ffeb; }
+.moon-source { position: absolute; z-index: 3; bottom: 11px; left: 12px; max-width: calc(100% - 24px); display: flex; flex-wrap: wrap; gap: 4px 12px; background: #14212df5; color: #cadde5; border-radius: 4px; padding: 8px; font: 9px 'DM Mono',monospace; pointer-events: auto; }
+.moon-source strong { color: #b8f5e6; }
+.moon-source a { color: #abddff; }
+.moon-marker { background: #121f2de8; border: 1px solid #f2d2aeaa; color: #fff6e6; border-radius: 6px; font: 600 10px system-ui,sans-serif; white-space: nowrap; padding: 5px 7px; }
+.moon-marker.is-selected { border-color: #bafbe4; color: #c8ffe9; background: #184138ed; }
+.moon-atlas { width: 100%; height: 100%; position: relative; overflow: hidden; touch-action: none; cursor: grab; user-select: none; outline-offset: -3px; }
+.moon-atlas:active { cursor: grabbing; }
+.moon-atlas:focus-visible { outline: 2px solid #b1ffe0; }
+.moon-atlas-layer { position: absolute; left: 50%; top: 50%; width: min(100%, 200vh); max-height: 100%; aspect-ratio: 2 / 1; transform-origin: center; will-change: transform; }
+.moon-atlas-layer img { display: block; width: 100%; height: 100%; object-fit: fill; pointer-events: none; }
+.moon-atlas-pin { position: absolute; width: 13px; height: 13px; padding: 0; border-radius: 50%; background: #ffbe87; border: 2px solid #fff; transform: translate(-50%,-50%); box-shadow: 0 0 0 4px #ffc78945; z-index: 3; cursor: pointer; }
+.moon-atlas-pin.selected { background: #85e9c5; box-shadow: 0 0 0 7px #97f7d67a; }
+.moon-imagery-unavailable { display: flex; align-items: center; justify-content: center; height: 100%; text-align: center; color: #fce1d5; padding: 26px; border: 1px dashed #7a9ba8; background: #1b2934; font-size: 12px; }
+@media (max-width: 680px) {
+  .moon-hud { top: 8px; left: 8px; font-size: 8px; }
+  .moon-hint { top: 79px; right: auto; left: 8px; font-size: 9px; }
+  .moon-view-switch { top: 42px; left: 8px; }
+  .moon-zoom-controls { top: 42px; right: 8px; gap: 2px; }
+  .moon-zoom-controls button { min-width: 26px; min-height: 27px; }
+  .moon-zoom-controls span { display: none; }
+  .moon-location-toolbar { left: 8px; right: 8px; bottom: 94px; justify-content: flex-start; }
+  .moon-location-toolbar button { font-size: 10px; padding: 6px 8px; }
+  .moon-source { left: 8px; max-width: calc(100% - 16px); }
+}

@@ -1,367 +1,119 @@
-# Project EDZIZA - Earth/Mars Analog Explorer
+# Project EDZIZA — Earth · Mars · Moon Explorer
 
-**Explore two worlds. Find Earth-based testing grounds for future Mars exploration.**
+**NASA Space Apps research prototype | 3 worlds · 9 locations · 12 parameters**
 
-Project EDZIZA is an interactive React website created for the **NASA International Space Apps Challenge**. It investigates whether selected areas of **Mount Edziza, British Columbia, Canada**, could serve as useful terrestrial analogs for exploring volcanic landscapes near **Hecates Tholus, Mars**.
+EDZIZA is an interactive React/Vite explorer for comparing Earth volcanic field sites with Martian volcanic terrain and contrasting three lunar exploration regions. Its goal is to help users investigate which Earth experiments might inform future robotic exploration without pretending that different worlds have identical environments.
 
-Rather than claiming that Mount Edziza is "the same as Mars," the project asks a testable question:
+## Getting started
 
-> Which part of the Mount Edziza volcanic complex best matches a chosen Martian terrain for a particular robotic field test, and which conditions cannot be reproduced on Earth?
-
-The app combines 3D terrain visualization, real satellite imagery, NASA climate data, transparent terrain measurements, and a mission narrative. **This is a prototype and a preliminary remote-sensing analysis, not an official NASA tool or a validated landing-site assessment.**
-
-## 1. Challenge and mission
-
-**NASA Space Apps challenge:** Identify Earth locations that are analogous to environments relevant to future Moon or Mars bases, landing sites, and exploration. Use open planetary and Earth data to characterize the locations and communicate the findings through an interactive tool, visualization, or map.
-
-**Our focus:** Mars volcanic exploration and Earth analog field-testing opportunities.
-
-- **Earth region:** Mount Edziza Volcanic Complex, northern British Columbia.
-- **Primary Mars region:** Hecates Tholus, in the Elysium volcanic region.
-- **Mars reference patch for analysis:** A selected part of the lower northwestern flank of Hecates Tholus, approximately **32.40 N, 148.90 E**.
-- **Scientific connection:** Both regions contain volcanic landforms; published work discusses interactions between volcanism and ice or water in the respective regions. A geological analogy must be supported by evidence, not appearance alone.
-- **Main mission scenario:** Screen potential Earth locations for testing robotic exploration methods on volcanic terrain.
-
-## 2. What the website does
-
-The navigation includes these five sections:
-
-| Page | Function |
-| --- | --- |
-| **01 Compare** | Display Mount Edziza and Hecates Tholus side by side. |
-| **02 Full-screen maps** | Explore larger 3D Earth/Mars viewers, choose Earth/Mars/split view, and enter browser full screen. |
-| **03 Environmental data** | Compare NASA POWER gridded Earth climate estimates with clearly labeled Mars-wide reference facts. |
-| **04 Scientific analysis** | Calculate and display terrain metrics, a transparent 0-100 matching score, and a ranking of three Edziza candidate areas. Results appear after the analysis script is run. |
-| **05 Mission story** | Introduce the mission question and explain the search for a defensible Earth analog. This is currently a guided narrative page; a fully branching interactive story is planned. |
-
-### Interactive Earth map
-
-- **MapLibre GL JS** renders Mount Edziza using real Mapterhorn elevation tiles.
-- Choose **Snowshoe Lava Field**, the **Mount Edziza summit area**, or **Desolation Lava Field**.
-- Switch between satellite imagery and OpenStreetMap basemaps.
-- Zoom, rotate, tilt, reset the camera, and control terrain-height exaggeration.
-- Close-up zoom and tilt are limited to reduce blurry or distorted views.
-- Once analysis results exist, study-area footprints are outlined on the Earth map.
-
-### Interactive Mars satellite viewer
-
-- **React Three Fiber / Three.js** renders a wider 3D section of the Elysium volcanic region.
-- Real **NASA Viking Orbiter MDIM 2.1 color mosaic** imagery is draped over **NASA/MGS MOLA** regional topography.
-- The region spans approximately **139-165 E** and **17-43 N** (roughly 1,300 by 1,540 km).
-- Preset camera buttons include **Whole region**, **Hecates Tholus**, **Elysium Mons**, and **Albor Tholus**.
-- Drag to orbit, scroll to zoom, and right-drag to pan.
-- The relief is intentionally exaggerated for visual interpretation; it is **not** a real-scale surface reconstruction.
-- If regional files are missing, the viewer uses a clearly labeled flat preview rather than passing invented terrain off as NASA data.
-
-**Important:** The visual Mars map uses a **16-pixels-per-degree MOLA grid** (approximately 3-4 km cells near Hecates Tholus). It cannot show individual rocks, rover-sized obstacles, or safe landing footprints. The scientific-analysis script uses a *different*, finer **128-pixels-per-degree MOLA product**.
-
-### Environmental comparison
-
-The Environmental Data page requests **NASA POWER gridded climatology** for the selected Earth coordinates:
-
-- 2 m air temperature (`T2M`, deg C)
-- 2 m relative humidity (`RH2M`, percent)
-- Surface pressure (`PS`, kPa)
-- 10 m wind speed (`WS10M`, m/s)
-
-Users can select the annual climatological average or a month. These values are **modeled regional estimates**, not live weather, Mount Edziza summit observations, or ground measurements at a particular lava flow.
-
-The Mars column displays **planet-wide reference conditions** and states when no verified Hecates Tholus-specific measurement is available. Do not describe a Mars-wide temperature, pressure, or humidity reference as current local weather.
-
-## 3. Scientific terrain analysis
-
-The analysis tests three proposed Earth study areas against one Hecates Tholus reference area:
-
-| Study area | Approximate center | Reason to investigate |
-| --- | --- | --- |
-| **Snowshoe Lava Field** | 57.6500 N, 130.6667 W | Basaltic lava and documented lava/ice interactions in the Edziza region. |
-| **Mount Edziza summit area** | 57.7200 N, 130.6300 W | Glaciated volcanic relief with varied terrain. |
-| **Desolation Lava Field** | 57.8167 N, 130.6167 W | Northern lava field and volcanic cones. |
-| **Mars reference: Hecates Tholus lower NW flank** | 32.4000 N, 148.9000 E | Selected volcanic study patch; not a verified rover landing site. |
-
-These are **proposed research patches**, not confirmed safe or accessible field sites. The Snowshoe and summit study patches partly overlap.
-
-### Data and calculations
-
-The Node.js scripts use:
-
-- **Earth:** Copernicus GLO-30 DEM/DSM GeoTIFF, with GLO-90 fallback if needed.
-- **Mars:** NASA PDS MOLA **128 pixels/degree** elevation image.
-- **Common analysis footprint:** **12 km x 12 km** for each location.
-- **Sampling grid:** **21 x 21 points**, spaced **600 m** apart.
-
-The terrain analysis computes:
-
-1. **Mean slope** and **90th-percentile slope**, in degrees, from elevation gradients.
-2. **Terrain roughness**, defined as the RMS deviation from a centered 3 x 3 local mean, in metres.
-3. **Elevation variation**, defined as the 95th minus 5th percentile elevation, in metres.
-
-For comparability, all locations are sampled over the same physical footprint and grid spacing. The underlying datasets do not have identical native resolution or measurement density; resampling does not magically make them equivalent.
-
-### How the Mars Analog Match Score works
-
-The app uses a project-defined terrain score between **0 and 100**:
-
-```text
-Total terrain match = 0.45 * S + 0.35 * R + 0.20 * E
-
-S = slope similarity (60% mean slope + 40% 90th-percentile slope)
-R = terrain-roughness similarity
-E = elevation-variation similarity
-```
-
-Each similarity component compares the Earth and Mars metric, with a score of 100 for identical values and decreasing scores for increasing differences. The script uses the following **project-selected tolerances**:
-
-| Comparison | Difference producing a zero component similarity |
-| --- | --- |
-| Mean slope | 6 degrees |
-| 90th-percentile slope | 10 degrees |
-| RMS roughness | 80 m |
-| Elevation variation | 600 m |
-
-These weights and tolerances are **not NASA standards**. The highest score means only **the closest terrain match among the three tested candidates, under these assumptions**. It does not prove similar rock chemistry, ice history, environmental conditions, rover safety, or general Mars-analog suitability. Geological evidence is reviewed separately.
-
-The analysis writes measured results to `public/analysis-results.json`, which powers the analysis page and Earth-map study outlines. No winner or score should be hardcoded before that file has been generated successfully.
-
-## 4. Technology stack
-
-| Technology | Use |
-| --- | --- |
-| **React 19 + Vite 7** | Frontend, layout, state, local development and build. |
-| **MapLibre GL JS** | Interactive Earth map and 3D raster elevation. |
-| **Three.js + React Three Fiber + Drei** | Interactive Mars 3D mesh, satellite texture, and camera controls. |
-| **GeoTIFF.js (`geotiff`)** | Read Earth elevation raster data for scientific analysis. |
-| **Node.js scripts** | Download Mars map data, sample Earth/Mars DEMs, compute metrics, generate JSON. |
-| **NASA POWER** | Earth climate averages. |
-| **NASA PDS MOLA / Mars Trek** | Mars elevation and orbital imagery. |
-| **Copernicus DEM / Mapterhorn** | Earth analysis elevation / interactive terrain display. |
-
-## 5. Getting started
-
-### Prerequisites
-
-- **Node.js 22 or newer** (a current compatible Node version)
-- npm
-- VS Code or another editor
-- Internet access to download terrain, imagery, and climate data
-
-Use **one project root** named `edziza-mars`; do not nest another Vite project inside it.
-
-### Install and start
-
-Open a terminal in the project root:
+Prerequisites: **Node.js 22+**, npm, and an internet connection for NASA LRO imagery, NASA LOLA global DEM, Earth tiles and NASA POWER (unless NASA Moon assets have been locally cached).
 
 ```bash
 npm install
-npm install geotiff@^2
 npm run dev
 ```
 
-Then open the local URL printed by Vite, usually **http://localhost:5173/**.
+The **Moon map can zoom with the mouse wheel/trackpad, pinch gestures, `+` / `−` buttons, or keyboard `+` / `-` / `0` in the 2D viewer**. Drag rotates the 3D globe; drag pans the 2D map. Use the **3D globe / 2D map** switch to choose either mode. Every moon location remains selectable.
 
-> If `geotiff` is already installed, the second command is unnecessary. The Earth map can load before the analysis results are generated, but the scientific page will not have measured comparisons yet.
-
-### Download the wider NASA Mars imagery and terrain
-
-From the project root:
+For a reliable offline demonstration or a static production deployment, download the unmodified source NASA imagery and NASA LOLA elevation grid **on a computer with internet access**:
 
 ```bash
-node scripts/fetch-mars-wide.mjs
+npm run fetch:nasa
 ```
 
-This script downloads approximately **33 MB** of regional MOLA source data and roughly **100 NASA Mars Trek JPEG tiles** (availability may vary), then produces these assets under `public/`:
+This downloads NASA LRO WAC color imagery plus the NASA LOLA 4-pixels-per-degree elevation GeoTIFF to `public/nasa-data/` and creates `moon-lola-sites.json` with **sampled elevations at the three Moon coordinates**. Only the MOLA-derived Mars elevations are prebundled; Moon LOLA elevations are **not** prefilled when the source files cannot be reached. On the Vite dev server, a same-origin proxy can retrieve the Moon data automatically. On static hosting, run `npm run fetch:nasa` before building, or the browser will attempt a direct NASA request that may be blocked by CORS.
 
-```text
-public/
-  mars-wide-elevation.json
-  mars-orbital-tiles.json
-  mars-tiles/
-```
-
-Refresh the website and open **02 Full-screen maps > Mars** to use the new viewer. Later script runs reuse successfully cached files where possible. The download requires Internet access and may fail if NASA services or a local network are unavailable.
-
-**Legacy note:** The original starter also included `npm run fetch:mars`, which writes `public/mars-elevation.json` for the *older, narrower* Mars view. The newer Viking + MOLA viewer uses `fetch-mars-wide.mjs` and its separate `mars-wide-elevation.json` file.
-
-### Generate the scientific comparison
-
-```bash
-node scripts/test-metrics.mjs
-node scripts/analyze-sites.mjs
-```
-
-After a successful run, check for:
-
-```text
-public/analysis-results.json
-```
-
-Open **04 Scientific analysis** and reload. The page should show the Mars reference metrics, all three measured Edziza candidate scores, the relative ranking, and source/method notes.
-
-If the dataset servers cannot be accessed, download the Earth GeoTIFF and Mars IMG separately, then supply local paths:
-
-```cmd
-node scripts/analyze-sites.mjs --earth C:\data\edziza.tif --mars C:\data\hecates-mola.img
-```
-
-Earth example: [Copernicus GLO-30 N57 W131 GeoTIFF](https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N57_00_W131_00_DEM/Copernicus_DSM_COG_10_N57_00_W131_00_DEM.tif).
-
-Mars example: [NASA MOLA 128-ppd tile `megt44n090hb.img`](https://pds-geosciences.wustl.edu/mgs/urn-nasa-pds-mgs_mola_topography_derived/meg128/megt44n090hb.img).
-
-### Production build
+Open the URL printed by Vite (usually `http://localhost:5173/`). To prepare a production build:
 
 ```bash
 npm run build
 npm run preview
 ```
 
-For deployment, make sure `public/` contains the downloaded Mars assets and generated analysis results needed by the site, or provide a documented way to create them in your deployment pipeline. Follow each data provider's attribution and usage requirements.
+**Important:** The distributed ZIP omits `node_modules` and `.git` to keep it small and portable. If you previously copied a `node_modules` folder from Windows to Linux/macOS (or vice versa), delete it and rerun `npm install`; the `esbuild` binary is platform-specific.
 
-## 6. Project structure
+## What's new
 
-Depending on which earlier upgrade files you have copied, your working project should contain the following important files:
+- **Moon viewer + zoom:** NASA LRO WAC image applied to a rotatable 3D globe, plus a switchable 2D atlas with wheel/trackpad zoom, pinch zoom, drag pan, keyboard controls, `+` / `−` and Reset. A 2D atlas is also used when WebGL cannot load NASA's image. The globe mesh stays spherical; gridded NASA LOLA heights appear separately in the scientific data panel.
+- **Nine locations:** Three sites per world, selected independently from the three map cards and from the data page.
+- **Twelve parameters:** Added **NASA DEM elevation** (MOLA for Mars; LOLA for Moon) in place of the old planet-wide orbital irradiance field. Each value links to its NASA source when applicable. Unavailable local measurements remain explicitly unavailable.
+- **All-three view:** Compare all three maps side-by-side or switch between Earth / Mars / Moon and full screen.
+- **Existing analysis preserved:** Copernicus Earth DEM versus NASA Mars MOLA matched-footprint terrain ranking remains available on the Scientific analysis page. **Moon sites are not included in that terrain score.**
 
-```text
-edziza-mars/
-|-- index.html
-|-- package.json
-|-- package-lock.json
-|-- vite.config.js
-|-- README.md                  <-- this document
-|-- src/
-|   |-- main.jsx
-|   |-- App.jsx                # Page navigation and controls
-|   |-- EarthMap.jsx           # MapLibre Earth terrain and site outlines
-|   |-- MarsScene.jsx          # Viking imagery over MOLA 3D terrain
-|   |-- mars-satellite.css     # Mars viewer styling
-|   |-- ClimatePanel.jsx       # NASA POWER + Mars reference panel
-|   |-- ScienceAnalysis.jsx    # Metrics, rank, source notes
-|   `-- styles.css
-|-- scripts/
-|   |-- download-mola.mjs      # Legacy/narrower Mars data downloader
-|   |-- fetch-mars-wide.mjs    # New wide Mars imagery and MOLA downloader
-|   |-- analyze-sites.mjs      # Scientific comparison, outputs JSON
-|   |-- terrain-metrics.mjs    # Pure metric and score functions
-|   `-- test-metrics.mjs       # Metric unit checks
-`-- public/
-    |-- mars-wide-elevation.json      # Generated
-    |-- mars-orbital-tiles.json       # Generated
-    |-- mars-tiles/                  # Downloaded imagery
-    `-- analysis-results.json        # Generated
-```
+## Location catalogue
 
-`node_modules/` is installed locally and should normally be excluded from Git. Generated data files appear only after their scripts run successfully. The older `public/mars-elevation.json` may also exist if you ran the original downloader.
+| World | Location | Approximate coordinates | Why investigate? |
+| --- | --- | --- | --- |
+| Earth | Snowshoe Lava Field | 57.650° N, 130.667° W | Basaltic flows / possible lava–ice analogs |
+| Earth | Mount Edziza summit | 57.720° N, 130.630° W | Glaciated volcanic relief |
+| Earth | Desolation Lava Field | 57.817° N, 130.617° W | Basaltic flows and volcanic cones |
+| Mars | Hecates Tholus | 32.090° N, 150.200° E | Reported glacier-related volcanic landforms |
+| Mars | Elysium Mons | 24.740° N, 146.900° E | Large shield volcano |
+| Mars | Albor Tholus | 18.790° N, 150.400° E | Volcanic cone / lava flows |
+| Moon | Apollo 11 / Tranquility Base | 0.67416° N, 23.47314° E | Confirmed historical basaltic mare landing site |
+| Moon | Shackleton / lunar south pole | ~89.9° S, 0° E | Representative polar location near Shackleton rim; **not a specific landing point** |
+| Moon | Aristarchus Plateau | ~26° N, 49° W | Representative volcanic plateau area; **not a specific landing point** |
 
-## 7. Current status and next steps
+Earth locations are in the Mount Edziza volcanic complex in northern British Columbia. The three Mars sites already lie in the original Viking/MOLA Elysium map region. Moon longitude uses the Mean Earth/Polar Axis convention with positive values east, and the texture is mapped with 0° longitude at its center.
 
-### Implemented in the project code
+### Twelve data fields
 
-- [x] React application with Earth and Mars visualization.
-- [x] Mount Edziza site selector and 3D Earth map.
-- [x] Large-map page with Earth, Mars, and side-by-side modes.
-- [x] Mars viewer upgrade code for Viking imagery + broad MOLA terrain and camera presets.
-- [x] NASA POWER environmental-data integration and labeled Mars reference facts.
-- [x] Scientific-analysis scripts, metrics, scoring, ranking UI, and map study-area outlines.
-- [x] Initial mission-story page and scientific caveats.
+Each selected location displays these **exactly twelve fields**, with provenance and caveats for every value:
 
-**Data-dependent features only show real results after the corresponding scripts finish successfully.** The science and imagery downloaders should also be tested end-to-end on the machine used for the demo.
+1. Latitude
+2. Longitude
+3. Temperature
+4. Surface pressure
+5. Relative humidity
+6. Wind speed
+7. Surface solar energy
+8. Surface gravity
+9. Solar day length
+10. NASA DEM elevation
+11. Terrain / geology
+12. Water / ice evidence
 
-### Still planned / requires scientific validation
+**Where data comes from:**
 
-- [ ] Generate and review measured terrain results and check source quality.
-- [ ] Verify the strongest candidate against published geology and, where available, higher-resolution local imagery.
-- [ ] Build the fully interactive six-chapter mission story (Accept Mission, explore Mars, inspect Edziza, reveal evidence, choose a candidate, final mission report).
-- [ ] Let a mission objective affect the recommendation only once its scoring method is scientifically supported.
-- [ ] Add a local higher-resolution CTX/HiRISE image or DEM for meaningful close-ups of a selected Mars patch.
-- [ ] Test mobile layouts, accessibility, map loading, fallback states, and a complete presentation flow.
-- [ ] Deploy the site and publish a documented demo and reproducible data methods.
+- **Earth:** NASA POWER gridded climatological averages for temperature `T2M`, pressure `PS`, humidity `RH2M`, wind speed `WS10M`, and all-sky shortwave surface solar energy `ALLSKY_SFC_SW_DWN`. Select annual or monthly averages. Those are **modeled grid averages**, not direct summit observations or real-time weather. Earth coordinates and qualitative terrain descriptions come from the project location catalogue and cited regional sources.
+- **Mars:** Site-specific **NASA MOLA 16-ppd digital elevation grid** samples are computed from the bundled NASA terrain raster: Hecates Tholus **4,026 m**, Elysium Mons **13,202 m**, and Albor Tholus **3,650 m**, all relative to the MOLA areoid reference. These are bilinearly interpolated, coarse regional grid heights, **not precision landing-site altitudes**. NASA planet-wide mean temperature (~−59 °C), mean-radius pressure (~0.636 kPa), mean gravity (3.73 m/s²) and solar day (24.66 hours) are shown separately as **planet-wide references, not volcanic-site readings**. Local humidity, wind and surface solar energy remain unavailable.
+- **Moon:** NASA LRO/LOLA `ldem_4.tif` provides a **4-ppd global gridded elevation**, sampled at the three selected locations at runtime or cached by `npm run fetch:nasa`. Values are in metres relative to the **1737.4-km lunar reference sphere**. Due to the coarse resolution, Shackleton and other feature-point elevations are general raster samples, not local slopes or surveyed landing altitudes. NASA Moon fact sheet provides reference gravity (1.62 m/s²), solar day (~29.53 Earth days) and an exosphere description. There is **no site-specific temperature series**. Conventional wind/humidity do not apply. No artificial ice abundance is displayed.
 
-The goal for **Best Use of Storytelling** is to lead a visitor from a Martian exploration problem to a data-supported Earth testing recommendation, while being explicit about what the evidence does and does not establish.
+Surface solar energy on the Earth card is NASA POWER climatology; it is not reused as a Mars/Moon local value. Qualitative water/ice notes are not estimates of resource quantity or rover access. NASA MOLA/LOLA elevation results are grid interpolations/samples, not direct in-situ measurements.
 
-## 8. Scientific limitations and integrity
+## Pages
 
-1. **Regional visualization vs analysis:** The wide 3D Mars map uses **MOLA 16 ppd**; the standalone metrics use **MOLA 128 ppd**. Never extract rover-scale hazards or similarity scores from the coarse visualization.
-2. **Terrain exaggeration:** 3D heights are exaggerated to help visitors see broad features. Display the factor and do not imply the displayed relief is to scale.
-3. **Satellite imagery is historical:** Viking Orbiter mosaic imagery is real, but it is **not a live feed**, may combine acquisition dates, and is not as detailed as CTX or HiRISE.
-4. **No rover-scale precision:** Even the 128-ppd MOLA data include gridding and interpolation; the source cannot confirm boulder size, traverse safety, or landing-site suitability.
-5. **Earth elevation caveat:** Copernicus DEM is a surface model; vegetation, snow/ice, and processing artifacts may affect estimates. Common 600 m sampling does not remove native resolution differences.
-6. **Scientific scope:** Slopes, roughness, and elevation variation do not establish rock composition, ancient ice processes, atmospheric similarity, gravity, radiation, or human accessibility.
-7. **Climate caveat:** NASA POWER values are gridded Earth climatology, not current local measurements. Mars environmental values here are mostly global reference facts, not observations at Hecates Tholus.
-8. **Location caveat:** Candidate study squares are preliminary research selections. Some overlap, and they are not certified field-test locations.
-9. **Map geometry:** The wide Mars view renders a local rectangular/equirectangular terrain patch, not a geodetically exact 3D globe. Use geospatial methods, not on-screen ruler measurements, for distance analysis.
-10. **Score caveat:** The 0-100 value is a **project-defined relative terrain screening score**; weights and tolerances are adjustable assumptions, not a NASA-approved metric.
+| Page | Purpose |
+| --- | --- |
+| Compare | Three map cards, independent location selectors, a quick 3-world data preview |
+| Full-screen maps | Earth / Mars / Moon / all-three views, camera controls and full-screen mode |
+| Environmental data | Twelve comparable fields with 3 independent location selectors, filter by world, monthly Earth POWER option and source links |
+| Scientific analysis | Existing measured terrain comparison of 3 Edziza areas versus one Mars reference patch; **not** lunar scoring |
+| Mission story | Guided mission rationale, limitations and NASA links |
 
-## 9. Troubleshooting
+## Map data and scientific limitations
 
-### Vite runs, but the browser is blank
+**Earth:** MapLibre + Mapterhorn DEM + Esri/OpenStreetMap visual tiles. Map zoom and pitch are constrained because the grid cannot safely represent rover-scale terrain. Study-area outlines depend on `public/analysis-results.json`.
 
-Open the browser Developer Tools **Console** and check the first red JavaScript error.
+**Mars:** React Three Fiber + Three.js mesh, NASA Viking Orbiter MDIM mosaic image tiles in `public/mars-tiles`, and MOLA 16-pixels/degree elevation in `public/mars-wide-elevation.json`. The mesh covers 139–165° E, 17–43° N. **Vertical relief is exaggerated**. Those pixels are too coarse for boulder-level/landing-hazard decisions.
 
-- **`React is not defined`:** Ensure `vite.config.js` enables `@vitejs/plugin-react` (or import `React` explicitly where needed).
-- **`maplibre-gl does not provide an export named default`:** Use `import * as maplibregl from 'maplibre-gl';` in `EarthMap.jsx`. The working project also sets the MapLibre worker URL through the Vite worker import.
-- **Missing Mars image/terrain:** Run `node scripts/fetch-mars-wide.mjs`, confirm the generated `public/` files exist, and refresh.
-- **Missing scientific results:** Run `node scripts/analyze-sites.mjs` and check `public/analysis-results.json`.
-- **`Cannot find package 'geotiff'`:** Run `npm install geotiff@^2`.
-- **Favicon 404:** Harmless; it does not prevent the React application from rendering.
+**Moon:** Three.js sphere uses the 2025 NASA SVS LRO WAC color map (`lroc_color_2k.jpg`) on a smooth sphere. It is an **aesthetic color map, not an elevation mesh**. The 2D atlas uses the same image, and both views support scroll-wheel/pinch and `+` / `−` zoom. The source NASA LOLA `ldem_4.tif` is used separately to derive actual coarse DEM elevations for three Moon sites. Browser access may require the dev proxy or local `npm run fetch:nasa` cache. **If the TIFF cannot load, the site elevation is marked unavailable; no placeholder value is used.**
 
-### Windows blocks the native Rollup module
+**Measured terrain analysis:** The original `scripts/analyze-sites.mjs` samples a matched **12 km × 12 km** area on a **21 × 21** 600 m grid for each of the 3 Earth candidates and one Hecates Tholus reference. Earth uses Copernicus DEM, Mars uses a finer 128-ppd MOLA product. The score weights are project-defined (45% slope, 35% roughness, 20% elevation variation) and **are not NASA criteria**. See [original scientific methodology](docs/earth-mars-methodology-original.md) for full derivation.
 
-Some Windows Application Control policies block `rollup.win32-x64-msvc.node`. If your machine has **this exact problem**, the working workaround used during development was this `package.json` override:
+## Source references
 
-```json
-"overrides": {
-  "rollup": "npm:@rollup/wasm-node@^4"
-}
-```
+- [NASA POWER data API](https://power.larc.nasa.gov/docs/services/api/temporal/climatology/) — Earth modeled climate
+- [NASA Mars Fact Sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html) — planet-wide Mars physical references
+- [NASA Moon Fact Sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html) — planet-wide lunar physical references
+- [NASA Earth Fact Sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html) — Earth constants
+- [NASA SVS CGI Moon Kit](https://svs.gsfc.nasa.gov/4720/) — LRO WAC texture and LRO/LOLA 4-pixel/degree heightmap, with unit/reference documentation
+- [NASA Apollo landing site coordinates](https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html) — Apollo 11 location
+- [NASA SVS Shackleton south pole](https://svs.gsfc.nasa.gov/4969/) — lunar south-pole context
+- [NASA PDS MOLA data](https://pds-geosciences.wustl.edu/missions/mgs/megdr.html) — Mars MOLA elevation (16ppd grid prebundled and per-site interpolation)
+- [NASA HiRISE Hecates Tholus](https://hirise.lpl.arizona.edu/PSP_010678_2135) — Martian geological context
+- [BC Parks: Mount Edziza](https://bcparks.ca/mount-edziza-park/) — Earth volcanic region
 
-After changing the override, reinstall dependencies so the lockfile is updated. Do **not** disable Windows security protections. If your device is centrally managed and continues to block tools, ask your administrator for an approved development setup.
+For exact source paths, map projection and sampling methodology, see [NASA dataset methodology](docs/nasa-data-methodology.md).
 
-## 10. Sources, data, and credit
-
-### NASA, planetary science, and Earth science
-
-- [NASA Mars Trek map](https://trek.nasa.gov/mars/)
-- [Mars Trek tile/API documentation - Viking MDIM 2.1](https://trek.nasa.gov/tiles/apidoc/trekAPI.html?body=mars)
-- [NASA Planetary Data System - MOLA MEGDR](https://pds-geosciences.wustl.edu/missions/mgs/megdr.html)
-- [NASA Earth Observatory - Snowshoe Lava Field](https://science.nasa.gov/earth/earth-observatory/snowshoe-lava-field-152269/)
-- [NASA POWER climatology API](https://power.larc.nasa.gov/docs/services/api/temporal/climatology/)
-- [NASA Mars fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html)
-- [NASA HiRISE volcanic/ice-related terrain](https://hirise.lpl.arizona.edu/PSP_010678_2135)
-- [ESA - Hecates Tholus in 3D](https://www.esa.int/Science_Exploration/Space_Science/Mars_Express/Hecates_Tholus_volcano_in_3D)
-- [USGS Planetary Gazetteer - Hecates Tholus](https://planetarynames.wr.usgs.gov/Feature/2407)
-- [USGS Planetary Gazetteer - Elysium Mons](https://planetarynames.wr.usgs.gov/Feature/1783)
-- [USGS Planetary Gazetteer - Albor Tholus](https://planetarynames.wr.usgs.gov/Feature/166)
-- [Published Hecates NW-flank research record](https://portalcientifico.uah.es/documentos/5d1df63f29995204f7665df7)
-
-### British Columbia, Earth elevation, and basemaps
-
-- [BC Parks - Mount Edziza Park](https://bcparks.ca/mount-edziza-park/)
-- [Smithsonian Global Volcanism Program - Mount Edziza](https://volcano.si.edu/volcano.cfm?vn=320060)
-- [Copernicus DEM public dataset](https://registry.opendata.aws/copernicus-dem/)
-- [Mapterhorn terrain tiles](https://tiles.mapterhorn.com/tilejson.json)
-- [OpenStreetMap copyright and attribution](https://www.openstreetmap.org/copyright)
-- Earth satellite basemap: Esri World Imagery and its underlying imagery providers (check licensing and retain map attribution when publishing).
-
-**Suggested in-app Mars credit:**
-
-> Mars imagery: NASA/JPL Viking Orbiter global mosaic via NASA Mars Trek. Elevation: NASA/MGS MOLA via the NASA Planetary Data System.
-
-**Suggested in-app Earth credit:**
-
-> Earth terrain: Mapterhorn / Copernicus DEM as indicated by the active layer or analysis. Map imagery: Esri and imagery contributors; map data: OpenStreetMap contributors.
-
-## 11. Team collaboration
-
-Suggested role split for a six-person team:
-
-- **Lead developer:** Maintain the React app, maps, integration, and deployment.
-- **Terrain analyst:** Validate DEM handling, metrics, scoring, and generated results.
-- **Earth researcher:** Research Edziza candidate areas, geology, and Earth data.
-- **Mars researcher:** Research Hecates Tholus, planetary datasets, and geological comparisons.
-- **Storytelling developer:** Turn the science results into an interactive mission narrative.
-- **Design/presentation lead:** Improve usability, quality assurance, final pitch, and demo.
-
-Work in separate Git branches and agree on the structure of `public/analysis-results.json` before integrating analysis-based storytelling.
-
----
-
-**Project principle:** A compelling Mars analogy must be *measured, sourced, and explained* - not just visually convincing.
+**Status:** Demonstration software for the NASA Space Apps Challenge; it is not an official NASA product, certified landing-site assessment, or claim that Mars/Moon sites have current local environmental readings.

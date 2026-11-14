@@ -5,32 +5,9 @@ import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url';
 // Works with the Vite setup from the original starter project.
 maplibregl.setWorkerUrl(workerUrl);
 
-export const EDZIZA_SITES = {
-  summit: {
-    label: 'Mount Edziza summit',
-    coords: [-130.63, 57.72],
-    zoom: 10.4,
-    pitch: 62,
-    bearing: -24,
-    description: 'Glaciated volcanic summit with lava flows and multiple volcanic cones.'
-  },
-  snowshoe: {
-    label: 'Snowshoe Lava Field',
-    coords: [-130.667, 57.65],
-    zoom: 11.1,
-    pitch: 62,
-    bearing: 18,
-    description: 'A volcanic field to investigate for lava-ice interaction features.'
-  },
-  desolation: {
-    label: 'Desolation Lava Field',
-    coords: [-130.616667, 57.816667],
-    zoom: 11.1,
-    pitch: 58,
-    bearing: 18,
-    description: 'Northern basaltic lava field and pyroclastic cones documented by the Smithsonian.'
-  }
-};
+import { WORLD_SITES } from './siteData.js';
+
+export const EDZIZA_SITES = WORLD_SITES.earth;
 
 const DEM = 'https://tiles.mapterhorn.com/tilejson.json';
 const STYLE = {

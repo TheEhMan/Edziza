@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import EarthMap, { EDZIZA_SITES } from './EarthMap.jsx';
+import EarthMap from './EarthMap.jsx';
 import MarsScene from './MarsScene.jsx';
+import MoonScene from './MoonScene.jsx';
 import ClimatePanel from './ClimatePanel.jsx';
 import ScienceAnalysis from './ScienceAnalysis.jsx';
+import { DEFAULT_SITES, getSite, WORLD_LABELS, WORLD_ORDER, WORLD_SITES } from './siteData.js';
 
 const PAGES = [
   ['compare', '01 Compare'],
@@ -12,72 +14,69 @@ const PAGES = [
   ['story', '05 Mission story']
 ];
 
-function WorldMap({ world, site, basemap, exaggeration, resetKey }) {
+function WorldMap({ world, site, onSiteChange, basemap, exaggeration, resetKey }) {
   if (world === 'earth') return <EarthMap site={site} basemap={basemap} exaggeration={exaggeration} resetKey={resetKey} />;
-  return <MarsScene key={resetKey} exaggeration={exaggeration} />;
+  if (world === 'mars') return <MarsScene key={resetKey} exaggeration={exaggeration} site={site} onSiteChange={value => onSiteChange('mars', value)} />;
+  return <MoonScene key={resetKey} site={site} onSiteChange={value => onSiteChange('moon', value)} />;
 }
 
-function MapCard({ world, site, basemap, exaggeration, resetKey, large = false }) {
-  return (
-    <article className={`world-card ${large ? 'large' : ''} ${world}`}>
-      <div className="world-card-head">
-        <div>
-          <span className="world-kicker">{world === 'earth' ? 'EARTH / BRITISH COLUMBIA' : 'MARS / ELYSIUM REGION'}</span>
-          <h2>{world === 'earth' ? EDZIZA_SITES[site].label : 'Hecates Tholus'}</h2>
-        </div>
-        <span className="world-tag">{world === 'earth' ? 'MAPTERHORN DEM' : 'NASA MOLA OPTIONAL'}</span>
+function MapCard({ world, site, onSiteChange, basemap, exaggeration, resetKey, large = false }) {
+  const location = getSite(world, site);
+  const sourceTags = { earth: 'MAPTERHORN / OSM', mars: 'NASA VIKING / MOLA', moon: 'NASA LRO / LOLA' };
+  const footers = {
+    earth: 'Earth 3D DEM + imagery; the regional grid is not a landing-site hazard survey.',
+    mars: 'NASA Viking/MOLA regional topography; relief exaggerated; not rover-resolution.',
+    moon: 'NASA LRO imagery; scroll/pinch to zoom the 3D globe or 2D map. NASA LOLA site elevations appear on the Data page.'
+  };
+  return <article className={`world-card ${large ? 'large' : ''} ${world}`}>
+    <div className="world-card-head">
+      <div className="card-site-heading"><span className="world-kicker">{WORLD_LABELS[world]}</span>
+        <h2>{location.label}</h2></div>
+      <div className="card-map-actions">
+        <label className="map-location-label">LOCATION <select aria-label={`Select ${world} location`} value={site}
+          onChange={event => onSiteChange(world, event.target.value)}>
+          {Object.values(WORLD_SITES[world]).map(item => <option value={item.id} key={item.id}>{item.label}</option>)}
+        </select></label>
+        <span className="world-tag">{sourceTags[world]}</span>
       </div>
-      <div className="world-card-map">
-        <WorldMap world={world} site={site} basemap={basemap} exaggeration={exaggeration} resetKey={resetKey} />
-      </div>
-      <div className="world-card-foot">
-        {world === 'earth'
-          ? 'Actual elevation tiles + satellite imagery. Detail limited at extreme zoom.'
-          : 'NASA MOLA topography after download; elevation colors are illustrative.'}
-      </div>
-    </article>
-  );
-}
-
-function Controls({ site, setSite, basemap, setBasemap, exaggeration, setExaggeration, onReset }) {
-  return (
-    <div className="controls-bar">
-      <label>
-        <span>EDZIZA LOCATION</span>
-        <select value={site} onChange={(e) => setSite(e.target.value)}>
-          <option value="snowshoe">Snowshoe Lava Field</option>
-          <option value="summit">Mount Edziza summit</option>
-          <option value="desolation">Desolation Lava Field</option>
-        </select>
-      </label>
-      <label>
-        <span>EARTH BASEMAP</span>
-        <select value={basemap} onChange={(e) => setBasemap(e.target.value)}>
-          <option value="satellite">Satellite</option>
-          <option value="map">OpenStreetMap</option>
-        </select>
-      </label>
-      <label className="slider-label">
-        <span>TERRAIN HEIGHT: {exaggeration.toFixed(2)}x</span>
-        <input type="range" min="1" max="2" step="0.05" value={exaggeration}
-          onChange={(e) => setExaggeration(Number(e.target.value))} />
-      </label>
-      <button className="subtle-button" onClick={() => { setSite('snowshoe'); setBasemap('satellite'); setExaggeration(1.15); onReset(); }}>
-        Reset view
-      </button>
     </div>
-  );
+    <div className="world-card-map">
+      <WorldMap world={world} site={site} onSiteChange={onSiteChange} basemap={basemap} exaggeration={exaggeration} resetKey={resetKey} />
+    </div>
+    <div className="world-card-foot">{footers[world]}</div>
+  </article>;
+}
+
+function Controls({ basemap, setBasemap, exaggeration, setExaggeration, onReset }) {
+  return <div className="controls-bar">
+    <label><span>EARTH BASEMAP</span>
+      <select value={basemap} onChange={event => setBasemap(event.target.value)}>
+        <option value="satellite">Satellite imagery</option>
+        <option value="map">OpenStreetMap</option>
+      </select>
+    </label>
+    <label className="slider-label"><span>EARTH / MARS TERRAIN HEIGHT: {exaggeration.toFixed(2)}×</span>
+      <input type="range" min="1" max="2" step="0.05" value={exaggeration}
+        onChange={event => setExaggeration(Number(event.target.value))} />
+    </label>
+    <button className="subtle-button" onClick={onReset}>Reset views</button>
+  </div>;
 }
 
 export default function App() {
-  const [page, setPage] = useState('explore');
-  const [site, setSite] = useState('snowshoe');
+  const [page, setPage] = useState('compare');
+  const [sites, setSites] = useState({ ...DEFAULT_SITES });
   const [basemap, setBasemap] = useState('satellite');
   const [exaggeration, setExaggeration] = useState(1.15);
   const [worldMode, setWorldMode] = useState('earth');
   const [resetKey, setResetKey] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const stageRef = useRef(null);
+
+  const onSiteChange = (world, id) => {
+    if (!WORLD_SITES[world]?.[id]) return;
+    setSites(current => ({ ...current, [world]: id }));
+  };
 
   useEffect(() => {
     const onChange = () => setIsFullscreen(Boolean(document.fullscreenElement));
@@ -88,136 +87,117 @@ export default function App() {
   async function toggleFullscreen() {
     if (!document.fullscreenElement) {
       try { await stageRef.current?.requestFullscreen(); }
-      catch (error) { console.warn('Fullscreen mode was not allowed by this browser:', error); }
+      catch (error) { console.warn('Fullscreen mode was not allowed:', error); }
     } else {
-      await document.exitFullscreen();
+      try { await document.exitFullscreen(); }
+      catch (error) { console.warn('Unable to exit fullscreen:', error); }
     }
   }
 
-  const controlProps = { site, setSite, basemap, setBasemap, exaggeration, setExaggeration, onReset: () => setResetKey((n) => n + 1) };
-  const mapProps = { site, basemap, exaggeration, resetKey };
+  const controlProps = {
+    basemap, setBasemap, exaggeration, setExaggeration,
+    onReset: () => { setSites({ ...DEFAULT_SITES }); setBasemap('satellite'); setExaggeration(1.15); setResetKey(n => n + 1); }
+  };
+  const mapProps = { onSiteChange, basemap, exaggeration, resetKey };
+  const exploreWorlds = worldMode === 'triple' ? WORLD_ORDER : [worldMode];
 
-  return (
-    <div className="app-shell">
-      <header className="topbar">
-        <button className="brand" onClick={() => setPage('explore')} aria-label="Project Edziza home">
-          <span className="brand-icon">E</span>
-          <span><strong>EDZIZA</strong><small>EARTH / MARS ANALOG EXPLORER</small></span>
-        </button>
-        <div className="topbar-meta"><span className="status-light" /> NASA SPACE APPS | WORKING PROTOTYPE</div>
-      </header>
+  return <div className="app-shell">
+    <header className="topbar">
+      <button className="brand" onClick={() => setPage('compare')} aria-label="Project Edziza home">
+        <span className="brand-icon">E</span>
+        <span><strong>EDZIZA</strong><small>EARTH / MARS / MOON EXPLORER</small></span>
+      </button>
+      <div className="topbar-meta"><span className="status-light" /> NASA SPACE APPS | RESEARCH PROTOTYPE</div>
+    </header>
 
-      <div className="nav-wrap"><nav className="page-tabs" aria-label="Pages">
-        {PAGES.map(([id, title]) => (
-          <button key={id} className={page === id ? 'active' : ''} onClick={() => setPage(id)}>{title}</button>
-        ))}
-      </nav></div>
+    <div className="nav-wrap"><nav className="page-tabs" aria-label="Pages">
+      {PAGES.map(([id, title]) => <button key={id} className={page === id ? 'active' : ''} onClick={() => setPage(id)}>{title}</button>)}
+    </nav></div>
 
-      <main className={page === 'explore' ? 'wide-main' : ''}>
-        {page === 'compare' && <>
-          <section className="page-heading">
-            <span className="eyebrow">ONE QUESTION / TWO WORLDS</span>
-            <h1>Could Edziza help us understand Mars?</h1>
-            <p>Compare terrestrial volcanic landscapes with a Mars volcano known for landforms linked to ancient water and ice.</p>
-          </section>
-          <Controls {...controlProps} />
-          <div className="compare-map-grid">
-            <MapCard world="earth" {...mapProps} />
-            <MapCard world="mars" {...mapProps} />
+    <main className={page === 'explore' ? 'wide-main' : ''}>
+      {page === 'compare' && <>
+        <section className="page-heading mission-heading">
+          <span className="eyebrow">THREE WORLDS / NINE FIELD SITES / TWELVE PARAMETERS</span>
+          <h1>Explore Earth, Mars <em>& the Moon.</em></h1>
+          <p>Start with real terrain and orbital imagery. Compare three different locations on each world, and discover what a terrestrial field test can — and cannot — tell us about future missions.</p>
+          <div className="mission-pills"><span>03 worlds</span><span>09 locations</span><span>12 parameters</span><span>Evidence-first analysis</span></div>
+        </section>
+        <Controls {...controlProps} />
+        <div className="compare-map-grid three-worlds">
+          {WORLD_ORDER.map(world => <MapCard key={world} world={world} site={sites[world]} {...mapProps} />)}
+        </div>
+        <section className="scientific-note">
+          <div><strong>Why these locations?</strong><p>Edziza is a volcanic Earth analog. Hecates, Elysium and Albor show contrasting Martian volcanic terrain. Apollo 11, Shackleton and Aristarchus explore lunar basalts, polar illumination/ice questions and volcanic deposits. This is a comparison tool, not a certified landing-site selector.</p></div>
+          <button className="primary-button" onClick={() => { setPage('explore'); setWorldMode('triple'); }}>Open large maps</button>
+        </section>
+        <ClimatePanel sites={sites} onSiteChange={onSiteChange} compact onOpenData={() => setPage('data')} />
+      </>}
+
+      {page === 'explore' && <>
+        <section className="explorer-heading">
+          <div><span className="eyebrow">02 / IMMERSIVE TERRAIN EXPLORER</span>
+            <h1>Three worlds to explore.</h1>
+            <p>Switch maps, change locations inside each map, and inspect the source limits. Earth and Mars have elevation meshes; the Moon supports wheel/pinch zoom in 3D and 2D; NASA LOLA elevations appear on the data page, although the 3D globe still has no elevation displacement.</p>
           </div>
-          <section className="scientific-note">
-            <div><strong>Why Hecates Tholus?</strong><p>Researchers describe volcanic features and possible ancient ice-related landforms on its flanks. Edziza offers real lava-ice landscapes that can be studied as process analogs.</p></div>
-            <button className="primary-button" onClick={() => { setPage('explore'); setWorldMode('split'); }}>Open large maps</button>
-          </section>
-          <ClimatePanel site={site} compact />
-        </>}
-
-        {page === 'explore' && <>
-          <section className="explorer-heading">
-            <div>
-              <span className="eyebrow">02 / IMMERSIVE TERRAIN EXPLORER</span>
-              <h1>Explore the two worlds.</h1>
-              <p>Use full-size 3D maps to examine Edziza and Hecates Tholus. The views are not at the same physical scale.</p>
-            </div>
-            <div className="world-switch" aria-label="Select map view">
-              <button className={worldMode === 'earth' ? 'selected' : ''} onClick={() => setWorldMode('earth')}>Earth</button>
-              <button className={worldMode === 'mars' ? 'selected' : ''} onClick={() => setWorldMode('mars')}>Mars</button>
-              <button className={worldMode === 'split' ? 'selected' : ''} onClick={() => setWorldMode('split')}>Side by side</button>
-            </div>
-          </section>
-          <div className="explorer-controls">
-            <Controls {...controlProps} />
-            <button className="primary-button fullscreen-btn" onClick={toggleFullscreen}>
-              {isFullscreen ? 'Exit full screen (Esc)' : 'Enter full screen'}
-            </button>
+          <div className="world-switch" aria-label="Select map view">
+            {[...WORLD_ORDER, 'triple'].map(world => <button key={world} className={worldMode === world ? 'selected' : ''}
+              onClick={() => setWorldMode(world)}>{world === 'triple' ? 'All three' : world[0].toUpperCase() + world.slice(1)}</button>)}
           </div>
-          <div ref={stageRef} className={`explorer-stage ${worldMode}`}>
-            {(worldMode === 'earth' || worldMode === 'split') && <MapCard large world="earth" {...mapProps} />}
-            {(worldMode === 'mars' || worldMode === 'split') && <MapCard large world="mars" {...mapProps} />}
-            {isFullscreen && <button className="stage-close" onClick={toggleFullscreen}>Exit full screen</button>}
-          </div>
-          <div className="explore-footnote">
-            <span>EARTH: zoom capped at 13.5 and tilt capped at 70 degrees to reduce blurry or distorted close-ups.</span>
-            <span>MARS: MOLA (~3-4 km spacing) is too coarse for rover-level zooming.</span>
-          </div>
-          <ClimatePanel site={site} compact />
-        </>}
+        </section>
+        <div className="explorer-controls"><Controls {...controlProps} />
+          <button className="primary-button fullscreen-btn" onClick={toggleFullscreen}>
+            {isFullscreen ? 'Exit full screen (Esc)' : 'Enter full screen'}
+          </button>
+        </div>
+        <div ref={stageRef} className={`explorer-stage ${worldMode === 'triple' ? 'triple' : ''}`}>
+          {exploreWorlds.map(world => <MapCard key={world} large world={world} site={sites[world]} {...mapProps} />)}
+          {isFullscreen && <button className="stage-close" onClick={toggleFullscreen}>Exit full screen</button>}
+        </div>
+        <div className="explore-footnote"><span>EARTH: 3D DEM / external map tiles.</span><span>MARS: 16-ppd MOLA and Viking imagery / regional relief.</span><span>MOON: LRO WAC map + LOLA gridded height values / zoom & pan / no lunar terrain mesh.</span></div>
+        <ClimatePanel sites={sites} onSiteChange={onSiteChange} compact onOpenData={() => setPage('data')} />
+      </>}
 
-        {page === 'data' && <>
-          <section className="page-heading">
-            <span className="eyebrow">03 / DATA & ENVIRONMENT</span>
-            <h1>Environment and evidence.</h1>
-            <p>Earth climate comes from a NASA POWER gridded climatology API. Mars numbers are clearly distinguished between planetary reference data and unavailable local observations.</p>
-          </section>
-          <div className="data-site-pick">
-            <label htmlFor="data-site">EDZIZA REGION</label>
-            <select id="data-site" value={site} onChange={(e) => setSite(e.target.value)}>
-              <option value="snowshoe">Snowshoe Lava Field</option>
-              <option value="summit">Mount Edziza summit</option>
-              <option value="desolation">Desolation Lava Field</option>
-            </select>
+      {page === 'data' && <>
+        <section className="page-heading"><span className="eyebrow">03 / ENVIRONMENTAL DATA</span>
+          <h1>12 parameters. 9 sites. 3 worlds.</h1>
+          <p>Compare position, climate, gravity, solar exposure, terrain and possible water/ice evidence. Each parameter identifies NASA POWER, MOLA, LOLA, a NASA fact sheet, site context, or unavailable measurements.</p>
+        </section>
+        <ClimatePanel sites={sites} onSiteChange={onSiteChange} />
+      </>}
+
+      {page === 'analysis' && <>
+        <section className="page-heading"><span className="eyebrow">04 / EVIDENCE-BASED EARTH ↔ MARS TERRAIN</span>
+          <h1>Which Edziza terrain best matches Mars?</h1>
+          <p>Existing measured Copernicus DEM and NASA MOLA terrain analysis compares three Earth research patches to one Hecates Tholus reference. The Moon is included in the explorer and environmental comparison, but has <strong>not</strong> been added to this matched-scale DEM scoring method.</p>
+        </section>
+        <ScienceAnalysis onOpenMap={id => {
+          onSiteChange('earth', id);
+          setWorldMode('earth'); setPage('explore'); setResetKey(n => n + 1);
+        }} />
+      </>}
+
+      {page === 'story' && <>
+        <section className="story-page"><span className="eyebrow">05 / MISSION STORY</span>
+          <h1>Before we travel there,<br /><em>we learn here.</em></h1>
+          <p>Our mission starts on Earth's Mount Edziza, where lava fields and glaciers offer field-testing opportunities. We then study three volcanic locations on Mars and three different lunar environments — a basaltic landing site, a polar crater and a volcanic plateau.</p>
+          <div className="story-steps">
+            <article><span>01 / OBSERVE</span><h2>Choose a research question.</h2><p>Which terrain features can be tested on Earth? What makes polar Moon operations different from Mars volcanic exploration?</p></article>
+            <article><span>02 / COMPARE</span><h2>Use the 12-parameter explorer.</h2><p>Separate real climate grids, planetary constants and geological evidence. Mark missing site data explicitly.</p></article>
+            <article><span>03 / DESIGN</span><h2>Plan a defensible field test.</h2><p>Use measured Earth–Mars terrain comparisons to guide one analog experiment, while identifying the lunar datasets still needed.</p></article>
           </div>
-          <ClimatePanel site={site} />
-        </>}
-
-        {page === 'analysis' && <>
-          <section className="page-heading">
-            <span className="eyebrow">04 / EVIDENCE-BASED COMPARISON</span>
-            <h1>Which Edziza terrain best matches Mars?</h1>
-            <p>Measured slopes, roughness, and elevation changes from Copernicus DEM and NASA MOLA terrain data. Compare three candidate study areas, then examine the strongest one in 3D.</p>
-          </section>
-          <ScienceAnalysis onOpenMap={(id) => {
-            setSite(id);
-            setWorldMode('earth');
-            setPage('explore');
-            setResetKey(n => n + 1);
-          }} />
-        </>}
-
-        {page === 'story' && <>
-          <section className="story-page">
-            <span className="eyebrow">05 / MISSION STORY</span>
-            <h1>Before we travel there,<br /><em>we learn here.</em></h1>
-            <p>Mount Edziza is a volcanic landscape with lava fields, cones and glaciers. On Mars, Hecates Tholus is a volcano where orbiters have documented possible past interactions among volcanism, water and ice.</p>
-            <div className="story-steps">
-              <article><span>01 / OBSERVE</span><h2>Choose a Martian problem.</h2><p>How could lava have interacted with ancient ice? What terrain might a robot encounter?</p></article>
-              <article><span>02 / INVESTIGATE</span><h2>Study the Earth analog.</h2><p>Explore a smaller region within Edziza and measure what is genuinely comparable.</p></article>
-              <article><span>03 / TEST</span><h2>Make a defensible mission recommendation.</h2><p>Use terrain slope, landforms and geology to support a specific field test. Do not claim climate or gravity matches.</p></article>
-            </div>
-            <p className="story-warning">Scientific limitation: our MOLA map is regional-scale, colored by elevation rather than actual Martian surface imagery. Use the scientific analysis page to compare matched-scale elevation samples. Terrain shape alone does not establish geology, field accessibility, or rover safety.</p>
-            <div className="source-buttons">
-              <a href="https://hirise.lpl.arizona.edu/PSP_010678_2135" target="_blank" rel="noreferrer">NASA HiRISE evidence</a>
-              <a href="https://pds-geosciences.wustl.edu/missions/mgs/megdr.html" target="_blank" rel="noreferrer">NASA MOLA dataset</a>
-              <a href="https://bcparks.ca/mount-edziza-park/" target="_blank" rel="noreferrer">BC Parks geology</a>
-            </div>
-            <button className="primary-button" onClick={() => { setPage('explore'); setWorldMode('split'); }}>Explore the landscapes</button>
-          </section>
-        </>}
-      </main>
-      <footer className="site-footer">
-        <span>EDZIZA / SPACE APPS</span>
-        <span>Sources: BC Parks, NASA POWER, NASA PDS MOLA, NASA HiRISE, ESA, Mapterhorn</span>
-      </footer>
-    </div>
-  );
+          <p className="story-warning">Science limitation: Earth, Mars and Moon images are not displayed at equal scales. The lunar viewer is a textured reference globe, not measured local terrain; Apollo 11 and the pole are not interchangeable environments. No score on this site is a NASA safety certification.</p>
+          <div className="source-buttons">
+            <a href="https://svs.gsfc.nasa.gov/4720/" target="_blank" rel="noreferrer">NASA LRO Moon map</a>
+            <a href="https://nssdc.gsfc.nasa.gov/planetary/lunar/lunar_sites.html" target="_blank" rel="noreferrer">NASA Apollo 11 coordinates</a>
+            <a href="https://pds-geosciences.wustl.edu/missions/mgs/megdr.html" target="_blank" rel="noreferrer">NASA MOLA terrain</a>
+            <a href="https://bcparks.ca/mount-edziza-park/" target="_blank" rel="noreferrer">BC Parks geology</a>
+          </div>
+          <button className="primary-button" onClick={() => { setPage('explore'); setWorldMode('triple'); }}>Explore the three worlds</button>
+        </section>
+      </>}
+    </main>
+    <footer className="site-footer"><span>EDZIZA / NASA SPACE APPS PROTOTYPE</span>
+      <span>Sources: NASA POWER, NASA PDS/MOLA, NASA LRO/SVS, NASA fact sheets, BC Parks, Copernicus & Mapterhorn</span>
+    </footer>
+  </div>;
 }

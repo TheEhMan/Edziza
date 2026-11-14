@@ -1,0 +1,32 @@
+{
+  "instrument": "NASA Lunar Reconnaissance Orbiter - Lunar Orbiter Laser Altimeter (LOLA)",
+  "sourceUrl": "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720/ldem_4.tif",
+  "sourcePage": "https://svs.gsfc.nasa.gov/4720/",
+  "reference": "Elevation relative to a lunar reference sphere of radius 1737.4 km",
+  "resolution": "4 pixels per degree (~7.6 km north-south grid spacing); substantially coarser than a rover site",
+  "method": "Nearest NASA LOLA global DEM cell at the approximate research-site coordinate",
+  "precision": "Coarse regional DEM grid cell, not a measured point altitude, slope, ice reading, or landing-site assessment",
+  "sites": {
+    "apollo11": {
+      "lat": 0.67416,
+      "lon": 23.47314,
+      "elevationMetres": -1883,
+      "sampleLongitude": 23.375,
+      "sampleLatitude": 0.625
+    },
+    "shackleton": {
+      "lat": -89.9,
+      "lon": 0,
+      "elevationMetres": 103,
+      "sampleLongitude": 0.125,
+      "sampleLatitude": -89.875
+    },
+    "aristarchus": {
+      "lat": 26,
+      "lon": -49,
+      "elevationMetres": -175,
+      "sampleLongitude": -48.875,
+      "sampleLatitude": 25.875
+    }
+  }
+}

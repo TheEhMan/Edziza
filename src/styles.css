@@ -201,3 +201,108 @@ main.wide-main { max-width: none; }
 @media (max-width: 1020px) { .science-result-grid { grid-template-columns: minmax(0,1fr); } .science-result-card { max-width: none; } }
 @media (max-width: 750px) { .science-reference { grid-template-columns: minmax(0,1fr); padding: 15px; } }
 @media (max-width: 540px) { .science-result-top { flex-wrap: wrap; } }
+
+/* 2026 Space Apps extension: Earth + Mars + Moon / twelve transparent data fields */
+.mission-heading { padding-top: 52px; }
+.mission-heading h1 { max-width: 1000px; font-size: clamp(36px,5vw,66px); }
+.mission-heading h1 em { font-style: normal; color: #a4ecd6; }
+.mission-heading p { max-width: 900px; }
+.mission-pills { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+.mission-pills span { background: #1d3441; border: 1px solid #375763; padding: 8px 12px; border-radius: 99px; color: #c0e9dd; font: 10px 'DM Mono',monospace; }
+.compare-map-grid.three-worlds { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.explorer-stage.triple { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.card-map-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 7px; min-width: 0; }
+.card-site-heading { min-width: 0; }
+.card-site-heading h2 { line-height: 1.22; }
+.map-location-label { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; color: #9caebd; font: 9px 'DM Mono',monospace; }
+.map-location-label select { max-width: 160px; min-width: 0; background: #233745; border: 1px solid #425e6c; border-radius: 4px; color: #e3f2ed; font-size: 10px; padding: 6px; }
+.world-card.moon { border-color: #506576; background: #121b28; }
+.world-card.moon .world-tag { background: #2a3641; }
+.planet-indicator.moon { background: linear-gradient(30deg,#6b757d,#b9c2c9 35%,#e5e9e8 60%,#7a8791 90%); }
+.explorer-stage.triple .world-card-head { padding: 12px; }
+.explorer-stage.triple .world-card-head h2 { font-size: 18px; }
+.explorer-stage.triple .world-card-foot { font-size: 9px; }
+
+.parameter-filters { display: flex; flex-wrap: wrap; gap: 5px; border: 1px solid #304754; background: #152330; border-radius: 8px; padding: 5px; width: fit-content; margin: 14px 0 16px; }
+.parameter-filters button { border: 0; background: transparent; color: #b3c6d1; border-radius: 5px; padding: 10px 15px; font-size: 12px; }
+.parameter-filters button.active { background: #94e8c8; color: #11271e; font-weight: 700; }
+.parameter-world-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; align-items: start; }
+.parameter-world-grid.single { grid-template-columns: minmax(0, 760px); }
+.parameter-world { min-width: 0; background: #142230; border: 1px solid #39576a; border-radius: 9px; overflow: hidden; }
+.parameter-mars { background: #201c25; border-color: #6a4f4b; }
+.parameter-moon { background: #1a232d; border-color: #586a75; }
+.parameter-world-head { display: flex; align-items: center; padding: 16px; min-height: 90px; gap: 11px; border-bottom: 1px solid #344755; }
+.parameter-world-head .planet-indicator { width: 35px; height: 35px; flex-basis: 35px; }
+.parameter-eyebrow { font: 9px 'DM Mono',monospace; color: #a2b8c6; }
+.parameter-world-head h3 { font-size: clamp(16px,1.75vw,22px); line-height: 1.16; margin: 7px 0 0; }
+.data-location-select { display: flex; flex-direction: column; gap: 6px; padding: 11px 16px; }
+.data-location-select span { font: 9px 'DM Mono',monospace; color: #a4bbc5; }
+.data-location-select select { width: 100%; border: 1px solid #4b6474; background: #1b2e3b; color: #eaf6f5; padding: 9px; border-radius: 5px; font-size: 12px; }
+.parameter-mars .data-location-select select { background: #2d2830; }
+.parameter-moon .data-location-select select { background: #283640; }
+.parameter-rows { padding: 4px 11px 12px; display: grid; gap: 8px; }
+.parameter-row { padding: 11px 12px; background: #1a2d3a; border: 1px solid #314c5a; border-radius: 6px; min-width: 0; }
+.parameter-mars .parameter-row { background: #2d2730; border-color: #52434b; }
+.parameter-moon .parameter-row { background: #23303b; border-color: #465763; }
+.parameter-row-title { font: 10px 'DM Mono',monospace; display: flex; gap: 8px; align-items: baseline; color: #b6ccd4; }
+.parameter-counter { color: #77c6af; font-size: 9px; }
+.parameter-row strong { display: block; margin: 8px 0 6px; font: 700 clamp(14px,1.7vw,20px) 'Space Grotesk', sans-serif; overflow-wrap: anywhere; line-height: 1.25; }
+.parameter-status { display: inline-block; padding: 4px 6px; background: #284740; color: #a9eed3; font: 9px 'DM Mono',monospace; border-radius: 3px; }
+.parameter-mars .parameter-status, .parameter-moon .parameter-status { background: #39464c; color: #d4e5e6; }
+.parameter-status.muted { background: #423732; color: #e8bda7; }
+.parameter-row p { font-size: 10px; line-height: 1.45; color: #b3c5cd; margin: 7px 0 0; }
+.parameter-world-foot { border-top: 1px solid #344957; padding: 12px 16px 16px; }
+.parameter-world-foot p { color: #c2d0d6; font-size: 11px; margin: 0 0 8px; }
+.parameter-world-foot a { font-size: 11px; }
+.parameter-method { margin-top: 18px; background: #142432; border: 1px solid #355463; border-radius: 7px; padding: 16px 20px; color: #bbcad4; }
+.parameter-method p { font-size: 12px; margin: 0 0 9px; }
+.parameter-method strong { color: #e6fff0; }
+.parameter-sources { display: flex; flex-wrap: wrap; gap: 12px 20px; font-size: 11px; }
+.parameter-world-grid.single .parameter-rows { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.parameter-world-grid.single .parameter-row { min-height: 135px; }
+.climate-panel.compact .parameter-world-head { min-height: 75px; }
+.climate-panel.compact .parameter-row { min-height: 93px; }
+.climate-panel.compact .parameter-row strong { font-size: 18px; }
+.data-quick-footer { margin-top: 12px; display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #aebfc7; font-size: 11px; }
+
+@media (max-width: 1260px) {
+  .compare-map-grid.three-worlds { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .compare-map-grid.three-worlds > :last-child { grid-column: 1 / -1; }
+  .parameter-world-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .parameter-world-grid > :last-child { grid-column: 1 / -1; }
+  .parameter-world-grid.single > :last-child { grid-column: auto; }
+  .explorer-stage.triple { height: clamp(520px,70dvh,940px); }
+  .explorer-stage.triple .card-map-actions .world-tag { display: none; }
+}
+@media (max-width: 900px) {
+  .explorer-stage.triple { height: 1430px; grid-template-columns: minmax(0,1fr); grid-template-rows: repeat(3,minmax(0,1fr)); }
+  .explorer-stage.triple:fullscreen { height: 100dvh; overflow-y: auto; grid-template-rows: repeat(3,minmax(440px,1fr)); }
+  .compare-map-grid.three-worlds, .parameter-world-grid { grid-template-columns: minmax(0,1fr); }
+  .compare-map-grid.three-worlds > :last-child, .parameter-world-grid > :last-child { grid-column: auto; }
+  .parameter-world-grid.single { grid-template-columns: minmax(0,1fr); }
+  .climate-panel.compact .parameter-world-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .climate-panel.compact .parameter-world-head { align-items: flex-start; padding: 12px 9px; }
+  .climate-panel.compact .parameter-world-head .planet-indicator { display: none; }
+  .climate-panel.compact .parameter-world-head h3 { font-size: 14px; }
+}
+@media (max-width: 720px) {
+  .climate-panel.compact .parameter-world-grid { grid-template-columns: minmax(0,1fr); }
+  .parameter-world-grid.single .parameter-rows { grid-template-columns: minmax(0,1fr); }
+  .data-quick-footer { align-items: flex-start; flex-direction: column; }
+  .world-switch { max-width: 100%; overflow-x: auto; }
+  .world-switch button { padding: 10px 9px; white-space: nowrap; }
+}
+@media (max-width: 540px) {
+  .world-card-head { gap: 7px; padding: 13px; }
+  .card-site-heading h2 { font-size: 16px; }
+  .map-location-label select { max-width: 130px; }
+  .world-card-foot { line-height: 1.5; }
+  .controls-bar { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .controls-bar .slider-label { grid-column: span 2; }
+  .explorer-stage.triple { height: 1370px; }
+  .mission-pills span { padding: 6px 9px; }
+}
+
+/* Explicit attribution on each scientific parameter, not just a generic NASA label. */
+.parameter-row-source { display: inline-block; margin-top: 8px; font: 10px 'DM Mono',monospace; color: #a0dfef; text-decoration: underline; text-underline-offset: 3px; }
+.parameter-row-source:focus-visible { outline: 2px solid #a0dfef; outline-offset: 2px; }

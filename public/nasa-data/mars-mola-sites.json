@@ -1,0 +1,26 @@
+{
+  "instrument": "NASA Mars Global Surveyor - Mars Orbiter Laser Altimeter (MOLA)",
+  "sourceUrl": "https://pds-geosciences.wustl.edu/mgs/urn-nasa-pds-mgs_mola_topography_derived/meg016/megt90n000eb.img",
+  "sourcePage": "https://pds-geosciences.wustl.edu/missions/mgs/megdr.html",
+  "reference": "Elevation relative to the Mars areoid / MOLA topography reference",
+  "resolution": "16 pixels per degree (approximately 3-4 km north-south grid spacing)",
+  "method": "Bilinear interpolation of four adjacent MOLA DEM grid cells at each site coordinate",
+  "precision": "Regional orbital DEM estimate, not a point altimeter reading or landing-site hazard measurement",
+  "sites": {
+    "hecates": {
+      "lat": 32.09,
+      "lon": 150.2,
+      "elevationMetres": 4026
+    },
+    "elysium": {
+      "lat": 24.74,
+      "lon": 146.9,
+      "elevationMetres": 13202
+    },
+    "albor": {
+      "lat": 18.79,
+      "lon": 150.4,
+      "elevationMetres": 3650
+    }
+  }
+}
