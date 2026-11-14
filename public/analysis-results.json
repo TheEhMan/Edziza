@@ -1,0 +1,277 @@
+{
+  "generatedAt": "2026-11-13T23:23:05.842Z",
+  "project": "Project EDZIZA",
+  "mission": "Regional screening for a volcanic-terrain robotic field test",
+  "isMeasured": true,
+  "disclaimer": "Relative terrain-match screening, NOT a validated rover navigability or landing-safety score. Geology and ice evidence are reviewed separately.",
+  "methods": {
+    "squareWidthKm": 12,
+    "sampleSpacingMetres": 600,
+    "grid": "21x21",
+    "metrics": {
+      "meanSlopeDegrees": "Mean arctangent of the central finite-difference elevation gradient",
+      "p90SlopeDegrees": "90th percentile of local slope values in degrees",
+      "rmsRoughnessMetres": "RMS elevation residual from a centered 3x3 local mean on the common grid",
+      "elevationVariationMetres": "95th minus 5th percentile elevation (metres) in the patch"
+    },
+    "scoring": {
+      "weights": {
+        "slope": 0.45,
+        "roughness": 0.35,
+        "variation": 0.2
+      },
+      "tolerances": {
+        "meanSlopeDegrees": 6,
+        "p90SlopeDegrees": 10,
+        "rmsRoughnessMetres": 80,
+        "elevationVariationMetres": 600
+      }
+    },
+    "caveats": [
+      "MOLA 128-ppd grid spacing is about 463 m north-south and about 392 m east-west at 32 degrees N, but underlying laser observations can be sparse and gridded gaps are interpolated; these cells do not guarantee 463-m measured detail.",
+      "Earth source is Copernicus DSM (surface model) rather than bare-earth survey and may contain snow, vegetation, or data editing artifacts.",
+      "Both grids are sampled at 600 metres; source resolutions and effective smoothing still differ.",
+      "Ice evidence and rock composition are not computed from DEMs and do not enter this numerical score.",
+      "Coordinates represent proposed study patches, NOT pre-validated landable or accessible sites. Snowshoe and summit patches partly overlap.",
+      "Terrain-match scores depend on chosen tolerances and mission objectives."
+    ]
+  },
+  "sources": {
+    "earthDEM": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N57_00_W131_00_DEM/Copernicus_DSM_COG_10_N57_00_W131_00_DEM.tif",
+    "earthProduct": "GLO-30",
+    "marsDEM": "https://pds-geosciences.wustl.edu/mgs/urn-nasa-pds-mgs_mola_topography_derived/meg128/megt44n090hb.img",
+    "marsPPD": 128,
+    "earthGeology": "https://volcano.si.edu/volcano.cfm?vn=320060",
+    "marsGeology": "https://portalcientifico.uah.es/documentos/5d1df63f29995204f7665df7"
+  },
+  "mars": {
+    "id": "hecates-nw",
+    "name": "Hecates Tholus, lower NW flank",
+    "center": {
+      "lat": 32.4,
+      "lon": 148.9
+    },
+    "evidence": "https://portalcientifico.uah.es/documentos/5d1df63f29995204f7665df7",
+    "metrics": {
+      "meanSlopeDegrees": 6.848,
+      "p90SlopeDegrees": 16.481,
+      "rmsRoughnessMetres": 24.142,
+      "elevationVariationMetres": 1140.534,
+      "validCells": 441,
+      "totalCells": 441,
+      "slopeSamples": 361
+    },
+    "footprint": {
+      "west": 148.78011337053846,
+      "east": 149.01988662946155,
+      "north": 32.50122362914869,
+      "south": 32.29877637085131,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              148.78011337053846,
+              32.29877637085131
+            ],
+            [
+              149.01988662946155,
+              32.29877637085131
+            ],
+            [
+              149.01988662946155,
+              32.50122362914869
+            ],
+            [
+              148.78011337053846,
+              32.50122362914869
+            ],
+            [
+              148.78011337053846,
+              32.29877637085131
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "candidates": [
+    {
+      "id": "desolation",
+      "name": "Desolation Lava Field",
+      "center": {
+        "lat": 57.816667,
+        "lon": -130.616667
+      },
+      "geology": "Northern basaltic lava field and pyroclastic cones.",
+      "evidence": "https://volcano.si.edu/volcano.cfm?vn=320060",
+      "footprint": {
+        "west": -130.71797419359967,
+        "east": -130.51535980640034,
+        "north": 57.87062626075813,
+        "south": 57.762707739241876,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -130.71797419359967,
+                57.762707739241876
+              ],
+              [
+                -130.51535980640034,
+                57.762707739241876
+              ],
+              [
+                -130.51535980640034,
+                57.87062626075813
+              ],
+              [
+                -130.71797419359967,
+                57.87062626075813
+              ],
+              [
+                -130.71797419359967,
+                57.762707739241876
+              ]
+            ]
+          ]
+        }
+      },
+      "metrics": {
+        "meanSlopeDegrees": 5.523,
+        "p90SlopeDegrees": 10.359,
+        "rmsRoughnessMetres": 24.847,
+        "elevationVariationMetres": 818.3,
+        "validCells": 441,
+        "totalCells": 441,
+        "slopeSamples": 361
+      },
+      "score": 72,
+      "components": {
+        "slope": 62.3,
+        "roughness": 99.1,
+        "variation": 46.3
+      },
+      "rank": 1
+    },
+    {
+      "id": "snowshoe",
+      "name": "Snowshoe Lava Field",
+      "center": {
+        "lat": 57.65,
+        "lon": -130.666667
+      },
+      "geology": "Young basaltic lava fields and cones; lava-ice interactions documented regionally.",
+      "evidence": "https://science.nasa.gov/earth/earth-observatory/snowshoe-lava-field-152269/",
+      "footprint": {
+        "west": -130.76750850956574,
+        "east": -130.56582549043424,
+        "north": 57.703959260758126,
+        "south": 57.59604073924187,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -130.76750850956574,
+                57.59604073924187
+              ],
+              [
+                -130.56582549043424,
+                57.59604073924187
+              ],
+              [
+                -130.56582549043424,
+                57.703959260758126
+              ],
+              [
+                -130.76750850956574,
+                57.703959260758126
+              ],
+              [
+                -130.76750850956574,
+                57.59604073924187
+              ]
+            ]
+          ]
+        }
+      },
+      "metrics": {
+        "meanSlopeDegrees": 8.036,
+        "p90SlopeDegrees": 16.608,
+        "rmsRoughnessMetres": 56.607,
+        "elevationVariationMetres": 709.906,
+        "validCells": 441,
+        "totalCells": 441,
+        "slopeSamples": 361
+      },
+      "score": 65.9,
+      "components": {
+        "slope": 87.6,
+        "roughness": 59.4,
+        "variation": 28.2
+      },
+      "rank": 2
+    },
+    {
+      "id": "summit",
+      "name": "Mount Edziza summit area",
+      "center": {
+        "lat": 57.72,
+        "lon": -130.63
+      },
+      "geology": "Glaciated composite volcano with varied volcanic materials.",
+      "evidence": "https://bcparks.ca/mount-edziza-park/",
+      "footprint": {
+        "west": -130.73103646989668,
+        "east": -130.5289635301033,
+        "north": 57.773959260758126,
+        "south": 57.66604073924187,
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -130.73103646989668,
+                57.66604073924187
+              ],
+              [
+                -130.5289635301033,
+                57.66604073924187
+              ],
+              [
+                -130.5289635301033,
+                57.773959260758126
+              ],
+              [
+                -130.73103646989668,
+                57.773959260758126
+              ],
+              [
+                -130.73103646989668,
+                57.66604073924187
+              ]
+            ]
+          ]
+        }
+      },
+      "metrics": {
+        "meanSlopeDegrees": 12.169,
+        "p90SlopeDegrees": 20.382,
+        "rmsRoughnessMetres": 65.009,
+        "elevationVariationMetres": 1144.959,
+        "validCells": 441,
+        "totalCells": 441,
+        "slopeSamples": 361
+      },
+      "score": 51,
+      "components": {
+        "slope": 31.2,
+        "roughness": 48.9,
+        "variation": 99.3
+      },
+      "rank": 3
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+/* Scoped styles for the improved NASA Mars map. */
+.mars-satellite-wrapper { background: #120f14; }
+.mars-satellite-wrapper .mars-region-toolbar {
+  position: absolute;
+  right: 12px;
+  bottom: 72px;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+  max-width: calc(100% - 24px);
+}
+.mars-satellite-wrapper .mars-region-toolbar button {
+  cursor: pointer;
+  border: 1px solid #665451;
+  border-radius: 5px;
+  padding: 8px 10px;
+  color: #f3d7c6;
+  background: #19151be0;
+  font-size: 11px;
+  font-weight: 600;
+}
+.mars-satellite-wrapper .mars-region-toolbar button.selected,
+.mars-satellite-wrapper .mars-region-toolbar button:hover {
+  background: #a6684d;
+  border-color: #e2a080;
+  color: #fff;
+}
+.mars-satellite-wrapper .mars-source {
+  max-width: calc(100% - 24px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  align-items: baseline;
+  font-size: 10px;
+  padding: 7px 9px;
+}
+.mars-satellite-wrapper .mars-source strong { color: #ffe0cb; font-size: 10px; }
+.mars-satellite-wrapper .mars-setup-tip { color: #ffc47d; }
+.mars-satellite-wrapper .mars-error-message { color: #ffb4a0; }
+.mars-landmark {
+  pointer-events: none;
+  white-space: nowrap;
+  color: #fff9ed;
+  font: 600 11px/1.1 system-ui, sans-serif;
+  background: #201b23dd;
+  border: 1px solid #e9bc8e99;
+  border-radius: 999px;
+  padding: 6px 8px;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  box-shadow: 0 3px 12px #0009;
+}
+.mars-landmark-dot { width: 7px; height: 7px; background: #f5be90; border-radius: 100%; }
+@media (max-width: 680px) {
+  .mars-satellite-wrapper .mars-region-toolbar { left: 10px; right: 10px; bottom: 90px; justify-content: flex-start; }
+  .mars-satellite-wrapper .mars-region-toolbar button { font-size: 10px; padding: 6px 8px; }
+  .mars-satellite-wrapper .mars-source { font-size: 9px; }
+}

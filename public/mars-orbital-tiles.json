@@ -1,0 +1,618 @@
+{
+  "layer": "NASA Mars Trek / Viking MDIM 2.1 global color mosaic",
+  "sourceURL": "https://trek.nasa.gov/tiles/apidoc/trekAPI.html?body=mars",
+  "tileTemplate": "https://trek.nasa.gov/tiles/Mars/EQ/Mars_Viking_MDIM21_ClrMosaic_global_232m/1.0.0/default/default028mm/{z}/{y}/{x}.jpg",
+  "bounds": {
+    "west": 139,
+    "east": 165,
+    "north": 43,
+    "south": 17
+  },
+  "zoom": 6,
+  "tileSize": 256,
+  "tileColumns": 128,
+  "tileRows": 64,
+  "complete": true,
+  "tiles": [
+    {
+      "z": 6,
+      "x": 113,
+      "y": 16,
+      "file": "/mars-tiles/6/16/113.jpg"
+    },
+    {
+      "z": 6,
+      "x": 114,
+      "y": 16,
+      "file": "/mars-tiles/6/16/114.jpg"
+    },
+    {
+      "z": 6,
+      "x": 115,
+      "y": 16,
+      "file": "/mars-tiles/6/16/115.jpg"
+    },
+    {
+      "z": 6,
+      "x": 116,
+      "y": 16,
+      "file": "/mars-tiles/6/16/116.jpg"
+    },
+    {
+      "z": 6,
+      "x": 117,
+      "y": 16,
+      "file": "/mars-tiles/6/16/117.jpg"
+    },
+    {
+      "z": 6,
+      "x": 118,
+      "y": 16,
+      "file": "/mars-tiles/6/16/118.jpg"
+    },
+    {
+      "z": 6,
+      "x": 119,
+      "y": 16,
+      "file": "/mars-tiles/6/16/119.jpg"
+    },
+    {
+      "z": 6,
+      "x": 120,
+      "y": 16,
+      "file": "/mars-tiles/6/16/120.jpg"
+    },
+    {
+      "z": 6,
+      "x": 121,
+      "y": 16,
+      "file": "/mars-tiles/6/16/121.jpg"
+    },
+    {
+      "z": 6,
+      "x": 122,
+      "y": 16,
+      "file": "/mars-tiles/6/16/122.jpg"
+    },
+    {
+      "z": 6,
+      "x": 113,
+      "y": 17,
+      "file": "/mars-tiles/6/17/113.jpg"
+    },
+    {
+      "z": 6,
+      "x": 114,
+      "y": 17,
+      "file": "/mars-tiles/6/17/114.jpg"
+    },
+    {
+      "z": 6,
+      "x": 115,
+      "y": 17,
+      "file": "/mars-tiles/6/17/115.jpg"
+    },
+    {
+      "z": 6,
+      "x": 116,
+      "y": 17,
+      "file": "/mars-tiles/6/17/116.jpg"
+    },
+    {
+      "z": 6,
+      "x": 117,
+      "y": 17,
+      "file": "/mars-tiles/6/17/117.jpg"
+    },
+    {
+      "z": 6,
+      "x": 118,
+      "y": 17,
+      "file": "/mars-tiles/6/17/118.jpg"
+    },
+    {
+      "z": 6,
+      "x": 119,
+      "y": 17,
+      "file": "/mars-tiles/6/17/119.jpg"
+    },
+    {
+      "z": 6,
+      "x": 120,
+      "y": 17,
+      "file": "/mars-tiles/6/17/120.jpg"
+    },
+    {
+      "z": 6,
+      "x": 121,
+      "y": 17,
+      "file": "/mars-tiles/6/17/121.jpg"
+    },
+    {
+      "z": 6,
+      "x": 122,
+      "y": 17,
+      "file": "/mars-tiles/6/17/122.jpg"
+    },
+    {
+      "z": 6,
+      "x": 113,
+      "y": 18,
+      "file": "/mars-tiles/6/18/113.jpg"
+    },
+    {
+      "z": 6,
+      "x": 114,
+      "y": 18,
+      "file": "/mars-tiles/6/18/114.jpg"
+    },
+    {
+      "z": 6,
+      "x": 115,
+      "y": 18,
+      "file": "/mars-tiles/6/18/115.jpg"
+    },
+    {
+      "z": 6,
+      "x": 116,
+      "y": 18,
+      "file": "/mars-tiles/6/18/116.jpg"
+    },
+    {
+      "z": 6,
+      "x": 117,
+      "y": 18,
+      "file": "/mars-tiles/6/18/117.jpg"
+    },
+    {
+      "z": 6,
+      "x": 118,
+      "y": 18,
+      "file": "/mars-tiles/6/18/118.jpg"
+    },
+    {
+      "z": 6,
+      "x": 119,
+      "y": 18,
+      "file": "/mars-tiles/6/18/119.jpg"
+    },
+    {
+      "z": 6,
+      "x": 120,
+      "y": 18,
+      "file": "/mars-tiles/6/18/120.jpg"
+    },
+    {
+      "z": 6,
+      "x": 121,
+      "y": 18,
+      "file": "/mars-tiles/6/18/121.jpg"
+    },
+    {
+      "z": 6,
+      "x": 122,
+      "y": 18,
+      "file": "/mars-tiles/6/18/122.jpg"
+    },
+    {
+      "z": 6,
+      "x": 113,
+      "y": 19,
+      "file": "/mars-tiles/6/19/113.jpg"
+    },
+    {
+      "z": 6,
+      "x": 114,
+      "y": 19,
+      "file": "/mars-tiles/6/19/114.jpg"
+    },
+    {
+      "z": 6,
+      "x": 115,
+      "y": 19,
+      "file": "/mars-tiles/6/19/115.jpg"
+    },
+    {
+      "z": 6,
+      "x": 116,
+      "y": 19,
+      "file": "/mars-tiles/6/19/116.jpg"
+    },
+    {
+      "z": 6,
+      "x": 117,
+      "y": 19,
+      "file": "/mars-tiles/6/19/117.jpg"
+    },
+    {
+      "z": 6,
+      "x": 118,
+      "y": 19,
+      "file": "/mars-tiles/6/19/118.jpg"
+    },
+    {
+      "z": 6,
+      "x": 119,
+      "y": 19,
+      "file": "/mars-tiles/6/19/119.jpg"
+    },
+    {
+      "z": 6,
+      "x": 120,
+      "y": 19,
+      "file": "/mars-tiles/6/19/120.jpg"
+    },
+    {
+      "z": 6,
+      "x": 121,
+      "y": 19,
+      "file": "/mars-tiles/6/19/121.jpg"
+    },
+    {
+      "z": 6,
+      "x": 122,
+      "y": 19,
+      "file": "/mars-tiles/6/19/122.jpg"
+    },
+    {
+      "z": 6,
+      "x": 113,
+      "y": 20,
+      "file": "/mars-tiles/6/20/113.jpg"
+    },
+    {
+      "z": 6,
+      "x": 114,
+      "y": 20,
+      "file": "/mars-tiles/6/20/114.jpg"
+    },
+    {
+      "z": 6,
+      "x": 115,
+      "y": 20,
+      "file": "/mars-tiles/6/20/115.jpg"
+    },
+    {
+      "z": 6,
+      "x": 116,
+      "y": 20,
+      "file": "/mars-tiles/6/20/116.jpg"
+    },
+    {
+      "z": 6,
+      "x": 117,
+      "y": 20,
+      "file": "/mars-tiles/6/20/117.jpg"
+    },
+    {
+      "z": 6,
+      "x": 118,
+      "y": 20,
+      "file": "/mars-tiles/6/20/118.jpg"
+    },
+    {
+      "z": 6,
+      "x": 119,
+      "y": 20,
+      "file": "/mars-tiles/6/20/119.jpg"
+    },
+    {
+      "z": 6,
+      "x": 120,
+      "y": 20,
+      "file": "/mars-tiles/6/20/120.jpg"
+    },
+    {
+      "z": 6,
+      "x": 121,
+      "y": 20,
+      "file": "/mars-tiles/6/20/121.jpg"
+    },
+    {
+      "z": 6,
+      "x": 122,
+      "y": 20,
+      "file": "/mars-tiles/6/20/122.jpg"
+    },
+    {
+      "z": 6,
+      "x": 113,
+      "y": 21,
+      "file": "/mars-tiles/6/21/113.jpg"
+    },
+    {
+      "z": 6,
+      "x": 114,
+      "y": 21,
+      "file": "/mars-tiles/6/21/114.jpg"
+    },
+    {
+      "z": 6,
+      "x": 115,
+      "y": 21,
+      "file": "/mars-tiles/6/21/115.jpg"
+    },
+    {
+      "z": 6,
+      "x": 116,
+      "y": 21,
+      "file": "/mars-tiles/6/21/116.jpg"
+    },
+    {
+      "z": 6,
+      "x": 117,
+      "y": 21,
+      "file": "/mars-tiles/6/21/117.jpg"
+    },
+    {
+      "z": 6,
+      "x": 118,
+      "y": 21,
+      "file": "/mars-tiles/6/21/118.jpg"
+    },
+    {
+      "z": 6,
+      "x": 119,
+      "y": 21,
+      "file": "/mars-tiles/6/21/119.jpg"
+    },
+    {
+      "z": 6,
+      "x": 120,
+      "y": 21,
+      "file": "/mars-tiles/6/21/120.jpg"
+    },
+    {
+      "z": 6,
+      "x": 121,
+      "y": 21,
+      "file": "/mars-tiles/6/21/121.jpg"
+    },
+    {
+      "z": 6,
+      "x": 122,
+      "y": 21,
+      "file": "/mars-tiles/6/21/122.jpg"
+    },
+    {
+      "z": 6,
+      "x": 113,
+      "y": 22,
+      "file": "/mars-tiles/6/22/113.jpg"
+    },
+    {
+      "z": 6,
+      "x": 114,
+      "y": 22,
+      "file": "/mars-tiles/6/22/114.jpg"
+    },
+    {
+      "z": 6,
+      "x": 115,
+      "y": 22,
+      "file": "/mars-tiles/6/22/115.jpg"
+    },
+    {
+      "z": 6,
+      "x": 116,
+      "y": 22,
+      "file": "/mars-tiles/6/22/116.jpg"
+    },
+    {
+      "z": 6,
+      "x": 117,
+      "y": 22,
+      "file": "/mars-tiles/6/22/117.jpg"
+    },
+    {
+      "z": 6,
+      "x": 118,
+      "y": 22,
+      "file": "/mars-tiles/6/22/118.jpg"
+    },
+    {
+      "z": 6,
+      "x": 119,
+      "y": 22,
+      "file": "/mars-tiles/6/22/119.jpg"
+    },
+    {
+      "z": 6,
+      "x": 120,
+      "y": 22,
+      "file": "/mars-tiles/6/22/120.jpg"
+    },
+    {
+      "z": 6,
+      "x": 121,
+      "y": 22,
+      "file": "/mars-tiles/6/22/121.jpg"
+    },
+    {
+      "z": 6,
+      "x": 122,
+      "y": 22,
+      "file": "/mars-tiles/6/22/122.jpg"
+    },
+    {
+      "z": 6,
+      "x": 113,
+      "y": 23,
+      "file": "/mars-tiles/6/23/113.jpg"
+    },
+    {
+      "z": 6,
+      "x": 114,
+      "y": 23,
+      "file": "/mars-tiles/6/23/114.jpg"
+    },
+    {
+      "z": 6,
+      "x": 115,
+      "y": 23,
+      "file": "/mars-tiles/6/23/115.jpg"
+    },
+    {
+      "z": 6,
+      "x": 116,
+      "y": 23,
+      "file": "/mars-tiles/6/23/116.jpg"
+    },
+    {
+      "z": 6,
+      "x": 117,
+      "y": 23,
+      "file": "/mars-tiles/6/23/117.jpg"
+    },
+    {
+      "z": 6,
+      "x": 118,
+      "y": 23,
+      "file": "/mars-tiles/6/23/118.jpg"
+    },
+    {
+      "z": 6,
+      "x": 119,
+      "y": 23,
+      "file": "/mars-tiles/6/23/119.jpg"
+    },
+    {
+      "z": 6,
+      "x": 120,
+      "y": 23,
+      "file": "/mars-tiles/6/23/120.jpg"
+    },
+    {
+      "z": 6,
+      "x": 121,
+      "y": 23,
+      "file": "/mars-tiles/6/23/121.jpg"
+    },
+    {
+      "z": 6,
+      "x": 122,
+      "y": 23,
+      "file": "/mars-tiles/6/23/122.jpg"
+    },
+    {
+      "z": 6,
+      "x": 113,
+      "y": 24,
+      "file": "/mars-tiles/6/24/113.jpg"
+    },
+    {
+      "z": 6,
+      "x": 114,
+      "y": 24,
+      "file": "/mars-tiles/6/24/114.jpg"
+    },
+    {
+      "z": 6,
+      "x": 115,
+      "y": 24,
+      "file": "/mars-tiles/6/24/115.jpg"
+    },
+    {
+      "z": 6,
+      "x": 116,
+      "y": 24,
+      "file": "/mars-tiles/6/24/116.jpg"
+    },
+    {
+      "z": 6,
+      "x": 117,
+      "y": 24,
+      "file": "/mars-tiles/6/24/117.jpg"
+    },
+    {
+      "z": 6,
+      "x": 118,
+      "y": 24,
+      "file": "/mars-tiles/6/24/118.jpg"
+    },
+    {
+      "z": 6,
+      "x": 119,
+      "y": 24,
+      "file": "/mars-tiles/6/24/119.jpg"
+    },
+    {
+      "z": 6,
+      "x": 120,
+      "y": 24,
+      "file": "/mars-tiles/6/24/120.jpg"
+    },
+    {
+      "z": 6,
+      "x": 121,
+      "y": 24,
+      "file": "/mars-tiles/6/24/121.jpg"
+    },
+    {
+      "z": 6,
+      "x": 122,
+      "y": 24,
+      "file": "/mars-tiles/6/24/122.jpg"
+    },
+    {
+      "z": 6,
+      "x": 113,
+      "y": 25,
+      "file": "/mars-tiles/6/25/113.jpg"
+    },
+    {
+      "z": 6,
+      "x": 114,
+      "y": 25,
+      "file": "/mars-tiles/6/25/114.jpg"
+    },
+    {
+      "z": 6,
+      "x": 115,
+      "y": 25,
+      "file": "/mars-tiles/6/25/115.jpg"
+    },
+    {
+      "z": 6,
+      "x": 116,
+      "y": 25,
+      "file": "/mars-tiles/6/25/116.jpg"
+    },
+    {
+      "z": 6,
+      "x": 117,
+      "y": 25,
+      "file": "/mars-tiles/6/25/117.jpg"
+    },
+    {
+      "z": 6,
+      "x": 118,
+      "y": 25,
+      "file": "/mars-tiles/6/25/118.jpg"
+    },
+    {
+      "z": 6,
+      "x": 119,
+      "y": 25,
+      "file": "/mars-tiles/6/25/119.jpg"
+    },
+    {
+      "z": 6,
+      "x": 120,
+      "y": 25,
+      "file": "/mars-tiles/6/25/120.jpg"
+    },
+    {
+      "z": 6,
+      "x": 121,
+      "y": 25,
+      "file": "/mars-tiles/6/25/121.jpg"
+    },
+    {
+      "z": 6,
+      "x": 122,
+      "y": 25,
+      "file": "/mars-tiles/6/25/122.jpg"
+    }
+  ]
+}
