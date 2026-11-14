@@ -1,5 +1,5 @@
 /**
- * Project EDZIZA: Download a wider NASA MOLA topography patch and NASA Viking
+ * Project CyberLeek: Download a wider NASA MOLA topography patch and NASA Viking
  * Orbiter color mosaic tiles. Run with Node 20+ from the project root:
  *
  *   node scripts/fetch-mars-wide.mjs

@@ -1,17 +1,20 @@
 {
-  "name": "edziza-mars-explorer",
+  "name": "cyberleek-planetary-analog-finder",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.7.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview",
     "fetch:mars": "node scripts/download-mola.mjs",
-    "verify": "node scripts/verify-project.mjs && node scripts/test-space-data.mjs && node scripts/test-analog-ranking.mjs && node scripts/test-3d-picker.mjs",
+    "verify": "node scripts/verify-project.mjs && node scripts/test-space-data.mjs && node scripts/test-analog-ranking.mjs && node scripts/test-3d-picker.mjs && node scripts/test-global-mars.mjs",
     "fetch:nasa": "node scripts/sync-nasa-data.mjs",
     "refresh:mars-sites": "node scripts/build-mars-site-data.mjs",
-    "export:catalog": "node scripts/export-analog-catalog.mjs"
+    "export:catalog": "node scripts/export-analog-catalog.mjs",
+    "fetch:global": "node scripts/fetch-global-maps.mjs",
+    "fetch:moon-hd": "node scripts/fetch-moon-hd.mjs",
+    "fetch:moon-ultra": "node scripts/fetch-moon-hd.mjs --size 8k"
   },
   "overrides": {
     "rollup": "npm:@rollup/wasm-node@^4"
@@ -23,7 +26,8 @@
     "maplibre-gl": "^6.18.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "three": "^0.181.0"
+    "three": "^0.181.0",
+    "sharp": "^0.34.2"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^5.0.0",

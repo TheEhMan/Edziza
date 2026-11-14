@@ -3,6 +3,7 @@ import { Canvas, useThree } from '@react-three/fiber';
 import { Html, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import './mars-satellite.css';
+import MarsGlobalGlobe from './MarsGlobalGlobe.jsx';
 import { WORLD_SITES } from './siteData.js';
 
 // Geographically defined regional extent: all three volcanoes fit inside it.
@@ -232,7 +233,7 @@ async function makeNASAImageryTexture(manifest) {
   return { texture, count: loaded, total: manifest.tiles.length };
 }
 
-export default function MarsScene({ exaggeration = 1.15, site = 'hecates', onSiteChange, onPick, picked }) {
+function MarsRegionScene({ exaggeration = 1.15, site = 'hecates', onSiteChange, onPick, picked }) {
   const [data, setData] = useState(null);
   const [textureInfo, setTextureInfo] = useState(null);
   const [view, setView] = useState(site);
@@ -281,7 +282,7 @@ export default function MarsScene({ exaggeration = 1.15, site = 'hecates', onSit
   const satelliteLoaded = Boolean(textureInfo?.texture);
   return (
     <div className="mars-wrapper mars-satellite-wrapper">
-      <Canvas camera={{ position: [7, 27, 27], fov: 48, near: 0.1, far: 160 }} dpr={[1, 1.7]}>
+      <Canvas frameloop="demand" gl={{ antialias: false }} camera={{ position: [7, 27, 27], fov: 48, near: 0.1, far: 160 }} dpr={[1, 1.35]}>
         <color attach="background" args={['#120f14']} />
         <ambientLight intensity={1.8} />
         <directionalLight position={[-9, 15, 12]} intensity={1.6} color="#fff0d9" />
@@ -291,8 +292,7 @@ export default function MarsScene({ exaggeration = 1.15, site = 'hecates', onSit
           ref={controlsRef}
           makeDefault
           target={[0, 0, 0]}
-          enableDamping
-          dampingFactor={0.07}
+          enableDamping={false}
           enablePan
           minDistance={5}
           maxDistance={70}
@@ -327,4 +327,17 @@ export default function MarsScene({ exaggeration = 1.15, site = 'hecates', onSit
       </div>
     </div>
   );
+}
+
+// Whole-planet globe is the default; the original NASA 3D Elysium DEM is still
+// available when a researcher needs regional terrain instead of global context.
+export default function MarsScene(props) {
+  const [mode, setMode] = useState('global');
+  return <div className="mars-map-mode-host">
+    {mode === 'global' ? <MarsGlobalGlobe {...props} /> : <MarsRegionScene {...props} />}
+    <div className="mars-map-mode-switch" role="group" aria-label="Mars 3D map scale">
+      <button type="button" className={mode === 'global' ? 'selected' : ''} onClick={() => setMode('global')}>Whole Mars 3D</button>
+      <button type="button" className={mode === 'region' ? 'selected' : ''} onClick={() => setMode('region')}>Elysium detail</button>
+    </div>
+  </div>;
 }

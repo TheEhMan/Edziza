@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import EarthMap from './EarthMap.jsx';
 import MarsScene from './MarsScene.jsx';
 import MoonScene from './MoonScene.jsx';
-import ScienceAnalysis from './ScienceAnalysis.jsx';
 import AnalogFinder from './AnalogFinder.jsx';
 import { rankAnalogs } from './analogRanking.js';
 import { DOMAINS, EARTH_ANALOGS, TARGETS, DEFAULT_WEIGHTS, getTarget, getEarthAnalog } from './analogData.js';
@@ -13,8 +12,7 @@ const PAGES = [
   ['finder', '01 Find Earth analog'],
   ['explore', '02 Interactive maps'],
   ['evidence', '03 Eight data domains'],
-  ['analysis', '04 Measured terrain'],
-  ['method', '05 Research & method']
+  ['method', '04 Research & method']
 ];
 
 function WorldMap({ world, site, picked, onPick, onSiteChange, basemap, exaggeration, resetKey }) {
@@ -23,7 +21,7 @@ function WorldMap({ world, site, picked, onPick, onSiteChange, basemap, exaggera
   return <MoonScene key={resetKey} site={site} picked={picked} onPick={(lat, lon, elev) => onPick('moon', lat, lon, elev)} onSiteChange={value => onSiteChange('moon', value)} />;
 }
 
-function MapCard({ world, site, picked, onPick, onFindAnalog, onSiteChange, basemap, exaggeration, resetKey }) {
+function MapCard({ world, site, picked, onPick, onFindAnalog, onSiteChange, basemap, exaggeration, resetKey, collapsed = false, onActivate }) {
   const location = world === 'earth'
     ? (EARTH_ANALOGS.find(item => item.id === site) || getSite(world, site))
     : getSite(world, site);
@@ -39,13 +37,18 @@ function MapCard({ world, site, picked, onPick, onFindAnalog, onSiteChange, base
         </label><span className="world-tag">{tags[world]}</span>
       </div>
     </div>
-    <div className="world-card-map"><WorldMap world={world} site={site} picked={picked} onPick={onPick} onSiteChange={onSiteChange}
-      basemap={basemap} exaggeration={exaggeration} resetKey={resetKey} /></div>
+    <div className="world-card-map">{collapsed
+      ? <div className={`map-lazy-preview ${world}`}><strong>{world === 'moon' ? 'MOON GLOBE' : world === 'mars' ? 'FULL MARS GLOBE' : 'EARTH TERRAIN'}</strong>
+          <p>Map paused to keep the comparison responsive. Open this map to explore it in 3D; only one map runs at a time.</p>
+          <button type="button" className="primary-button" onClick={onActivate}>Open interactive {world} map</button>
+        </div>
+      : <WorldMap world={world} site={site} picked={picked} onPick={onPick} onSiteChange={onSiteChange}
+          basemap={basemap} exaggeration={exaggeration} resetKey={resetKey} />}</div>
     {picked && world !== 'earth' && <div className="map-picked-action"><span>Picked: {picked.lat.toFixed(3)}°, {picked.lon.toFixed(3)}° · comparison profile: {picked.referenceName}</span>
       <button type="button" className="primary-button" onClick={() => onFindAnalog(world)}>Find Earth analogs</button></div>}
     <div className="world-card-foot">{world === 'moon'
       ? 'Moon: 3D globe; measured NASA LOLA relief when loaded. Click to choose coordinates; profiles are nearby reference estimates, not exact-pixel geology.'
-      : world === 'mars' ? 'Mars: click anywhere within the displayed Elysium 3D regional NASA Viking/MOLA map; this is not a global globe or rover-scale survey.'
+      : world === 'mars' ? 'Mars: rotate and select anywhere on the 3D whole-planet globe. Official NASA Viking imagery and MOLA global relief load online or from the optional local download; the Elysium detailed terrain is a separate view. No rover-scale hazard guarantee.'
       : 'Earth imagery, terrain and pins are map visualizations; confirm field-site access independently.'}</div>
   </article>;
 }
@@ -55,10 +58,10 @@ function EvidencePage({ targetWorld, targetId, earthId }) {
   const earth = getEarthAnalog(earthId);
   const rows = [
     ['geology', 'NASA/USGS geologic context + local geology', 'USGS Mars map, THEMIS mineral imagery', 'Unified lunar geology, LRO/WAC', 'Detailed mineral fractions are not uniformly sampled'],
-    ['terrain', 'Copernicus DEM; Earth terrain models', 'NASA MOLA elevation grids', 'NASA LOLA/SLDEM elevation grids', 'Different horizontal resolutions and vertical datums'],
-    ['thermal', 'NASA POWER climatic temperature and solar energy', 'THEMIS/TES thermal observations', 'LRO Diviner, LROC polar illumination', 'No same-time temperature series for all selected sites'],
+    ['terrain', 'Earth terrain map preview; no matched-resolution Earth raster in the eight-domain ranker', 'NASA MOLA elevation grids', 'NASA LOLA/SLDEM elevation grids', 'Different horizontal resolutions and vertical datums'],
+    ['thermal', 'NASA POWER Earth climatology (supplementary, not scored)', 'THEMIS/TES thermal observations', 'LRO Diviner, LROC polar illumination', 'No same-time temperature series for all selected sites'],
     ['resources', 'Earth ice/permafrost and field geological records', 'SWIM/SHARAD regional ice evidence', 'LRO polar ice/cold-trap context', 'Potential resources ≠ measured extractable inventory'],
-    ['dust', 'NASA POWER wind, desert field observations', 'THEMIS dust/aeolian evidence', 'Regolith and electrostatic science; no atmospheric wind', 'Different dust transport mechanisms'],
+    ['dust', 'NASA POWER wind (shown separately); research feature tags drive domain score', 'THEMIS dust/aeolian evidence', 'Regolith and electrostatic science; no atmospheric wind', 'Different dust transport mechanisms'],
     ['biology', 'NASA astrobiology and field laboratory research', 'No confirmed life; test biosignature methods', 'No confirmed life; contamination-control research', 'Planetary biological quantities cannot be populated by inventing a life signal'],
     ['subsurface', 'Documented Earth lava tubes, cave geology, ice-cemented ground', 'NASA THEMIS candidate skylights, subsurface sounding', 'LRO pits and rilles, lunar subsurface hypotheses', 'A feature near a site is not a confirmed accessible cave'],
     ['operations', 'NASA field-operation analog reports; maps', 'Slope, roughness, mission constraints from orbital data', 'Lunar polar illumination, rover terrain and surface science', 'Not a formal landing site, safety, permits or mission feasibility review']
@@ -75,11 +78,11 @@ function EvidencePage({ targetWorld, targetId, earthId }) {
     ['USGS 2014 geologic map of Mars', 'https://pubs.usgs.gov/sim/3292/']
   ];
   return <section className="analog-research-hero">
-    <span className="eyebrow">03 / SCIENTIFIC INPUT COVERAGE</span>
+    <span className="eyebrow">03 / DATA PROVENANCE</span>
     <h1>Eight categories, always documented.</h1>
     <p>Both the selected planetary target and every Earth candidate have eight evidence-backed descriptions. This is <strong>complete profile coverage</strong>, not a claim that eight comparable NASA measurements exist at every point.</p>
     <div className="mission-pills"><span>{TARGETS.length} Mars / Moon profiles</span><span>{EARTH_ANALOGS.length} Earth profiles</span><span>8 / 8 domain categories</span><span>Sources per domain</span></div>
-    <h2>Dataset strategy</h2>
+    <h2>Dataset inventory (including research inputs not yet scored)</h2><p>Numeric NASA MOLA/LOLA and POWER data support the visualization and contextual readouts; the eight-domain ranking currently uses the linked research-profile tags. Each grading card in the Finder shows exactly what is and is not included in its numerical score.</p>
     <div style={{overflowX:'auto'}}><table className="analog-research-table">
       <thead><tr><th>DOMAIN</th><th>EARTH</th><th>MARS</th><th>MOON</th><th>IMPORTANT LIMIT</th></tr></thead>
       <tbody>{rows.map(row => <tr key={row[0]}><td><strong>{DOMAINS.find(item => item.id === row[0]).label}</strong></td>
@@ -93,14 +96,14 @@ function EvidencePage({ targetWorld, targetId, earthId }) {
     </div>
     <div className="analog-research-card"><h2>Primary reference catalogues</h2>
       <div className="source-buttons">{reference.map(([name, url]) => <a key={name} href={url} target="_blank" rel="noreferrer">{name} ↗</a>)}</div>
-      <p>For the actual measurement-backed 12 km matched terrain demonstration, see the separate Measured terrain tab. Do not treat this eight-domain tag ranking as an orbital numerical extraction.</p>
+      <p>NASA MOLA/LOLA elevation is displayed as an independent observation when downloaded. All eight fit categories currently use curated research tasks; they are not eight uniformly measured numeric rasters.</p>
     </div>
   </section>;
 }
 
 function MethodPage({ onFind }) {
   return <section className="analog-research-hero">
-    <span className="eyebrow">05 / MISSION USERS, PREEXISTING WORK & LIMITS</span>
+    <span className="eyebrow">04 / MISSION USERS, PREEXISTING WORK & LIMITS</span>
     <h1>Not another planet map. A decision-support research shortlist.</h1>
     <p>NASA already maintains powerful lunar and Martian data viewers. This tool addresses the next practical question: which Earth landscape would help a mission team practice a particular planetary task?</p>
     <div className="analog-research-grid">
@@ -115,7 +118,7 @@ function MethodPage({ onFind }) {
     </div>
     <h2>Existing solutions — and our specific difference</h2>
     <div style={{overflowX:'auto'}}><table className="analog-research-table">
-      <thead><tr><th>EXISTING RESOURCE</th><th>WHAT IT DOES WELL</th><th>WHERE EDZIZA ADDS VALUE</th></tr></thead>
+      <thead><tr><th>EXISTING RESOURCE</th><th>WHAT IT DOES WELL</th><th>WHERE CyberLeek ADDS VALUE</th></tr></thead>
       <tbody>
         <tr><td><a href="https://trek.nasa.gov/moon/" target="_blank" rel="noreferrer">NASA Moon Trek</a></td><td>Rich lunar orbital layers, distances, elevation, lighting, slope tools.</td><td>Connect a selected lunar objective to multiple ranked Earth test environments.</td></tr>
         <tr><td><a href="https://trek.nasa.gov/mars/" target="_blank" rel="noreferrer">NASA Mars Trek</a></td><td>Mars surface data layers, imagery, 3D and terrain analysis.</td><td>Suggest Earth field-test alternatives, evidence and specific mission relevance.</td></tr>
@@ -126,9 +129,9 @@ function MethodPage({ onFind }) {
     <div className="analog-research-grid">
       <div className="analog-research-card"><h2>How the screening score works</h2>
         <p>Each planetary target defines practical Earth field-test goals for eight domains. Each Earth site has evidence-guided characteristics. For each domain:</p>
-        <p><strong>Domain score = 100 × matched goal tags ÷ total goal tags.</strong></p>
-        <p>The 8 scores are combined using adjustable user-selected weights. This is transparent categorical matching, not an independently validated geospatial ML model or an evidence-weighted physical similarity index.</p>
-        <p>Selection can change when the research mission changes. A best match for geology may be a poor analog for ice drilling or contamination control.</p></div>
+        <p><strong>Domain = 100 × (0.70 × goal coverage + 0.30 × trait precision) × physical-transfer coefficient.</strong></p>
+        <p>Each domain displays numerical tag counts, goal coverage, precision and a planet-specific procedural-transfer factor. Source confidence is shown separately; clicking far from a documented profile triggers a data-confidence warning but no arbitrary 0.1 multiplier. The optional latitude-regime prior allows polar and equatorial research tasks to rank Earth environments differently. These are project heuristics, not measured equivalence or NASA grades.</p><p>NASA Mars 2020 researchers used low/medium/high expert voting across five mission criteria, and Mars landing missions also use hard slope/hazard thresholds. These are separate approaches: no official third-party numerical grade for our Earth–planet pairs is claimed.</p>
+        <p>Selection changes with mission priorities. A best match for geology can be a poor ice-drilling or contamination-control test site. Even excellent tag matches cannot reproduce different gravity, atmospheric pressure, radiation or local planetary chemistry. Every index is provisional.</p><a href="https://www.caltech.edu/about/news/where-land-mars-2020-conversation-ken-farley-47785" target="_blank" rel="noreferrer">NASA Mars 2020 published science scorecard ↗</a></div>
       <div className="analog-research-card"><h2>What we refuse to overclaim</h2>
         <p>NASA rover/landing engineers would not use this prototype to choose a flight destination. We have not ingested all published global raster layers for each candidate, completed a statistically validated benchmark, or proven a newly discovered analog.</p>
         <p><strong>Next scientific step:</strong> compute identical-footprint slope/roughness from Earth DEM, Mars MOLA and lunar LOLA; add matched-source temperature time series and calibrated spectroscopy, then review shortlists with domain experts.</p>
@@ -148,6 +151,7 @@ export default function App() {
   const [basemap, setBasemap] = useState('satellite');
   const [exaggeration, setExaggeration] = useState(1.15);
   const [worldMode, setWorldMode] = useState('earth');
+  const [activeTripleMap, setActiveTripleMap] = useState('mars');
   const [resetKey, setResetKey] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const stageRef = useRef(null);
@@ -187,13 +191,13 @@ export default function App() {
       else await stageRef.current?.requestFullscreen(); }
     catch (error) { console.warn('Browser could not toggle full screen', error); }
   }
-  const selectedEarthId = earthId || rankAnalogs(getTarget(targetWorld, sites[targetWorld]), weights)[0].earth.id;
+  const selectedEarthId = earthId || rankAnalogs(getTarget(targetWorld, sites[targetWorld]), weights, EARTH_ANALOGS, pickedPoints[targetWorld])[0].earth.id;
   const exploreWorlds = worldMode === 'triple' ? WORLD_ORDER : [worldMode];
 
   return <div className="app-shell">
     <header className="topbar">
-      <button className="brand" onClick={() => setPage('finder')} aria-label="EDZIZA Analog Finder home">
-        <span className="brand-icon">E</span><span><strong>EDZIZA</strong><small>PLANETARY ANALOG FINDER</small></span>
+      <button className="brand" onClick={() => setPage('finder')} aria-label="CyberLeek Analog Finder home">
+        <span className="brand-icon">C</span><span><strong>CyberLeek</strong><small>PLANETARY ANALOG FINDER</small></span>
       </button>
       <div className="topbar-meta"><span className="status-light" /> NASA SPACE APPS | INDEPENDENT RESEARCH PROTOTYPE</div>
     </header>
@@ -203,10 +207,10 @@ export default function App() {
     <main className={page === 'explore' ? 'wide-main' : ''}>
       {page === 'finder' && <AnalogFinder targetWorld={targetWorld} onWorldChange={changeWorld} sites={sites}
         onSiteChange={onSiteChange} onPlanetPick={onPlanetPick} pickedPoints={pickedPoints} earthId={selectedEarthId} onEarthChange={chooseEarth}
-        weights={weights} onWeightChange={setWeights} onOpenMap={openEarthMap} />}
+        weights={weights} onWeightChange={value => { setWeights(value); setEarthId(null); }} onOpenMap={openEarthMap} />}
       {page === 'explore' && <>
         <section className="explorer-heading"><div><span className="eyebrow">02 / EARTH-MARS-MOON INTERACTIVE MAPS</span>
-          <h1>Choose a planetary location in 3D.</h1><p>Pick any point in the displayed Mars Elysium region or on the Moon globe; then open Earth analog results. Earth terrain and imagery; Mars NASA Viking/MOLA; Moon LRO/LOLA when loaded. Each viewer uses different data resolution and cannot directly certify landing-site safety.</p></div>
+          <h1>Choose a planetary location in 3D.</h1><p>Pick any point on the whole-Mars or Moon 3D globe; then open Earth analog results. Earth terrain and imagery; Mars NASA Viking/MOLA; Moon LRO/LOLA when loaded. Each viewer uses different data resolution and cannot directly certify landing-site safety.</p></div>
           <div className="world-switch" aria-label="Select body to explore">
             {[...WORLD_ORDER, 'triple'].map(world => <button key={world} className={worldMode === world ? 'selected' : ''}
               onClick={() => setWorldMode(world)}>{world === 'triple' ? 'All three' : world[0].toUpperCase() + world.slice(1)}</button>)}
@@ -222,23 +226,18 @@ export default function App() {
         <div ref={stageRef} className={`explorer-stage ${worldMode === 'triple' ? 'triple' : ''}`}>
           {exploreWorlds.map(world => <MapCard key={world} world={world} site={world === 'earth' ? selectedEarthId : sites[world]} onSiteChange={onSiteChange}
             picked={pickedPoints[world]} onPick={onPlanetPick} onFindAnalog={value => { setTargetWorld(value); setPage('finder'); }}
-            basemap={basemap} exaggeration={exaggeration} resetKey={resetKey} />)}
+            basemap={basemap} exaggeration={exaggeration} resetKey={resetKey}
+            collapsed={worldMode === 'triple' && world !== activeTripleMap} onActivate={() => setActiveTripleMap(world)} />)}
           {isFullscreen && <button className="stage-close" onClick={toggleFullscreen}>Exit fullscreen</button>}
         </div>
-        <div className="explore-footnote"><span>EARTH: external tiles and terrain DEM</span><span>MARS: NASA Viking imagery and MOLA</span><span>MOON: NASA LRO imagery / LOLA terrain when fetched</span></div>
+        <div className="explore-footnote"><span>ALL THREE: only one interactive WebGL map runs at a time</span><span>EARTH: external tiles and terrain DEM</span><span>MARS: NASA Viking imagery and MOLA</span><span>MOON: NASA LRO imagery / LOLA terrain when fetched</span></div>
         <button className="primary-button" onClick={() => setPage('finder')}>Back to Earth analog ranking</button>
       </>}
       {page === 'evidence' && <EvidencePage targetWorld={targetWorld} targetId={sites[targetWorld]} earthId={selectedEarthId} />}
-      {page === 'analysis' && <>
-        <section className="page-heading"><span className="eyebrow">04 / MEASURED DEM ANALYSIS / SEPARATE EXPERIMENT</span>
-          <h1>How well does Edziza terrain match one Mars area?</h1>
-          <p>Preserved 12 km × 12 km Earth–Mars DEM experiment: three Edziza field patches versus one Hecates Tholus patch. These DEM-derived numbers are independently measured from the new eight-domain, qualitative research screening.</p></section>
-        <ScienceAnalysis onOpenMap={id => openEarthMap(id)} />
-      </>}
       {page === 'method' && <MethodPage onFind={() => setPage('finder')} />}
     </main>
-    <footer className="site-footer"><span>EDZIZA / NASA SPACE APPS CHALLENGE / RESEARCH PROTOTYPE</span>
-      <span>11 Earth analogs · 6 planetary targets · 8 evidence-covered domains · Ranking is not an official NASA score</span>
+    <footer className="site-footer"><span>CyberLeek / NASA SPACE APPS CHALLENGE / RESEARCH PROTOTYPE</span>
+      <span>8 Earth analogs · 6 planetary targets · 8 evidence-covered domains · Ranking is not an official NASA score</span>
     </footer>
   </div>;
 }

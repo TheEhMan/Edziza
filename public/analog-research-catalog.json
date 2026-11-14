@@ -1,12 +1,12 @@
 {
-  "title": "EDZIZA eight-domain research screening catalogue",
+  "title": "CyberLeek eight-domain research screening catalogue",
   "challenge": "2026 Space Apps - Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars",
   "scientificStatus": "Expert-curated qualitative research experiment suitability profiles. Not universally measured NASA physical readings, not a validated lander safety model, not a global exhaustive search.",
   "domainCount": 8,
-  "earthCount": 11,
+  "earthCount": 8,
   "planetaryTargets": 6,
   "featureTags": "Controlled project tags describing possible Earth field-test utility, not field-measured abundances.",
-  "scoring": "For each domain: 100 × matched planetary research-goal tags / number of goals. Weighted mean over enabled domain priorities.",
+  "scoring": "Domain: 100 × (0.7×goal coverage + 0.3×trait precision) × planet/domain transfer factor. Weighted eight-domain score blended with optional latitude-regime operational prior. Click distance is a separate confidence warning, not an index multiplier. No NASA calibration.",
   "defaultWeights": {
     "geology": 4,
     "terrain": 4,
@@ -84,260 +84,6 @@
     }
   ],
   "earth": [
-    {
-      "id": "snowshoe",
-      "name": "Snowshoe Lava Field",
-      "region": "Mount Edziza, British Columbia, Canada",
-      "lat": 57.65,
-      "lon": -130.667,
-      "source": "https://bcparks.ca/mount-edziza-park/",
-      "reason": "Basaltic lava and ice-contact process research, but not a direct Moon or Mars climate analog.",
-      "coords": [
-        -130.667,
-        57.65
-      ],
-      "zoom": 11.1,
-      "pitch": 52,
-      "bearing": 0,
-      "domains": {
-        "geology": {
-          "summary": "Exposed basaltic lava-field analog; local mineral abundances are not included.",
-          "features": [
-            "basalt",
-            "volcanic"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "terrain": {
-          "summary": "Rocky lava flow surfaces and volcanic relief allow traverse hypotheses.",
-          "features": [
-            "lava-flow",
-            "rough",
-            "rocky"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "thermal": {
-          "summary": "High-latitude alpine conditions; Earth air and seasonality remain unlike lunar or Martian cycles.",
-          "features": [
-            "cold",
-            "dry-swings"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "resources": {
-          "summary": "Glaciers and volcanic/ice interaction provide ice-field research opportunities.",
-          "features": [
-            "ice",
-            "volcanic-rock"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "dust": {
-          "summary": "Loose volcanic fragment and erosion study; not a Martian global dust storm.",
-          "features": [
-            "grit",
-            "volcanic-fragments"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "biology": {
-          "summary": "Living Earth environment; sampling contamination and rock/ice microbial tests are possible research goals.",
-          "features": [
-            "sampling-control",
-            "extremophile-tests"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "subsurface": {
-          "summary": "Ice/rock contacts offer subsurface-sampling concepts; lava-tube presence at this pin is not established.",
-          "features": [
-            "subsurface-sampling"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "operations": {
-          "summary": "Remote rugged site useful for planning traverses, communications and field logistics, subject to permission.",
-          "features": [
-            "remote",
-            "rough-route",
-            "sampling"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        }
-      }
-    },
-    {
-      "id": "summit",
-      "name": "Mount Edziza Summit",
-      "region": "Mount Edziza, British Columbia, Canada",
-      "lat": 57.72,
-      "lon": -130.63,
-      "source": "https://bcparks.ca/mount-edziza-park/",
-      "reason": "Steep glaciated volcano terrain; strong for cold mobility tests, weaker for flat landing plains.",
-      "coords": [
-        -130.63,
-        57.72
-      ],
-      "zoom": 10.4,
-      "pitch": 52,
-      "bearing": 0,
-      "domains": {
-        "geology": {
-          "summary": "Volcanic edifice and exposed rock; specific rock chemistry must be verified in the field.",
-          "features": [
-            "volcanic",
-            "basalt"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "terrain": {
-          "summary": "Steep glaciated volcanic slopes; strong traverse hazard analog.",
-          "features": [
-            "steep",
-            "rough",
-            "rocky"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "thermal": {
-          "summary": "Cold alpine setting with seasons and long summer daylight.",
-          "features": [
-            "cold",
-            "polar-light"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "resources": {
-          "summary": "Glaciers and exposed volcanic rock for ice and material-handling concepts.",
-          "features": [
-            "ice",
-            "volcanic-rock"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "dust": {
-          "summary": "Rock fragments and glacial erosion; no equivalence to airless lunar dust.",
-          "features": [
-            "grit",
-            "volcanic-fragments"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "biology": {
-          "summary": "Earth biology present; useful for contamination protocols, not sterile-site simulation.",
-          "features": [
-            "sampling-control",
-            "extremophile-tests"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "subsurface": {
-          "summary": "Glacier/rock interfaces suit shallow sampling scenarios; cave opening not documented by this source.",
-          "features": [
-            "subsurface-sampling",
-            "ice-cemented"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "operations": {
-          "summary": "Challenging remote steep-terrain field exercise; access constraints require separate review.",
-          "features": [
-            "remote",
-            "rough-route",
-            "hazard-assessment"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        }
-      }
-    },
-    {
-      "id": "desolation",
-      "name": "Desolation Lava Field",
-      "region": "Mount Edziza, British Columbia, Canada",
-      "lat": 57.816667,
-      "lon": -130.616667,
-      "source": "https://bcparks.ca/mount-edziza-park/",
-      "reason": "Lava flows and cinder cones support testing volcanic geologic interpretation and rover traction.",
-      "coords": [
-        -130.616667,
-        57.816667
-      ],
-      "zoom": 11.1,
-      "pitch": 52,
-      "bearing": 0,
-      "domains": {
-        "geology": {
-          "summary": "Basaltic lava-flow and volcanic-cone landscape.",
-          "features": [
-            "volcanic",
-            "basalt",
-            "pyroclastic"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "terrain": {
-          "summary": "Variable rough lava and cinder cones for path planning.",
-          "features": [
-            "lava-flow",
-            "rough",
-            "steep",
-            "rocky"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "thermal": {
-          "summary": "Cool northern plateau conditions; does not reproduce planetary vacuum or low pressure.",
-          "features": [
-            "cold",
-            "dry-swings"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "resources": {
-          "summary": "Volcanic rock provides an engineering materials analog; site ice is not quantified.",
-          "features": [
-            "volcanic-rock",
-            "regolith"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "dust": {
-          "summary": "Cinders and granular volcanic material offer loose-particle mobility testing.",
-          "features": [
-            "grit",
-            "volcanic-fragments",
-            "loose-grains"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "biology": {
-          "summary": "Field sampling can exercise biological contamination controls in an Earth ecosystem.",
-          "features": [
-            "sampling-control",
-            "extremophile-tests"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "subsurface": {
-          "summary": "Lava-flow geology supports subsurface mapping exercises; no confirmed cave is asserted at the pin.",
-          "features": [
-            "subsurface-sampling"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        },
-        "operations": {
-          "summary": "Remote rough-terrain rover and sampling exercise candidate, pending local access rules.",
-          "features": [
-            "remote",
-            "rough-route",
-            "rover",
-            "sampling"
-          ],
-          "source": "https://bcparks.ca/mount-edziza-park/"
-        }
-      }
-    },
     {
       "id": "atacama",
       "name": "Yungay / Atacama Desert",
@@ -1529,166 +1275,121 @@
       {
         "earthId": "fagradalsfjall",
         "earthName": "Fagradalsfjall Lava Field",
-        "projectScreeningScore": 72.3,
+        "projectScreeningScore": 61.3,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
-          "thermal": 100,
+          "geology": 86.4,
+          "terrain": 86,
+          "thermal": 74,
           "resources": 0,
-          "dust": 33,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 75
-        }
-      },
-      {
-        "earthId": "desolation",
-        "earthName": "Desolation Lava Field",
-        "projectScreeningScore": 71.2,
-        "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
-          "thermal": 100,
-          "resources": 0,
-          "dust": 33,
-          "biology": 50,
-          "subsurface": 50,
-          "operations": 100
-        }
-      },
-      {
-        "earthId": "haughton",
-        "earthName": "Haughton Impact Crater",
-        "projectScreeningScore": 71.2,
-        "categoryFeatureCoverageScores": {
-          "geology": 0,
-          "terrain": 100,
-          "thermal": 100,
-          "resources": 100,
-          "dust": 33,
-          "biology": 50,
-          "subsurface": 100,
-          "operations": 100
-        }
-      },
-      {
-        "earthId": "summit",
-        "earthName": "Mount Edziza Summit",
-        "projectScreeningScore": 71.2,
-        "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
-          "thermal": 50,
-          "resources": 50,
-          "dust": 33,
-          "biology": 50,
-          "subsurface": 100,
-          "operations": 50
-        }
-      },
-      {
-        "earthId": "snowshoe",
-        "earthName": "Snowshoe Lava Field",
-        "projectScreeningScore": 68.6,
-        "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 67,
-          "thermal": 100,
-          "resources": 50,
-          "dust": 33,
-          "biology": 50,
-          "subsurface": 50,
-          "operations": 75
+          "dust": 27.3,
+          "biology": 64.8,
+          "subsurface": 55.9,
+          "operations": 67.5
         }
       },
       {
         "earthId": "lavabeds",
         "earthName": "Lava Beds National Monument",
-        "projectScreeningScore": 63.2,
+        "projectScreeningScore": 58.1,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
-          "thermal": 50,
+          "geology": 86.4,
+          "terrain": 86,
+          "thermal": 37,
           "resources": 0,
-          "dust": 33,
-          "biology": 50,
-          "subsurface": 50,
-          "operations": 75
+          "dust": 27.3,
+          "biology": 36,
+          "subsurface": 38.7,
+          "operations": 63.4
+        }
+      },
+      {
+        "earthId": "haughton",
+        "earthName": "Haughton Impact Crater",
+        "projectScreeningScore": 57.2,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 86,
+          "thermal": 66.6,
+          "resources": 86,
+          "dust": 31.4,
+          "biology": 32.4,
+          "subsurface": 86,
+          "operations": 81
         }
       },
       {
         "earthId": "cratersmoon",
         "earthName": "Craters of the Moon",
-        "projectScreeningScore": 61.8,
+        "projectScreeningScore": 56.7,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 67,
-          "thermal": 50,
+          "geology": 86.4,
+          "terrain": 57.4,
+          "thermal": 37,
           "resources": 0,
-          "dust": 33,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 75
-        }
-      },
-      {
-        "earthId": "dryvalleys",
-        "earthName": "McMurdo Dry Valleys",
-        "projectScreeningScore": 61.5,
-        "categoryFeatureCoverageScores": {
-          "geology": 0,
-          "terrain": 67,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 67,
-          "biology": 100,
-          "subsurface": 100,
-          "operations": 50
+          "dust": 27.3,
+          "biology": 72,
+          "subsurface": 38.7,
+          "operations": 67.5
         }
       },
       {
         "earthId": "kilauea",
         "earthName": "Kīlauea Volcanic Field",
-        "projectScreeningScore": 59.8,
+        "projectScreeningScore": 54.9,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
+          "geology": 86.4,
+          "terrain": 86,
           "thermal": 0,
           "resources": 0,
-          "dust": 33,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 50
+          "dust": 27.3,
+          "biology": 64.8,
+          "subsurface": 38.7,
+          "operations": 45
+        }
+      },
+      {
+        "earthId": "dryvalleys",
+        "earthName": "McMurdo Dry Valleys",
+        "projectScreeningScore": 47.5,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 57.4,
+          "thermal": 31.5,
+          "resources": 77.4,
+          "dust": 54.7,
+          "biology": 61.2,
+          "subsurface": 77.4,
+          "operations": 42.3
         }
       },
       {
         "earthId": "atacama",
         "earthName": "Yungay / Atacama Desert",
-        "projectScreeningScore": 40.1,
+        "projectScreeningScore": 41.8,
         "categoryFeatureCoverageScores": {
           "geology": 0,
-          "terrain": 33,
-          "thermal": 50,
+          "terrain": 31,
+          "thermal": 31.5,
           "resources": 0,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 50
+          "dust": 75.9,
+          "biology": 64.8,
+          "subsurface": 55.9,
+          "operations": 49.5
         }
       },
       {
         "earthId": "deathvalley",
         "earthName": "Badwater / Death Valley",
-        "projectScreeningScore": 36.7,
+        "projectScreeningScore": 40.7,
         "categoryFeatureCoverageScores": {
           "geology": 0,
-          "terrain": 33,
-          "thermal": 50,
+          "terrain": 31,
+          "thermal": 31.5,
           "resources": 0,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 25
+          "dust": 75.9,
+          "biology": 72,
+          "subsurface": 55.9,
+          "operations": 29.2
         }
       }
     ],
@@ -1696,333 +1397,243 @@
       {
         "earthId": "cratersmoon",
         "earthName": "Craters of the Moon",
-        "projectScreeningScore": 92.5,
+        "projectScreeningScore": 76.8,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 67,
-          "biology": 100,
-          "subsurface": 100,
-          "operations": 100
-        }
-      },
-      {
-        "earthId": "fagradalsfjall",
-        "earthName": "Fagradalsfjall Lava Field",
-        "projectScreeningScore": 87.9,
-        "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 67,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 100
-        }
-      },
-      {
-        "earthId": "desolation",
-        "earthName": "Desolation Lava Field",
-        "projectScreeningScore": 83.4,
-        "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 67,
-          "biology": 50,
-          "subsurface": 50,
-          "operations": 100
+          "geology": 86.4,
+          "terrain": 86,
+          "thermal": 37,
+          "resources": 86,
+          "dust": 54.7,
+          "biology": 72,
+          "subsurface": 77.4,
+          "operations": 83.3
         }
       },
       {
         "earthId": "kilauea",
         "earthName": "Kīlauea Volcanic Field",
-        "projectScreeningScore": 83.4,
+        "projectScreeningScore": 72.4,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
+          "geology": 86.4,
+          "terrain": 86,
           "thermal": 0,
-          "resources": 100,
-          "dust": 67,
-          "biology": 100,
-          "subsurface": 100,
-          "operations": 67
+          "resources": 86,
+          "dust": 54.7,
+          "biology": 64.8,
+          "subsurface": 77.4,
+          "operations": 55.5
+        }
+      },
+      {
+        "earthId": "fagradalsfjall",
+        "earthName": "Fagradalsfjall Lava Field",
+        "projectScreeningScore": 71.2,
+        "categoryFeatureCoverageScores": {
+          "geology": 86.4,
+          "terrain": 86,
+          "thermal": 37,
+          "resources": 86,
+          "dust": 54.7,
+          "biology": 64.8,
+          "subsurface": 55.9,
+          "operations": 83.3
         }
       },
       {
         "earthId": "lavabeds",
         "earthName": "Lava Beds National Monument",
-        "projectScreeningScore": 83.4,
+        "projectScreeningScore": 70.9,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
+          "geology": 86.4,
+          "terrain": 86,
           "thermal": 0,
-          "resources": 100,
-          "dust": 67,
-          "biology": 50,
-          "subsurface": 100,
-          "operations": 100
-        }
-      },
-      {
-        "earthId": "snowshoe",
-        "earthName": "Snowshoe Lava Field",
-        "projectScreeningScore": 69,
-        "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
-          "thermal": 50,
-          "resources": 50,
-          "dust": 33,
-          "biology": 50,
-          "subsurface": 50,
-          "operations": 67
-        }
-      },
-      {
-        "earthId": "summit",
-        "earthName": "Mount Edziza Summit",
-        "projectScreeningScore": 58.3,
-        "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 67,
-          "thermal": 50,
-          "resources": 50,
-          "dust": 33,
-          "biology": 50,
-          "subsurface": 50,
-          "operations": 33
+          "resources": 86,
+          "dust": 54.7,
+          "biology": 36,
+          "subsurface": 77.4,
+          "operations": 79.2
         }
       },
       {
         "earthId": "atacama",
         "earthName": "Yungay / Atacama Desert",
-        "projectScreeningScore": 49.2,
+        "projectScreeningScore": 49.3,
         "categoryFeatureCoverageScores": {
           "geology": 0,
-          "terrain": 33,
-          "thermal": 50,
-          "resources": 50,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 67
-        }
-      },
-      {
-        "earthId": "dryvalleys",
-        "earthName": "McMurdo Dry Valleys",
-        "projectScreeningScore": 48.5,
-        "categoryFeatureCoverageScores": {
-          "geology": 0,
-          "terrain": 67,
-          "thermal": 100,
-          "resources": 0,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 33
-        }
-      },
-      {
-        "earthId": "haughton",
-        "earthName": "Haughton Impact Crater",
-        "projectScreeningScore": 45.5,
-        "categoryFeatureCoverageScores": {
-          "geology": 0,
-          "terrain": 67,
-          "thermal": 50,
-          "resources": 0,
-          "dust": 67,
-          "biology": 50,
-          "subsurface": 50,
-          "operations": 100
+          "terrain": 31,
+          "thermal": 31.5,
+          "resources": 43,
+          "dust": 75.9,
+          "biology": 64.8,
+          "subsurface": 55.9,
+          "operations": 60
         }
       },
       {
         "earthId": "deathvalley",
         "earthName": "Badwater / Death Valley",
-        "projectScreeningScore": 44.6,
+        "projectScreeningScore": 44.5,
         "categoryFeatureCoverageScores": {
           "geology": 0,
-          "terrain": 33,
-          "thermal": 50,
-          "resources": 50,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 33
+          "terrain": 31,
+          "thermal": 31.5,
+          "resources": 38.7,
+          "dust": 75.9,
+          "biology": 72,
+          "subsurface": 55.9,
+          "operations": 34.5
+        }
+      },
+      {
+        "earthId": "haughton",
+        "earthName": "Haughton Impact Crater",
+        "projectScreeningScore": 37.6,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 57.4,
+          "thermal": 33.3,
+          "resources": 0,
+          "dust": 62.9,
+          "biology": 32.4,
+          "subsurface": 43,
+          "operations": 76.5
+        }
+      },
+      {
+        "earthId": "dryvalleys",
+        "earthName": "McMurdo Dry Valleys",
+        "projectScreeningScore": 37.1,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 57.4,
+          "thermal": 62.9,
+          "resources": 0,
+          "dust": 82,
+          "biology": 61.2,
+          "subsurface": 38.7,
+          "operations": 26.4
         }
       }
     ],
     "mars:albor": [
       {
-        "earthId": "fagradalsfjall",
-        "earthName": "Fagradalsfjall Lava Field",
-        "projectScreeningScore": 89.5,
+        "earthId": "kilauea",
+        "earthName": "Kīlauea Volcanic Field",
+        "projectScreeningScore": 69.5,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 67,
-          "thermal": 100,
-          "resources": 100,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 100,
-          "operations": 67
+          "geology": 86.4,
+          "terrain": 57.4,
+          "thermal": 0,
+          "resources": 86,
+          "dust": 73.8,
+          "biology": 64.8,
+          "subsurface": 68.8,
+          "operations": 55.5
         }
       },
       {
-        "earthId": "desolation",
-        "earthName": "Desolation Lava Field",
-        "projectScreeningScore": 85,
+        "earthId": "fagradalsfjall",
+        "earthName": "Fagradalsfjall Lava Field",
+        "projectScreeningScore": 69.2,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 67,
-          "thermal": 100,
-          "resources": 100,
-          "dust": 100,
-          "biology": 50,
-          "subsurface": 100,
-          "operations": 67
+          "geology": 86.4,
+          "terrain": 57.4,
+          "thermal": 74,
+          "resources": 86,
+          "dust": 73.8,
+          "biology": 64.8,
+          "subsurface": 86,
+          "operations": 55.5
         }
       },
       {
         "earthId": "lavabeds",
         "earthName": "Lava Beds National Monument",
-        "projectScreeningScore": 84.9,
+        "projectScreeningScore": 69.2,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 67,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 100,
-          "biology": 50,
-          "subsurface": 100,
-          "operations": 100
-        }
-      },
-      {
-        "earthId": "kilauea",
-        "earthName": "Kīlauea Volcanic Field",
-        "projectScreeningScore": 80.4,
-        "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 67,
-          "thermal": 0,
-          "resources": 100,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 100,
-          "operations": 67
+          "geology": 86.4,
+          "terrain": 57.4,
+          "thermal": 37,
+          "resources": 86,
+          "dust": 73.8,
+          "biology": 36,
+          "subsurface": 68.8,
+          "operations": 79.2
         }
       },
       {
         "earthId": "cratersmoon",
         "earthName": "Craters of the Moon",
-        "projectScreeningScore": 78.8,
+        "projectScreeningScore": 64.5,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 33,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 100,
-          "operations": 67
-        }
-      },
-      {
-        "earthId": "summit",
-        "earthName": "Mount Edziza Summit",
-        "projectScreeningScore": 73.6,
-        "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 67,
-          "thermal": 50,
-          "resources": 50,
-          "dust": 100,
-          "biology": 50,
-          "subsurface": 100,
-          "operations": 67
-        }
-      },
-      {
-        "earthId": "snowshoe",
-        "earthName": "Snowshoe Lava Field",
-        "projectScreeningScore": 67.3,
-        "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 33,
-          "thermal": 100,
-          "resources": 50,
-          "dust": 100,
-          "biology": 50,
-          "subsurface": 100,
-          "operations": 33
+          "geology": 86.4,
+          "terrain": 28.7,
+          "thermal": 37,
+          "resources": 86,
+          "dust": 73.8,
+          "biology": 72,
+          "subsurface": 68.8,
+          "operations": 55.5
         }
       },
       {
         "earthId": "haughton",
         "earthName": "Haughton Impact Crater",
-        "projectScreeningScore": 59.1,
+        "projectScreeningScore": 44.2,
         "categoryFeatureCoverageScores": {
           "geology": 0,
-          "terrain": 100,
-          "thermal": 100,
+          "terrain": 86,
+          "thermal": 66.6,
           "resources": 0,
-          "dust": 50,
-          "biology": 50,
-          "subsurface": 100,
-          "operations": 100
+          "dust": 41,
+          "biology": 32.4,
+          "subsurface": 73.1,
+          "operations": 76.5
         }
       },
       {
         "earthId": "atacama",
         "earthName": "Yungay / Atacama Desert",
-        "projectScreeningScore": 38.6,
+        "projectScreeningScore": 39.4,
         "categoryFeatureCoverageScores": {
           "geology": 0,
           "terrain": 0,
-          "thermal": 50,
-          "resources": 50,
-          "dust": 50,
-          "biology": 100,
-          "subsurface": 100,
-          "operations": 33
-        }
-      },
-      {
-        "earthId": "dryvalleys",
-        "earthName": "McMurdo Dry Valleys",
-        "projectScreeningScore": 37.8,
-        "categoryFeatureCoverageScores": {
-          "geology": 0,
-          "terrain": 33,
-          "thermal": 50,
-          "resources": 0,
-          "dust": 50,
-          "biology": 100,
-          "subsurface": 100,
-          "operations": 33
+          "thermal": 31.5,
+          "resources": 43,
+          "dust": 34.9,
+          "biology": 64.8,
+          "subsurface": 86,
+          "operations": 30
         }
       },
       {
         "earthId": "deathvalley",
         "earthName": "Badwater / Death Valley",
-        "projectScreeningScore": 34.1,
+        "projectScreeningScore": 33.9,
         "categoryFeatureCoverageScores": {
           "geology": 0,
           "terrain": 0,
-          "thermal": 50,
-          "resources": 50,
-          "dust": 50,
-          "biology": 100,
-          "subsurface": 100,
+          "thermal": 31.5,
+          "resources": 38.7,
+          "dust": 34.9,
+          "biology": 72,
+          "subsurface": 86,
           "operations": 0
+        }
+      },
+      {
+        "earthId": "dryvalleys",
+        "earthName": "McMurdo Dry Valleys",
+        "projectScreeningScore": 28,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 28.7,
+          "thermal": 31.5,
+          "resources": 0,
+          "dust": 36.9,
+          "biology": 61.2,
+          "subsurface": 68.8,
+          "operations": 26.4
         }
       }
     ],
@@ -2030,166 +1641,121 @@
       {
         "earthId": "cratersmoon",
         "earthName": "Craters of the Moon",
-        "projectScreeningScore": 95.5,
+        "projectScreeningScore": 68.2,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 100,
-          "operations": 100
+          "geology": 83.7,
+          "terrain": 75.7,
+          "thermal": 31,
+          "resources": 79,
+          "dust": 64.8,
+          "biology": 57,
+          "subsurface": 73.8,
+          "operations": 77.7
         }
       },
       {
         "earthId": "kilauea",
         "earthName": "Kīlauea Volcanic Field",
-        "projectScreeningScore": 86.4,
+        "projectScreeningScore": 66.1,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 50,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 100,
-          "operations": 100
+          "geology": 83.7,
+          "terrain": 37.8,
+          "thermal": 31,
+          "resources": 79,
+          "dust": 64.8,
+          "biology": 53.6,
+          "subsurface": 73.8,
+          "operations": 77.7
         }
       },
       {
         "earthId": "lavabeds",
         "earthName": "Lava Beds National Monument",
-        "projectScreeningScore": 86.4,
+        "projectScreeningScore": 62.2,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 50,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 100,
-          "operations": 100
+          "geology": 83.7,
+          "terrain": 37.8,
+          "thermal": 31,
+          "resources": 79,
+          "dust": 64.8,
+          "biology": 57,
+          "subsurface": 73.8,
+          "operations": 73.9
         }
       },
       {
         "earthId": "fagradalsfjall",
         "earthName": "Fagradalsfjall Lava Field",
-        "projectScreeningScore": 81.8,
+        "projectScreeningScore": 57.1,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 50,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 100
-        }
-      },
-      {
-        "earthId": "desolation",
-        "earthName": "Desolation Lava Field",
-        "projectScreeningScore": 77.3,
-        "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 50,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 67
+          "geology": 83.7,
+          "terrain": 37.8,
+          "thermal": 31,
+          "resources": 79,
+          "dust": 64.8,
+          "biology": 53.6,
+          "subsurface": 53.3,
+          "operations": 77.7
         }
       },
       {
         "earthId": "atacama",
         "earthName": "Yungay / Atacama Desert",
-        "projectScreeningScore": 70.5,
+        "projectScreeningScore": 54.9,
         "categoryFeatureCoverageScores": {
           "geology": 0,
-          "terrain": 100,
-          "thermal": 100,
-          "resources": 50,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 100
+          "terrain": 80.1,
+          "thermal": 52.7,
+          "resources": 39.5,
+          "dust": 61.2,
+          "biology": 53.6,
+          "subsurface": 53.3,
+          "operations": 84
         }
       },
       {
         "earthId": "deathvalley",
         "earthName": "Badwater / Death Valley",
-        "projectScreeningScore": 66,
+        "projectScreeningScore": 50.4,
         "categoryFeatureCoverageScores": {
           "geology": 0,
-          "terrain": 100,
-          "thermal": 100,
-          "resources": 50,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 67
-        }
-      },
-      {
-        "earthId": "snowshoe",
-        "earthName": "Snowshoe Lava Field",
-        "projectScreeningScore": 61.3,
-        "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 50,
-          "thermal": 50,
-          "resources": 50,
-          "dust": 50,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 33
-        }
-      },
-      {
-        "earthId": "summit",
-        "earthName": "Mount Edziza Summit",
-        "projectScreeningScore": 52.3,
-        "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 50,
-          "thermal": 0,
-          "resources": 50,
-          "dust": 50,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 0
+          "terrain": 80.1,
+          "thermal": 52.7,
+          "resources": 35.6,
+          "dust": 61.2,
+          "biology": 57,
+          "subsurface": 53.3,
+          "operations": 64.4
         }
       },
       {
         "earthId": "haughton",
         "earthName": "Haughton Impact Crater",
-        "projectScreeningScore": 45.5,
+        "projectScreeningScore": 28.9,
         "categoryFeatureCoverageScores": {
           "geology": 0,
-          "terrain": 50,
-          "thermal": 50,
+          "terrain": 37.8,
+          "thermal": 27.9,
           "resources": 0,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 67
+          "dust": 72,
+          "biology": 53.6,
+          "subsurface": 41,
+          "operations": 47.6
         }
       },
       {
         "earthId": "dryvalleys",
         "earthName": "McMurdo Dry Valleys",
-        "projectScreeningScore": 45.4,
+        "projectScreeningScore": 28.6,
         "categoryFeatureCoverageScores": {
           "geology": 0,
-          "terrain": 100,
+          "terrain": 75.7,
           "thermal": 0,
           "resources": 0,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 50,
-          "operations": 33
+          "dust": 64.8,
+          "biology": 51.9,
+          "subsurface": 36.9,
+          "operations": 24.6
         }
       }
     ],
@@ -2197,165 +1763,120 @@
       {
         "earthId": "haughton",
         "earthName": "Haughton Impact Crater",
-        "projectScreeningScore": 86,
+        "projectScreeningScore": 69.8,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 75,
-          "thermal": 67,
-          "resources": 100,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 67,
-          "operations": 75
+          "geology": 83.7,
+          "terrain": 66.7,
+          "thermal": 41.3,
+          "resources": 79,
+          "dust": 72,
+          "biology": 60.3,
+          "subsurface": 62.9,
+          "operations": 56.7
         }
       },
       {
         "earthId": "dryvalleys",
         "earthName": "McMurdo Dry Valleys",
-        "projectScreeningScore": 81.8,
+        "projectScreeningScore": 63.8,
         "categoryFeatureCoverageScores": {
-          "geology": 50,
-          "terrain": 50,
-          "thermal": 100,
-          "resources": 100,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 100,
-          "operations": 100
-        }
-      },
-      {
-        "earthId": "summit",
-        "earthName": "Mount Edziza Summit",
-        "projectScreeningScore": 48.5,
-        "categoryFeatureCoverageScores": {
-          "geology": 0,
-          "terrain": 50,
-          "thermal": 67,
-          "resources": 50,
-          "dust": 50,
-          "biology": 100,
-          "subsurface": 67,
-          "operations": 50
-        }
-      },
-      {
-        "earthId": "desolation",
-        "earthName": "Desolation Lava Field",
-        "projectScreeningScore": 36.7,
-        "categoryFeatureCoverageScores": {
-          "geology": 0,
-          "terrain": 50,
-          "thermal": 33,
-          "resources": 0,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 33,
-          "operations": 25
-        }
-      },
-      {
-        "earthId": "lavabeds",
-        "earthName": "Lava Beds National Monument",
-        "projectScreeningScore": 36.7,
-        "categoryFeatureCoverageScores": {
-          "geology": 0,
-          "terrain": 50,
-          "thermal": 33,
-          "resources": 0,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 33,
-          "operations": 25
-        }
-      },
-      {
-        "earthId": "snowshoe",
-        "earthName": "Snowshoe Lava Field",
-        "projectScreeningScore": 34.4,
-        "categoryFeatureCoverageScores": {
-          "geology": 0,
-          "terrain": 25,
-          "thermal": 33,
-          "resources": 50,
-          "dust": 50,
-          "biology": 100,
-          "subsurface": 33,
-          "operations": 25
-        }
-      },
-      {
-        "earthId": "kilauea",
-        "earthName": "Kīlauea Volcanic Field",
-        "projectScreeningScore": 33.7,
-        "categoryFeatureCoverageScores": {
-          "geology": 0,
-          "terrain": 50,
-          "thermal": 0,
-          "resources": 0,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 33,
-          "operations": 25
+          "geology": 41.8,
+          "terrain": 44.5,
+          "thermal": 57.4,
+          "resources": 71.1,
+          "dust": 64.8,
+          "biology": 57,
+          "subsurface": 82,
+          "operations": 79
         }
       },
       {
         "earthId": "fagradalsfjall",
         "earthName": "Fagradalsfjall Lava Field",
-        "projectScreeningScore": 33.3,
+        "projectScreeningScore": 32.4,
         "categoryFeatureCoverageScores": {
           "geology": 0,
-          "terrain": 50,
-          "thermal": 33,
+          "terrain": 44.5,
+          "thermal": 23.8,
           "resources": 0,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 33,
+          "dust": 64.8,
+          "biology": 60.3,
+          "subsurface": 43.7,
           "operations": 0
+        }
+      },
+      {
+        "earthId": "lavabeds",
+        "earthName": "Lava Beds National Monument",
+        "projectScreeningScore": 30.3,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 44.5,
+          "thermal": 23.8,
+          "resources": 0,
+          "dust": 64.8,
+          "biology": 67,
+          "subsurface": 27.3,
+          "operations": 19.7
+        }
+      },
+      {
+        "earthId": "kilauea",
+        "earthName": "Kīlauea Volcanic Field",
+        "projectScreeningScore": 24.3,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 44.5,
+          "thermal": 0,
+          "resources": 0,
+          "dust": 64.8,
+          "biology": 60.3,
+          "subsurface": 27.3,
+          "operations": 21
         }
       },
       {
         "earthId": "cratersmoon",
         "earthName": "Craters of the Moon",
-        "projectScreeningScore": 21.2,
+        "projectScreeningScore": 20.4,
         "categoryFeatureCoverageScores": {
           "geology": 0,
-          "terrain": 25,
+          "terrain": 22.3,
           "thermal": 0,
           "resources": 0,
-          "dust": 100,
-          "biology": 50,
-          "subsurface": 33,
+          "dust": 64.8,
+          "biology": 33.5,
+          "subsurface": 27.3,
           "operations": 0
         }
       },
       {
         "earthId": "deathvalley",
         "earthName": "Badwater / Death Valley",
-        "projectScreeningScore": 16.6,
+        "projectScreeningScore": 16.8,
         "categoryFeatureCoverageScores": {
           "geology": 0,
           "terrain": 0,
           "thermal": 0,
           "resources": 0,
-          "dust": 100,
-          "biology": 50,
-          "subsurface": 33,
+          "dust": 61.2,
+          "biology": 33.5,
+          "subsurface": 43.7,
           "operations": 0
         }
       },
       {
         "earthId": "atacama",
         "earthName": "Yungay / Atacama Desert",
-        "projectScreeningScore": 16.6,
+        "projectScreeningScore": 14.5,
         "categoryFeatureCoverageScores": {
           "geology": 0,
           "terrain": 0,
           "thermal": 0,
           "resources": 0,
-          "dust": 100,
-          "biology": 50,
-          "subsurface": 33,
+          "dust": 61.2,
+          "biology": 30.2,
+          "subsurface": 43.7,
           "operations": 0
         }
       }
@@ -2364,166 +1885,121 @@
       {
         "earthId": "kilauea",
         "earthName": "Kīlauea Volcanic Field",
-        "projectScreeningScore": 91,
+        "projectScreeningScore": 75.1,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 100,
-          "operations": 67
+          "geology": 93,
+          "terrain": 82.3,
+          "thermal": 31,
+          "resources": 79,
+          "dust": 72,
+          "biology": 60.3,
+          "subsurface": 82,
+          "operations": 51.8
         }
       },
       {
         "earthId": "lavabeds",
         "earthName": "Lava Beds National Monument",
-        "projectScreeningScore": 90.9,
+        "projectScreeningScore": 74.1,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 100,
-          "biology": 50,
-          "subsurface": 100,
-          "operations": 100
+          "geology": 93,
+          "terrain": 82.3,
+          "thermal": 31,
+          "resources": 79,
+          "dust": 72,
+          "biology": 33.5,
+          "subsurface": 82,
+          "operations": 73.9
         }
       },
       {
         "earthId": "cratersmoon",
         "earthName": "Craters of the Moon",
-        "projectScreeningScore": 89.5,
+        "projectScreeningScore": 72.6,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 67,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 100,
-          "operations": 100
+          "geology": 93,
+          "terrain": 54.9,
+          "thermal": 31,
+          "resources": 79,
+          "dust": 72,
+          "biology": 67,
+          "subsurface": 82,
+          "operations": 77.7
         }
       },
       {
         "earthId": "fagradalsfjall",
         "earthName": "Fagradalsfjall Lava Field",
-        "projectScreeningScore": 89.4,
+        "projectScreeningScore": 69.9,
         "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 100,
-          "biology": 100,
-          "subsurface": 33,
-          "operations": 100
-        }
-      },
-      {
-        "earthId": "desolation",
-        "earthName": "Desolation Lava Field",
-        "projectScreeningScore": 84.8,
-        "categoryFeatureCoverageScores": {
-          "geology": 100,
-          "terrain": 100,
-          "thermal": 50,
-          "resources": 100,
-          "dust": 100,
-          "biology": 50,
-          "subsurface": 33,
-          "operations": 100
-        }
-      },
-      {
-        "earthId": "snowshoe",
-        "earthName": "Snowshoe Lava Field",
-        "projectScreeningScore": 58.5,
-        "categoryFeatureCoverageScores": {
-          "geology": 67,
-          "terrain": 67,
-          "thermal": 50,
-          "resources": 50,
-          "dust": 67,
-          "biology": 50,
-          "subsurface": 33,
-          "operations": 67
-        }
-      },
-      {
-        "earthId": "summit",
-        "earthName": "Mount Edziza Summit",
-        "projectScreeningScore": 49.3,
-        "categoryFeatureCoverageScores": {
-          "geology": 67,
-          "terrain": 67,
-          "thermal": 0,
-          "resources": 50,
-          "dust": 67,
-          "biology": 50,
-          "subsurface": 33,
-          "operations": 33
-        }
-      },
-      {
-        "earthId": "haughton",
-        "earthName": "Haughton Impact Crater",
-        "projectScreeningScore": 44,
-        "categoryFeatureCoverageScores": {
-          "geology": 0,
-          "terrain": 67,
-          "thermal": 50,
-          "resources": 0,
-          "dust": 67,
-          "biology": 50,
-          "subsurface": 33,
-          "operations": 100
+          "geology": 93,
+          "terrain": 82.3,
+          "thermal": 31,
+          "resources": 79,
+          "dust": 72,
+          "biology": 60.3,
+          "subsurface": 43.7,
+          "operations": 77.7
         }
       },
       {
         "earthId": "atacama",
         "earthName": "Yungay / Atacama Desert",
-        "projectScreeningScore": 43.2,
+        "projectScreeningScore": 41.3,
         "categoryFeatureCoverageScores": {
           "geology": 0,
           "terrain": 0,
-          "thermal": 100,
-          "resources": 50,
-          "dust": 67,
-          "biology": 100,
-          "subsurface": 33,
-          "operations": 67
+          "thermal": 52.7,
+          "resources": 39.5,
+          "dust": 44.4,
+          "biology": 60.3,
+          "subsurface": 43.7,
+          "operations": 56
         }
       },
       {
         "earthId": "deathvalley",
         "earthName": "Badwater / Death Valley",
-        "projectScreeningScore": 38.6,
+        "projectScreeningScore": 37.2,
         "categoryFeatureCoverageScores": {
           "geology": 0,
           "terrain": 0,
-          "thermal": 100,
-          "resources": 50,
-          "dust": 67,
-          "biology": 100,
-          "subsurface": 33,
-          "operations": 33
+          "thermal": 52.7,
+          "resources": 35.6,
+          "dust": 44.4,
+          "biology": 67,
+          "subsurface": 43.7,
+          "operations": 32.2
+        }
+      },
+      {
+        "earthId": "haughton",
+        "earthName": "Haughton Impact Crater",
+        "projectScreeningScore": 34.7,
+        "categoryFeatureCoverageScores": {
+          "geology": 0,
+          "terrain": 54.9,
+          "thermal": 27.9,
+          "resources": 0,
+          "dust": 55.2,
+          "biology": 30.2,
+          "subsurface": 31.4,
+          "operations": 71.4
         }
       },
       {
         "earthId": "dryvalleys",
         "earthName": "McMurdo Dry Valleys",
-        "projectScreeningScore": 28.7,
+        "projectScreeningScore": 23.7,
         "categoryFeatureCoverageScores": {
           "geology": 0,
-          "terrain": 33,
+          "terrain": 27.4,
           "thermal": 0,
           "resources": 0,
-          "dust": 67,
-          "biology": 100,
-          "subsurface": 33,
-          "operations": 33
+          "dust": 48,
+          "biology": 57,
+          "subsurface": 27.3,
+          "operations": 24.6
         }
       }
     ]

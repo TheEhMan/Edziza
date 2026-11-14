@@ -42,39 +42,6 @@ function earth(id, name, region, lat, lon, source, reason, raw, mapZoom = 9) {
 
 // Site anchors are representative map centers, not boundaries of homogeneous areas.
 export const EARTH_ANALOGS = [
-  earth('snowshoe', 'Snowshoe Lava Field', 'Mount Edziza, British Columbia, Canada', 57.65, -130.667,
-    'https://bcparks.ca/mount-edziza-park/', 'Basaltic lava and ice-contact process research, but not a direct Moon or Mars climate analog.', {
-      geology: ['Exposed basaltic lava-field analog; local mineral abundances are not included.', 'basalt volcanic'],
-      terrain: ['Rocky lava flow surfaces and volcanic relief allow traverse hypotheses.', 'lava-flow rough rocky'],
-      thermal: ['High-latitude alpine conditions; Earth air and seasonality remain unlike lunar or Martian cycles.', 'cold dry-swings'],
-      resources: ['Glaciers and volcanic/ice interaction provide ice-field research opportunities.', 'ice volcanic-rock'],
-      dust: ['Loose volcanic fragment and erosion study; not a Martian global dust storm.', 'grit volcanic-fragments'],
-      biology: ['Living Earth environment; sampling contamination and rock/ice microbial tests are possible research goals.', 'sampling-control extremophile-tests'],
-      subsurface: ['Ice/rock contacts offer subsurface-sampling concepts; lava-tube presence at this pin is not established.', 'subsurface-sampling'],
-      operations: ['Remote rugged site useful for planning traverses, communications and field logistics, subject to permission.', 'remote rough-route sampling']
-    }, 11.1),
-  earth('summit', 'Mount Edziza Summit', 'Mount Edziza, British Columbia, Canada', 57.72, -130.63,
-    'https://bcparks.ca/mount-edziza-park/', 'Steep glaciated volcano terrain; strong for cold mobility tests, weaker for flat landing plains.', {
-      geology: ['Volcanic edifice and exposed rock; specific rock chemistry must be verified in the field.', 'volcanic basalt'],
-      terrain: ['Steep glaciated volcanic slopes; strong traverse hazard analog.', 'steep rough rocky'],
-      thermal: ['Cold alpine setting with seasons and long summer daylight.', 'cold polar-light'],
-      resources: ['Glaciers and exposed volcanic rock for ice and material-handling concepts.', 'ice volcanic-rock'],
-      dust: ['Rock fragments and glacial erosion; no equivalence to airless lunar dust.', 'grit volcanic-fragments'],
-      biology: ['Earth biology present; useful for contamination protocols, not sterile-site simulation.', 'sampling-control extremophile-tests'],
-      subsurface: ['Glacier/rock interfaces suit shallow sampling scenarios; cave opening not documented by this source.', 'subsurface-sampling ice-cemented'],
-      operations: ['Challenging remote steep-terrain field exercise; access constraints require separate review.', 'remote rough-route hazard-assessment']
-    }, 10.4),
-  earth('desolation', 'Desolation Lava Field', 'Mount Edziza, British Columbia, Canada', 57.816667, -130.616667,
-    'https://bcparks.ca/mount-edziza-park/', 'Lava flows and cinder cones support testing volcanic geologic interpretation and rover traction.', {
-      geology: ['Basaltic lava-flow and volcanic-cone landscape.', 'volcanic basalt pyroclastic'],
-      terrain: ['Variable rough lava and cinder cones for path planning.', 'lava-flow rough steep rocky'],
-      thermal: ['Cool northern plateau conditions; does not reproduce planetary vacuum or low pressure.', 'cold dry-swings'],
-      resources: ['Volcanic rock provides an engineering materials analog; site ice is not quantified.', 'volcanic-rock regolith'],
-      dust: ['Cinders and granular volcanic material offer loose-particle mobility testing.', 'grit volcanic-fragments loose-grains'],
-      biology: ['Field sampling can exercise biological contamination controls in an Earth ecosystem.', 'sampling-control extremophile-tests'],
-      subsurface: ['Lava-flow geology supports subsurface mapping exercises; no confirmed cave is asserted at the pin.', 'subsurface-sampling'],
-      operations: ['Remote rough-terrain rover and sampling exercise candidate, pending local access rules.', 'remote rough-route rover sampling']
-    }, 11.1),
   earth('atacama', 'Yungay / Atacama Desert', 'Antofagasta Region, Chile', -24.1, -69.93,
     NASA_FIELD, 'Extreme dry-soil and biosignature testing analog. Famous site, included as a benchmark.', {
       geology: ['Arid desert soils and mineral alteration context; not a generic basaltic shield volcano.', 'sedimentary salt regolith'],

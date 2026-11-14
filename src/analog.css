@@ -1,4 +1,4 @@
-/* EDZIZA planetary-to-Earth analog discovery workflow */
+/* CyberLeek planetary-to-Earth analog discovery workflow */
 .analog-finder { padding: 0 0 50px; }
 .analog-hero { padding: 50px 0 31px; display: grid; grid-template-columns: minmax(0,1.7fr) minmax(220px,.65fr); gap: 34px; align-items: end; }
 .analog-hero h1 { max-width: 900px; font-size: clamp(36px,4.7vw,70px); line-height: 1.05; margin: 14px 0 17px; }
@@ -143,3 +143,56 @@
 .analog-best-match { margin-bottom: 3px; border-bottom: 1px solid #466672; padding-bottom: 10px; }
 .analog-best-match strong { display: block; margin: 4px 0; font-size: 15px; color: #b9ffdf; }
 .analog-best-match span { display: block; font-size: 10px; color: #a8bbc6; }
+/* Auditable, conservative scoring, explicit provenance, and lazy Earth WebGL. */
+.analog-scoring-audit { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 5px; margin: 9px 0; }
+.analog-scoring-audit > div { background: #1b2930; border-radius: 6px; border: 1px solid #45606b; padding: 8px; display: flex; gap: 7px; flex-direction: column; }
+.analog-scoring-audit small { font-size: 9px; color: #a3c7d0; }
+.analog-scoring-audit strong { font: 700 15px ui-monospace, monospace; color: #cfffe9; }
+.analog-equation { padding: 8px 10px; background: #143337; border-left: 3px solid #7adac2; border-radius: 4px; font-size: 11px; }
+.analog-method-comparison { margin-top: 12px; border: 1px solid #47616c; background: #14242d; border-radius: 7px; padding: 13px; font-size: 11px; display: flex; flex-direction: column; gap: 7px; }
+.analog-method-comparison strong { color: #bce8ef; font-size: 11px; }
+.analog-method-comparison p { margin: 0; line-height: 1.55; }
+.analog-method-comparison a { color: #92d8ef; }
+.analog-method-comparison .analog-evidence-limit { color: #ffd2a5; }
+.analog-method-summary { padding: 19px; margin: 22px 0; background: #172830; border: 1px solid #58757d; border-radius: 9px; color: #cee1e4; }
+.analog-method-summary h2 { color: #f0fffc; margin-top: 0; }
+.analog-method-summary p { line-height: 1.65; font-size: 12px; }
+.analog-earth-map-gate { min-height: 200px; border-radius: 6px; background: linear-gradient(130deg,#1b3944,#182331 70%); border: 1px solid #4b6f70; display: grid; place-items: center; text-align: center; padding: 20px; }
+.analog-earth-map-gate > div { max-width: 400px; }
+.analog-earth-map-gate strong { font-size: 15px; }
+.analog-earth-map-gate p { color: #c2d3dc; font-size: 12px; }
+@media (max-width:700px) { .analog-scoring-audit { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+
+/* CyberLeek v7: numeric-first science cards and fast mission changes. */
+.analog-mission-presets { margin: 13px 0 0; padding: 13px 16px; border: 1px solid #3b6170; border-radius: 8px; background: #122532; display: flex; align-items: center; gap: 18px; justify-content: space-between; }
+.analog-mission-presets > div:first-child { flex: 0 0 auto; }
+.analog-mission-presets strong { display: block; font-size: 12px; color: #b8f5dd; }
+.analog-mission-presets small { display:block; margin-top: 4px; font-size: 10px; color: #aabec8; }
+.analog-mission-buttons { display: flex; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+.analog-mission-buttons button { background:#1f3644; color:#c6e0e5; border:1px solid #456471; border-radius:7px; padding:8px 10px; font-size:11px; cursor:pointer; }
+.analog-mission-buttons button.active { background:#b4f5d9; color:#17352c; border-color:#b4f5d9; font-weight:700; }
+.analog-score-components { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:8px; margin: 0 0 8px; }
+.analog-score-components > div { padding:10px; background:#193643; border:1px solid #3b5966; border-radius:6px; }
+.analog-score-components small { display:block; min-height:28px; font:10px/1.4 system-ui,sans-serif; color:#a7c5cc; }
+.analog-score-components strong { display:block; font:700 19px 'Space Grotesk',sans-serif; color:#b5ffdf; }
+.analog-score-components strong span { font-size:11px; color:#a2b9c2; margin-left:2px; }
+.analog-score-components strong.confidence-text { font-size: 14px; }
+.analog-context-caption { color:#adcad4; font-size:10px; line-height:1.5; margin:8px 0 14px; }
+.analog-scoring-audit.analog-scoring-compact { grid-template-columns: repeat(3,minmax(0,1fr)); gap:7px; }
+.analog-scoring-compact > div { background:#142e3b; padding:10px; }
+.analog-scoring-compact strong { font-size:18px; }
+.analog-physical-metrics { margin-top:14px; border:1px solid #44646a; background:#10252e; border-radius:8px; padding:12px; }
+.analog-metric-heading { color:#a7dbc8; font:700 10px/1.4 'DM Mono',monospace; margin-bottom:8px; letter-spacing:0.01em; }
+.analog-physical-grid { display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap:8px; }
+.analog-physical-item { display:flex; flex-direction:column; gap:5px; padding:11px; min-width:0; border-radius:6px; background:#1c3a44; }
+.analog-physical-item small { color:#a6c7d2; font-size:10px; line-height:1.45; }
+.analog-physical-item strong { color:#effef7; font:700 clamp(14px,1.65vw,21px)/1.25 'Space Grotesk',sans-serif; overflow-wrap:anywhere; }
+.analog-physical-item strong span { font-size:11px; font-weight:500; color:#b7d7e0; }
+.analog-physical-item em { font-style:normal; font-size:9px; color:#afc3c9; line-height:1.45; }
+.analog-physical-item a { font-size:10px; color:#96e5de; }
+.analog-audit-details { margin-top:11px; border:1px solid #3d5b66; border-radius:6px; overflow:hidden; }
+.analog-audit-details > summary { list-style:revert; padding:12px 15px; background:#203845; color:#c9f2e6; font-size:11px; font-weight:700; cursor:pointer; }
+.analog-audit-details[open] > summary { border-bottom:1px solid #58727c; }
+.analog-audit-details .analog-method-comparison { border:0; margin:0; border-radius:0; }
+@media(max-width:980px) { .analog-mission-presets { flex-direction:column; align-items:stretch; } .analog-mission-buttons { justify-content:flex-start; } }
+@media(max-width:550px) { .analog-score-components { grid-template-columns:repeat(2,minmax(0,1fr)); } .analog-physical-grid { grid-template-columns:1fr; } }

@@ -1,5 +1,5 @@
 // Derive the three Mars site elevations from the NASA MOLA MEGDR grid already
-// bundled with EDZIZA. No elevations are authored by hand.
+// bundled with CyberLeek. No elevations are authored by hand.
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { WORLD_SITES } from '../src/siteData.js';
 

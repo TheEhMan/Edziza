@@ -58,10 +58,10 @@ export const WORLD_SITES = {
 
 export const WORLD_LABELS = {
   earth: 'EARTH / GLOBAL ANALOG SITES',
-  mars: 'MARS / ELYSIUM VOLCANIC REGION',
+  mars: 'MARS / FULL-PLANET TERRAIN',
   moon: 'MOON / LUNAR SURFACE'
 };
 export const WORLD_ORDER = ['earth', 'mars', 'moon'];
-export const DEFAULT_SITES = { earth: 'snowshoe', mars: 'hecates', moon: 'apollo11' };
+export const DEFAULT_SITES = { earth: 'atacama', mars: 'hecates', moon: 'apollo11' };
 export const getSite = (world, id) => WORLD_SITES[world]?.[id] || WORLD_SITES[world]?.[DEFAULT_SITES[world]];
 export const formatCoord = (value, axis) => `${Math.abs(value).toFixed(3)}° ${value < 0 ? (axis === 'lat' ? 'S' : 'W') : (axis === 'lat' ? 'N' : 'E')}`;

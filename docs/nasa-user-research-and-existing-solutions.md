@@ -30,13 +30,13 @@ Sources:
 
 ## Existing solutions
 
-| Tool | Existing strengths | Gap / how EDZIZA is positioned | Caution |
+| Tool | Existing strengths | Gap / how CyberLeek is positioned | Caution |
 |---|---|---|---|
-| [NASA Moon Trek](https://trek.nasa.gov/moon/) | NASA lunar image/DEM collections; lighting, slope, distance, 3D, scientific layers | Earth analog shortlists for a Moon research-site test goal | NASA Moon Trek is far more capable than EDZIZA at lunar mapping and hazard-relevant data |
-| [NASA Mars Trek](https://trek.nasa.gov/mars/) | Martian orbital layers, terrain, route investigation, 3D | Cross-world mapping of specific research objectives into Earth terrain types | EDZIZA does not replace Mars Trek or perform flight-quality Martian analysis |
-| [NASA Planetary Analog Explorer](https://science.nasa.gov/solar-system/analog-explorer/) | Curated, illustrated NASA Earth/planet analog pairs with science explanations | Interactive target-dependent 11-site ranking and adjustable eight-domain weights | NASA source descriptions are richer than some of our curated site entries |
+| [NASA Moon Trek](https://trek.nasa.gov/moon/) | NASA lunar image/DEM collections; lighting, slope, distance, 3D, scientific layers | Earth analog shortlists for a Moon research-site test goal | NASA Moon Trek is far more capable than CyberLeek at lunar mapping and hazard-relevant data |
+| [NASA Mars Trek](https://trek.nasa.gov/mars/) | Martian orbital layers, terrain, route investigation, 3D | Cross-world mapping of specific research objectives into Earth terrain types | CyberLeek does not replace Mars Trek or perform flight-quality Martian analysis |
+| [NASA Planetary Analog Explorer](https://science.nasa.gov/solar-system/analog-explorer/) | Curated, illustrated NASA Earth/planet analog pairs with science explanations | Interactive target-dependent 8-site ranking and adjustable eight-domain weights | NASA source descriptions are richer than some of our curated site entries |
 | [NASA JSC Rock Yard](https://www.nasa.gov/reference/jsc-analogs-mockups/) | Controlled physical hardware test yard for Martian/lunar rover mobility | Natural field landscapes, geological studies and expedition context | Natural sites may not permit hardware testing |
-| [TerraNova, independent 2026 Space Apps team repo](https://github.com/KraKEn-bit/TerraNova) | Reports a global 0.5° Earth predictor cube, climate/slope/roughness, validation design and target matching | EDZIZA currently emphasizes eight complete evidence domains, local reference map presentation and a simpler fully interpretable field-task taxonomy | TerraNova reports broader global numeric screening and should not be claimed scientifically weaker without benchmarking |
+| [TerraNova, independent 2026 Space Apps team repo](https://github.com/KraKEn-bit/TerraNova) | Reports a global 0.5° Earth predictor cube, climate/slope/roughness, validation design and target matching | CyberLeek currently emphasizes eight complete evidence domains, local reference map presentation and a simpler fully interpretable field-task taxonomy | TerraNova reports broader global numeric screening and should not be claimed scientifically weaker without benchmarking |
 
 ## How the current prototype is different
 
@@ -66,6 +66,6 @@ Example prototype default: **Shackleton → Haughton Crater**; runner-up is **Mc
 
 ## Reporting language for a science fair or Space Apps demo
 
-Correct: 'Our prototype ranks eleven documented Earth field settings for six planetary research targets using an interpretable, eight-domain expert-curated experiment suitability index with agency references.'
+Correct: 'Our prototype ranks eight documented Earth field settings for six planetary research targets using an interpretable, eight-domain expert-curated experiment suitability index with agency references.'
 
 Incorrect: 'NASA satellite data measured all eight physical parameters at every site and our 95% score proves that this Earth location is 95% the same as the Moon.'

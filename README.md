@@ -1,108 +1,73 @@
-# EDZIZA — 3D Planetary Analog Finder v5 (NASA Space Apps research prototype)
+# CyberLeek | Planetary Analog Finder v7
 
-**Click a point on a 3D Mars terrain map or the 3D Moon globe. See which Earth location could be a useful scientific analog.**
+A NASA Space Apps Challenge **independent demonstration**: click anywhere on the 3D Moon or whole-planet Mars globe, choose what you want to test, and get a ranked shortlist of Earth field sites. CyberLeek reports numerical **research-task fit** separately from **evidence confidence**, alongside NASA reference measurements and their limitations.
 
-This release replaces the app's default three-world climate comparison with an **8-domain, purpose-weighted terrestrial analog screening workflow** built around the NASA Space Apps Challenge *Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars*.
+## Start on Windows, macOS or Linux
 
-## Run
-
-Requires Node.js 22+ and npm. Extract the archive, open its `edziza-planetary-3d-picker-v5` folder, then:
+Extract the archive and open a terminal inside `cyberleek-planetary-analog-v7`:
 
 ```bash
 npm install
+npm run verify
 npm run dev
 ```
 
-Open the local URL reported by Vite, typically `http://localhost:5173/`.
+Open the local URL printed by Vite (usually http://localhost:5173/). **The archive excludes `node_modules`**. This avoids platform-specific Windows/Linux native-binary errors; always run `npm install` in the extracted folder.
 
-For a static build:
+## Obtain NASA map assets (internet required)
 
-```bash
-npm run build
-npm run preview
-```
-
-The original uploaded dependencies were Windows-specific. Never copy the old `node_modules` folder to a new operating system; do a fresh `npm install` on your computer.
-
-## User workflow
-
-1. Select **Mars** or **Moon** on the first page. A **3D map appears immediately**.
-2. **Click a point** on the map: the Mars view covers the Elysium volcanic region; the Moon globe accepts points globally. Rotate and zoom with the mouse or touch. Alternatively, choose one of three documented reference sites on each world.
-3. The app extracts the clicked **coordinates**, a NASA **DEM grid elevation** when the relevant terrain data is loaded, and the **nearest documented planetary research profile** with a distance and confidence warning.
-4. See **eleven Earth analog sites automatically ranked** by the eight-domain reference profile. Select a suggested Earth analog to fly to its **real field-site map coordinates**, inspect sources, and generate a research brief.
-5. Optionally adjust each domain's importance (0–5). The ranking changes immediately; a point itself is not magically measured across all eight science domains.
-6. Use **Interactive maps**, **Eight data domains**, **Measured terrain**, and **Research & method** to explore source limitations and research priorities.
-
-### Important 3D-map setup
-
-**Mars**: the regional NASA MOLA elevation raster and Viking orbital tiles are already included; no NASA network fetch is required for its 3D surface.
-
-**Moon**: to obtain a textured Moon globe **with real LOLA elevation relief**, run this command **with internet access** before presenting or deploying the project:
+The repository includes local *regional* NASA Mars tiles and Mars MOLA data, but not the much larger global NASA source files. To preload NASA imagery and elevations for a live demonstration, run these commands once:
 
 ```bash
-npm run fetch:nasa
+npm run fetch:global       # NASA Viking global Mars imagery + global MOLA DEM
+npm run fetch:nasa         # NASA LRO 2K Moon texture and LOLA coarse DEM
+npm run fetch:moon-hd      # NASA 2025 LRO color 4K JPG (~59 MB TIFF input)
+npm run dev
 ```
 
-It downloads a NASA LRO color map (~0.45 MB) and NASA LOLA `ldem_4.tif` (~4 MB). If that step cannot complete, the Moon still shows a **3D spherical preview** for coordinate picking but NOT detailed measured surface relief. The user-provided Moon reference picture is available as a separate 2D view; it is not NASA DEM data. More detail: `docs/3d-map-picking-and-matching.md`.
+**For more Moon detail**, choose **4K balanced** in the Moon 3D viewer. For a machine with substantial GPU memory, you can optionally run `npm run fetch:moon-ultra` (downloads a ~232 MB 8K NASA TIFF, converts to local JPG), then select **8K opt-in**. The downloaded image is approximately 8192×4096 pixels; uncompressed on the GPU, it can use >128 MB of texture memory. **2K faster** is best for weaker laptops. The texture-quality control reports the resolution it *actually loaded* and warns if the selected file is not available. 4K or 8K pixels increase visible imagery detail, not the scientific resolution of the separate LOLA elevation grid. The NASA downloader uses Windows-native file paths with `fileURLToPath`, fixing the previous Sharp invalid-path error.
 
+For zooming into lunar locations, choose **2D NASA HD tiles**: this requests detailed LROC WAC tiles from NASA Moon Trek at each zoom level; it requires internet service. The earlier uploaded round reference illustration is retained only as **low-res reference**; zooming it cannot reveal new detail.
 
-## Eight domains (complete profile coverage)
+Official imagery documentation: [NASA SVS CGI Moon Kit](https://svs.gsfc.nasa.gov/4720/) (NASA's 2025 LRO color mosaic). NASA notes its display color is a visualization product, not a substitute for scientific spectral analyses. Moon elevation comes from LOLA 4 pixels/degree (global ~7.6 km north-south cell spacing), not a rover-scale terrain model.
 
-1. Geology, mineralogy, and surface materials
-2. Terrain, elevation, slope, roughness, impact features
-3. Temperature, illumination, environmental extremes
-4. Water, ice, permafrost, resources
-5. Dust, wind, erosion, and surface processes
-6. Biology, extremophiles, biosignatures
-7. Caves, lava tubes, subsurface environment
-8. Landing/rover operations, navigation and construction test conditions
+## New workflow
 
-**Every one of the 17 catalogued places (11 Earth + 3 Mars + 3 Moon) has an entry, a set of research-use tags and an evidence link for all eight domains.** This is **complete descriptive profile coverage**, not 136 equally valid physical observations. Several dimensions have no universally measurable site-level analog: lunar wind does not exist in the conventional atmospheric sense, Mars/Moon have no confirmed indigenous life, and no verified cave accessibility can be assigned to an unmapped subsurface void. Never convert these into fabricated numerical measurements.
+1. Choose **Mars** or **Moon** on the Finder, drag to rotate, click any point to choose the coordinates, or select a researched reference site. Mars now displays the **entire planet** in 3D. Three reference sites per body have source-linked eight-domain descriptions.
+2. Select a **mission objective** (Balanced, Polar base, Volcanic science, Rover mobility, Astrobiology, Cave exploration) or adjust individual domain weights.
+3. CyberLeek **ranks eight Earth analog candidates**: Atacama Yungay; Haughton Impact Crater; McMurdo Dry Valleys; Fagradalsfjall volcanic field; Lava Beds National Monument; Death Valley; Kīlauea; Craters of the Moon. It does not use any of the former local volcanic study locations.
+4. Open any category to inspect the **numeric scoring inputs**, dataset source links, relevant NASA global facts, the exact formula, and what published mission researchers evaluated (without pretending they published a score for the same Earth/planet pair).
+5. Export a **field-test screening brief**. It records which observations are global averages, coarse DEM cell samples, live Earth POWER climatology, researcher-curated tags, or unavailable.
 
-## NASA/agency datasets used by this app
+## Why the score looks different now
 
-**Actually integrated:**
+Older releases used a distance-based multiplier that could turn a 40/100 research-fit score into 4/100 whenever the target click was more than 500 km from a curated reference. The multiplier affected **all** Earth candidates equally and did not help distinguish them. **This is removed from the score.** Uncharacterized clicks now show an independent **LOW documentation-confidence** warning.
 
-- **Mars: NASA Viking imagery + NASA MOLA elevation** in the bundled Mars viewer; derived 16ppd MOLA DEM samples for the 3 Mars sites in `public/nasa-data/mars-mola-sites.json`.
-- **Moon: NASA LRO Wide Angle Camera orbital image + NASA LOLA elevation**, used to create real 3D globe relief if downloaded through `npm run fetch:nasa` or fetched at runtime. With no NASA raster, show a labeled smooth globe; no DEM relief is invented. The user-uploaded circular Moon reference picture is **not** NASA observational data.
-- **Earth: NASA POWER** optional live climatological grid point data (air temperature, 10m wind, solar-energy average) for the currently selected Earth site. MapLibre terrain uses Mapterhorn and external raster imagery. Browser will show the offline state if NASA POWER cannot connect.
-- **Measured Earth–Mars DEM prototype:** 3 Mount Edziza 12 km patches from Copernicus DEM vs a Hecates Tholus NASA MOLA patch (`public/analysis-results.json`). It is separate from the new eight-domain scores.
-- **Evidence profiles:** science-context narratives and searchable tags based on agency publications and site sources linked within each domain. These are interpretations, not NASA-labeled numeric planetary records.
+Each of eight categories reports:
 
-**Not yet integrated into the live numeric comparison:** global site-by-site NASA THEMIS/TES temperatures, LRO Diviner temperature series, geology pixel classes, SWIM/lunar cold-trap overlays, Mars or Moon cave catalogues, life-detection results, or per-site operational viability/permits. These are specified as potential future inputs with links under `docs/analog-data-and-uncertainty.md`.
+- Target goals, Earth traits, shared feature tags, target-goal **coverage** (`R`), Earth-trait **precision** (`P`), transferability assumption `T`, and the resulting domain task-fit score.
+- `Domain fit / 100 = 100 × (0.70 × R + 0.30 × P) × T`; overall weighted domain mean is mixed with a modest, **explicitly heuristic** absolute-latitude operational-regime score. Click position and mission weights can alter the Earth ranking. Latitude is **not** measured climate, resource abundance, local illumination or subsurface geology.
+- Research-documentation confidence `E` is shown **separately**. It is neither a formal probability nor a multiplier reducing an Earth candidate's matching score to 2/100.
+- **NASA measurements are separate** from the screening index: MOLA/LOLA sampled elevation where available, global Mars/Moon gravity/solar/day/pressure references from NASA fact sheets, and **NASA POWER** modeled annual Earth temperature, wind and solar irradiation if its API is reachable. The engine **does not yet compare matched-resolution physical rasters or numerical mineral assays**. Missing values are labeled, never invented.
 
-## Screening formula and limits
+**A 75/100 score is a project research-task suitability index, NOT 75% physical similarity, a landing safety estimate, NASA approval, or a validated probability.** The candidates are manually curated, not discovered through global automatic search. Clicking an arbitrary surface point uses the nearest documented planetary scientific profile, and the interface discloses its distance and uncertainty. Source links are not proof of measured local abundance, caves or life.
 
-For a planetary target, each domain defines 1–4 intended **Earth field-test traits** (not claims that a planetary site physically shares the Earth's atmosphere or biology). An Earth site receives evidence-guided tags describing field research opportunities.
+See [scoring and scientific numbers](docs/v7-scoring-numeric-evidence.md), [data availability and uncertainties](docs/analog-data-and-uncertainty.md), and [NASA research / competitor context](docs/nasa-user-research-and-existing-solutions.md).
 
-```
-domain_score = 100 * matched_target_test_tags / total_target_test_tags
-ranking_score = sum(user_weight * domain_score) / sum(user_weight)
-```
+## Speed and technical notes
 
-The default weights are: geology 4, terrain 4, thermal 2, resources 3, dust 2, biology 2, subsurface 2, operations 3. A priority set to zero excludes that domain. All-zero priorities yield a neutral score of zero and a warning. **High percentages mean coverage of this limited screening vocabulary, not physical fidelity, safety or NASA endorsement.** Rankings are not calibrated against field performance or validated with cross-site ground truth.
+- Only one active 3D canvas is normally mounted; additional maps can be opened on demand.
+- Globe rendering is on demand, capped pixel ratio 1.35 and moderate mesh tessellation; dedicated **2K faster / 4K balanced / 8K opt-in** avoids forcing 8K textures on all devices.
+- Mars global map stream concurrency is bounded; the Elysium regional high-detail map loads only when requested.
+- NASA Moon Trek 2D map loads tiles based on zoom, instead of enlarging one 2K global JPG. Remote tile availability and network speed matter.
+- These are code-level optimizations, **not measured frame-rate benchmarks**. A browser/production build was not completed in the packaging environment owing to platform-specific dependency binaries. A fresh `npm install` on your computer should install the proper native dependencies.
 
-Defaults include **Shackleton → Haughton crater** for a polar-operations question and **Elysium Mons → Craters of the Moon** for a basalt/rover science question. Results may change with weights. The original Edziza Earth sites remain candidates, including possible lesser-studied research hypotheses.
-
-## Data and location provenance
-
-- Planetary target evidence: NASA Elysium and Albor, NASA Mare Tranquillitatis, NASA Shackleton, and NASA Aristarchus material, linked per site.
-- Earth analog evidence: NASA analog mission field-site descriptions, NASA astrobiology field catalog, NASA 2025 Iceland field campaign, NPS Lava Beds and Craters of the Moon geology, NPS Death Valley geology, and BC Parks Mount Edziza, linked per site.
-- Representative target coordinates and Earth map pins denote **study regions**, not homogeneous 30-m cells, validated landing ellipses, approved fieldwork sites or safe cave entrances.
-- Scientific concept and implementation limits: `docs/analog-data-and-uncertainty.md`.
-- NASA user needs, comparison to existing tools: `docs/nasa-user-research-and-existing-solutions.md`.
-- Original numeric experiment documentation remains in `docs/earth-mars-methodology-original.md`.
-
-## Validation
+## Developer validation
 
 ```bash
-npm run verify
+npm run verify      # Catalogue, 8-category ranking, clicked points, NASA-data parser assertions
+npm run export:catalog
+npm run build       # Verify production bundling on your system
 ```
 
-Checks: 3 worlds, 11 Earth map sites, 3 Mars and 3 Moon sites, 8/8 domain coverage for all 17 research profiles, valid source links, deterministic scoring and response to weight changes, exact original NASA MOLA grid interpolation, Moon zoom controls, and JSX parsing.
-
-**Development-side verification:** source parsing, eight-domain audit, MOLA data checks, 3D map-click coordinate math, Moon DEM sampler, and map-to-Earth ranking tests passed. A production Vite build still could not be completed in this Linux environment because the originally supplied `node_modules` used Windows-native esbuild. The ZIP excludes `node_modules`; perform a clean `npm install` to build on your machine.
-
-## Export the research catalogue
-
-`npm run export:catalog` regenerates the machine-readable `public/analog-research-catalog.json` with the complete 8-domain candidate and planetary profiles, citations, default weights and the output of each of the six target ranking runs. You can audit the category inputs independently of the web interface.
+The generated `public/analog-research-catalog.json` publishes all curated targets, Earth candidates, calculated default scores, feature tags and references for transparency. It does **not** assert it is a planetary science calibration dataset.

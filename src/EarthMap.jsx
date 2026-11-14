@@ -8,9 +8,8 @@ maplibregl.setWorkerUrl(workerUrl);
 import { WORLD_SITES } from './siteData.js';
 import { EARTH_ANALOGS } from './analogData.js';
 
-// Every ranked Earth candidate must fly to its REAL representative coordinate.
-// Previously non-Edziza winners incorrectly defaulted to Snowshoe Lava Field.
-export const EDZIZA_SITES = { ...WORLD_SITES.earth,
+// Earth map sites come exclusively from the eight-domain candidate catalogue.
+export const EARTH_MAP_SITES = { ...WORLD_SITES.earth,
   ...Object.fromEntries(EARTH_ANALOGS.map(site => [site.id, { ...site, label: site.name }]))
 };
 
@@ -45,15 +44,15 @@ const STYLE = {
   ]
 };
 
-export default function EarthMap({ site = 'snowshoe', basemap = 'satellite', exaggeration = 1.15, resetKey = 0 }) {
+export default function EarthMap({ site = 'atacama', basemap = 'satellite', exaggeration = 1.15, resetKey = 0 }) {
   const ref = useRef(null);
   const mapRef = useRef(null);
   const markerRef = useRef(null);
-  const [zoom, setZoom] = useState(EDZIZA_SITES[site]?.zoom || 11);
+  const [zoom, setZoom] = useState(EARTH_MAP_SITES[site]?.zoom || 11);
 
   useEffect(() => {
     if (!ref.current) return;
-    const initial = EDZIZA_SITES[site] || EDZIZA_SITES.snowshoe;
+    const initial = EARTH_MAP_SITES[site] || EARTH_MAP_SITES.atacama;
     const map = new maplibregl.Map({
       container: ref.current,
       style: structuredClone(STYLE),
@@ -72,48 +71,8 @@ export default function EarthMap({ site = 'snowshoe', basemap = 'satellite', exa
 
     const handleZoom = () => setZoom(map.getZoom());
     map.on('zoomend', handleZoom);
-    const analysisController = new AbortController();
-    let dismissed = false;
     map.once('load', () => {
       map.setTerrain({ source: 'terrainSource', exaggeration });
-      // Outlines appear only after a successful measured analysis file exists.
-      fetch('/analysis-results.json', { signal: analysisController.signal })
-        .then(res => { if (!res.ok) throw new Error('No measured analysis file'); return res.json(); })
-        .then(result => {
-          if (dismissed || !result.isMeasured || !result.candidates?.length) return;
-          const features = result.candidates.map(site => ({
-            type: 'Feature',
-            geometry: site.footprint.geometry,
-            properties: { label: site.name, rank: site.rank, score: site.score }
-          }));
-          map.addSource('science-study-areas', {
-            type: 'geojson', data: { type: 'FeatureCollection', features }
-          });
-          map.addLayer({
-            id: 'science-area-fill', type: 'fill', source: 'science-study-areas',
-            paint: {
-              'fill-color': ['case', ['==', ['get', 'rank'], 1], '#83efd0', '#f7b77a'],
-              'fill-opacity': 0.22
-            }
-          });
-          map.addLayer({
-            id: 'science-area-outline', type: 'line', source: 'science-study-areas',
-            paint: {
-              'line-color': ['case', ['==', ['get', 'rank'], 1], '#83efd0', '#f7b77a'],
-              'line-width': 2.5
-            }
-          });
-          map.on('click', 'science-area-fill', event => {
-            const properties = event.features?.[0]?.properties;
-            if (!properties) return;
-            new maplibregl.Popup().setLngLat(event.lngLat)
-              .setText(`${properties.label} | rank #${properties.rank} | terrain match ${properties.score}/100`)
-              .addTo(map);
-          });
-          map.on('mouseenter', 'science-area-fill', () => { map.getCanvas().style.cursor = 'pointer'; });
-          map.on('mouseleave', 'science-area-fill', () => { map.getCanvas().style.cursor = ''; });
-        })
-        .catch(() => { /* Study outlines are optional until the analysis runs. */ });
       const pin = document.createElement('div');
       pin.className = 'earth-marker';
       markerRef.current = new maplibregl.Marker({ element: pin, anchor: 'bottom' })
@@ -129,8 +88,6 @@ export default function EarthMap({ site = 'snowshoe', basemap = 'satellite', exa
     document.addEventListener('fullscreenchange', fullScreenResize);
 
     return () => {
-      dismissed = true;
-      analysisController.abort();
       document.removeEventListener('fullscreenchange', fullScreenResize);
       resizeObserver.disconnect();
       map.off('zoomend', handleZoom);
@@ -146,7 +103,7 @@ export default function EarthMap({ site = 'snowshoe', basemap = 'satellite', exa
   useEffect(() => {
     const map = mapRef.current;
     if (!map) return;
-    const target = EDZIZA_SITES[site] || EDZIZA_SITES.snowshoe;
+    const target = EARTH_MAP_SITES[site] || EARTH_MAP_SITES.atacama;
     map.flyTo({
       center: target.coords, zoom: target.zoom, pitch: target.pitch,
       bearing: target.bearing, speed: 0.85, essential: true
@@ -182,7 +139,7 @@ export default function EarthMap({ site = 'snowshoe', basemap = 'satellite', exa
 
   return (
     <div className="earth-map-container">
-      <div ref={ref} className="earth-map" aria-label={`3D terrain map of ${EDZIZA_SITES[site]?.label || "selected Earth analog"}`} />
+      <div ref={ref} className="earth-map" aria-label={`3D terrain map of ${EARTH_MAP_SITES[site]?.label || "selected Earth analog"}`} />
       <div className="earth-map-hud">Zoom {zoom.toFixed(1)} / 14.5 | 3D elevation from Mapterhorn</div>
       {zoom > 13.8 && <div className="zoom-caution">Close-up terrain detail is limited by elevation resolution. Zoom out for reliable landforms.</div>}
     </div>
